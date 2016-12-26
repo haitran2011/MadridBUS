@@ -1,0 +1,66 @@
+import Foundation
+import BRYXBanner
+
+class Presenter: HandleErrorDelegate {
+
+    var spinner: SpinnerBase!
+    let wireframe: Wireframe
+    var params: [String:Any] = [:]
+    
+    required init(injector: Injector) {
+        self.wireframe = injector.instanceOf(Wireframe.self)
+    }
+    
+    func config(view: View) {
+        wireframe.setFrom(view: view)
+        
+        if let parameterizedView = view as? ParameterizedView {
+            params = parameterizedView.params
+        }
+    }
+    
+    func addParameter<T>(parameter: T) {
+        params.updateValue(parameter, forKey: "\(parameter.self)")
+    }
+    
+    func retrieveParameter<T>(parameterType: T.Type) -> T? {
+        return params.removeValue(forKey: "\(parameterType)") as? T
+    }
+    
+    func handleErrors(error: Error) {
+        let errorController = ErrorViewBase()
+        errorController.configure(using: .error(description: error.localizedDescription))
+		errorController.action = {
+            errorController.dismiss()
+        }
+        
+        if spinner != nil {
+            spinner.dismiss(animated: true, completion: { 
+                self.wireframe.present(controller: errorController)
+            })
+        } else {
+            wireframe.present(controller: errorController)
+        }
+    }
+    
+    func showSpinner(performing completion: (()->())?) {
+        spinner = SpinnerBase()
+        if completion != nil {
+            wireframe.present(controller: spinner, completion: completion!)
+        } else {
+            wireframe.present(controller: spinner)
+        }
+        
+    }
+    
+    func hideSpinner(performing completion: (()->())?) {
+        spinner.dismiss(animated: true, completion: completion)
+    }
+    
+    func showBanner(displaying message: String) {
+        let banner = Banner(title: LocalizedLiteral.localize(using: "VALIDATIONERROR_TITLE"), subtitle: message, image: #imageLiteral(resourceName: "ErrorIcon"), backgroundColor: Colors.red)
+        banner.shouldTintImage = false
+        banner.dismissesOnTap = true
+        banner.show(duration: 3.0)
+    }
+}
