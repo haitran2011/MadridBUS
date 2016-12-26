@@ -2,19 +2,6 @@ import Foundation
 import ObjectMapper
 import Alamofire
 
-class RequestCredentials: Mappable {
-    var apiUser = "WEB.SERV.jorge.ramos@me.com"
-    var apiPasskey = "0B56B4AF-3732-4198-9994-834A515970A5"
-    
-    init() {}
-    required init?(map: Map) {}
-    
-    func mapping(map: Map) {
-        apiUser <- map["idClient"]
-        apiPasskey <- map["passKey"]
-    }
-}
-
 class RequestBuilder {
     private let remoteHost = "https://openbus.emtmadrid.es:9443/emt-proxy-server/last"
     

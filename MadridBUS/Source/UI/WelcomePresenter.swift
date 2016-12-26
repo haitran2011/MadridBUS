@@ -4,6 +4,7 @@ protocol WelcomePresenter {
     var availableBusLineTypes: [BusLineType] { get }
     
     func obtainBusLineTypes()
+    func obtainBusCalendar()
     
     func config(using view: View)
 }
@@ -11,11 +12,13 @@ protocol WelcomePresenter {
 class WelcomePresenterBase: Presenter, WelcomePresenter {
     private weak var view: WelcomeView!
     private var busLineTypes: BusLineTypesInteractor!
+    private var busCalendar: BusCalendarInteractor!
     
     var availableBusLineTypes: [BusLineType] = []
     
     required init(injector: Injector) {
         busLineTypes = injector.instanceOf(BusLineTypesInteractor.self)
+        busCalendar = injector.instanceOf(BusCalendarInteractor.self)
         super.init(injector: injector)
     }
 
@@ -33,6 +36,16 @@ class WelcomePresenterBase: Presenter, WelcomePresenter {
         
         busLineTypes.execute { (busLineTypesArray) in
             self.availableBusLineTypes = busLineTypesArray
+        }
+    }
+    
+    func obtainBusCalendar() {
+        busCalendar.subscribeHandleErrorDelegate(delegate: self)
+        
+        let dto = BusCalendarDTO(from: Date(), to: Date.nextWeek())
+        
+        busCalendar.execute(dto) { (calendarItems) in
+            
         }
     }
 }

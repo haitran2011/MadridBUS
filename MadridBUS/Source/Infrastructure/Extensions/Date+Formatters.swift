@@ -18,4 +18,13 @@ extension Date {
         
         return formatter.string(from: date)
     }
+    
+    static func string(from date: Date, using format: String) -> String {
+        let formatter = DateFormatter()
+        formatter.calendar = Calendar.current
+        formatter.timeZone = TimeZone.current
+        formatter.dateFormat = format
+        
+        return formatter.string(from: date)
+    }
 }

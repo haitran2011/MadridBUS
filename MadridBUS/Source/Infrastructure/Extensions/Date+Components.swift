@@ -22,4 +22,16 @@ extension Date {
         
         return calendar.date(from: components)
     }
+    
+    static func nextWeek() -> Date {
+        var calendar = Calendar.current
+        calendar.timeZone = TimeZone(identifier: "UTC")!
+        let todayWeekday = calendar.component(.weekday, from: Date())
+        
+        let addWeekdays = 7 - todayWeekday  // 7: Saturday number
+        var components = DateComponents()
+        components.weekday = addWeekdays
+        
+        return calendar.date(byAdding: components, to: Date())!
+    }
 }

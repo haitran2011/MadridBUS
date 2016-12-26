@@ -27,7 +27,7 @@ class AsyncInteractor<ParameterType, ResponseType>: Interactor {
     }
 
     func runInBackground(params: [ParameterType]) throws -> ResponseType {
-        fatalError("Method runInBackground must be overrided!!! in \(self)")
+        fatalError("Method runInBackground must be override!!! in \(self)")
     }
     
     private func notifyResult(result: ResponseType, success: @escaping (ResponseType) -> ()) {
