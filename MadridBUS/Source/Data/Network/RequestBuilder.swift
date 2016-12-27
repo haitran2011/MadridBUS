@@ -8,6 +8,7 @@ class RequestBuilder {
     internal var endPoint: String?
     internal var parameter: Mappable = Empty()
     internal var method: HTTPMethod?
+    internal var skippableKey: String?
     
     func url(_ partialUrl: String) -> Self {
         self.endPoint = partialUrl
@@ -31,22 +32,27 @@ class RequestBuilder {
         self.parameter = parameter
         return self
     }
+    
+    func skip(key: String) -> Self {
+        self.skippableKey = key
+        return self
+    }
 
-//    func buildForJsonResponseFor<T:Mappable>(_ responseType: T.Type) -> JsonRequest<T> {
-//        guard let endPoint = endPoint, let method = method else {
-//            fatalError("Missing enpoint or method in \(self)")
-//        }
-//        
-//        let url = remoteHost + endPoint
-//        return JsonRequest<T>(url: url, method: method, parameter: parameter, encoding: URLEncoding.httpBody)
-//    }
-//    
-//    func buildForStringResponse() -> StringRequest {
-//        guard let endPoint = endPoint, let method = method else {
-//            fatalError("Missing enpoind or method in \(self)")
-//        }
-//        
-//        let url = remoteHost + endPoint
-//        return StringRequest(url: url, method: method, parameter: parameter, encoding: URLEncoding.httpBody)
-//    }
+    func buildForJsonResponseFor<T:Mappable>(_ responseType: T.Type) -> JsonRequest<T> {
+        guard let endPoint = endPoint, let method = method else {
+            fatalError("Missing enpoint or method in \(self)")
+        }
+        
+        let url = remoteHost + endPoint
+        return JsonRequest<T>(url: url, method: method, parameter: parameter, encoding: URLEncoding.httpBody, skippableKey: skippableKey)
+    }
+    
+    func buildForStringResponse() -> StringRequest {
+        guard let endPoint = endPoint, let method = method else {
+            fatalError("Missing enpoind or method in \(self)")
+        }
+        
+        let url = remoteHost + endPoint
+        return StringRequest(url: url, method: method, parameter: parameter, encoding: URLEncoding.httpBody, skippableKey: skippableKey)
+    }
 }

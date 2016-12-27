@@ -10,13 +10,15 @@ class JsonRequest<ResponseType:Mappable>: Request {
     var parameter: Mappable
     var encoding: ParameterEncoding?
     var response: Response<ResponseType>
+    var skippableKey: String?
     
-    required init(url: String, method: HTTPMethod, parameter: Mappable, encoding: ParameterEncoding?) {
+    required init(url: String, method: HTTPMethod, parameter: Mappable, encoding: ParameterEncoding?, skippableKey: String?) {
         self.stringURL = url
         self.method = method
         self.parameter = parameter
         self.response = Response<ResponseType>()
         self.encoding = encoding
+        self.skippableKey = skippableKey
     }
     
     func addSuccessResponse(_ data: Data) {
@@ -25,13 +27,14 @@ class JsonRequest<ResponseType:Mappable>: Request {
         }
         
         do {
+            var json = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
+            if let key = skippableKey {
+                json = (json as! NSDictionary)[key]!
+            }
             
-            let json = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments)
-            let dictionary = (json as! NSDictionary)["resultValues"]
-            
-            if let dataArrayResponse = Mapper<ResponseType>().mapArray(JSONObject: dictionary) {
+            if let dataArrayResponse = Mapper<ResponseType>().mapArray(JSONObject: json) {
                 response.dataArrayResponse = dataArrayResponse
-            } else if let dataResponse = Mapper<ResponseType>().map(JSONObject: dictionary) {
+            } else if let dataResponse = Mapper<ResponseType>().map(JSONObject: json) {
                 response.dataResponse = dataResponse
             } else {
                 response.dataError = RepositoryError(message: "Can't map json to type \(ResponseType.self)")

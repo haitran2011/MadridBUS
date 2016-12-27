@@ -12,7 +12,7 @@ protocol Request: class {
     var encoding: ParameterEncoding? { get }
     var response: Response<ResponseType> { get }
     
-    init(url: String, method: HTTPMethod, parameter: Mappable, encoding: ParameterEncoding?)
+    init(url: String, method: HTTPMethod, parameter: Mappable, encoding: ParameterEncoding?, skippableKey: String?)
     
     func addSuccessResponse(_ data: Data)
 }
@@ -20,7 +20,7 @@ protocol Request: class {
 extension Request {
     
     init(url: String, method: HTTPMethod, parameter: Mappable) {
-        self.init(url: url, method: method, parameter: parameter, encoding: nil)
+        self.init(url: url, method: method, parameter: parameter, encoding: nil, skippableKey: nil)
     }
     
     init(url: String, method: HTTPMethod) {

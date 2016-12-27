@@ -12,24 +12,18 @@ class StringRequest: Request {
     var parameter: Mappable
     var encoding: ParameterEncoding?
     var response: Response<ResponseType>
+    var skippableKey: String?
     
-    required init(url: String, method: HTTPMethod, parameter: Mappable, encoding: ParameterEncoding?) {
+    required init(url: String, method: HTTPMethod, parameter: Mappable, encoding: ParameterEncoding?, skippableKey: String?) {
         self.stringURL = url
         self.method = method
         self.parameter = parameter
         self.response = Response<ResponseType>()
         self.encoding = encoding
+        self.skippableKey = skippableKey
     }
     
     func addSuccessResponse(_ data: Data) {
-        do {
-            let json = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments)
-            let jsonDictionary = (json as! NSDictionary)["resultValues"]
-            let validData = try JSONSerialization.data(withJSONObject: jsonDictionary!, options: .prettyPrinted)
-        
-            response.dataResponse = String(data: validData, encoding: .utf8)
-        } catch {
-            response.dataResponse = ""
-        }
+        response.dataResponse = String(data: data, encoding: .utf8)
     }
 }

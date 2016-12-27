@@ -3,9 +3,10 @@ import ObjectMapper
 
 class BusRepositoryBase: Repository, BusRepository {
     func groups() throws -> [BusGroup] {
-        let request = BusRequestBuilder()
+        let request = RequestBuilder()
             .post()
             .url("/bus/GetGroups.php")
+            .skip(key: "resultValues")
             .parameter(parameter: DTO())
             .buildForJsonResponseFor(BusGroup.self)
         
@@ -15,9 +16,10 @@ class BusRepositoryBase: Repository, BusRepository {
     }
     
     func calendar(dto: BusCalendarDTO) throws -> [BusCalendarItem] {
-        let request = BusRequestBuilder()
+        let request = RequestBuilder()
             .post()
             .url("/bus/GetCalendar.php")
+            .skip(key: "resultValues")
             .parameter(parameter: dto)
             .buildForJsonResponseFor(BusCalendarItem.self)
         
@@ -27,9 +29,10 @@ class BusRepositoryBase: Repository, BusRepository {
     }
 
     internal func lineBasicInfo(dto: BusLinesBasicInfoDTO) throws -> [BusLineBasicInfo] {
-        let request = BusRequestBuilder()
+        let request = RequestBuilder()
             .post()
             .url("/bus/GetListLines.php")
+            .skip(key: "resultValues")
             .parameter(parameter: dto)
             .buildForJsonResponseFor(BusLineBasicInfo.self)
         
@@ -45,9 +48,10 @@ class BusRepositoryBase: Repository, BusRepository {
     }
 
     internal func nodeBasicInfo(dto: BusNodesBasicInfoDTO) throws -> [BusNodeBasicInfo] {
-        let request = BusRequestBuilder()
+        let request = RequestBuilder()
             .post()
             .url("/bus/GetNodesLines.php")
+            .skip(key: "resultValues")
             .parameter(parameter: dto)
             .buildForJsonResponseFor(BusNodeBasicInfo.self)
         
@@ -63,9 +67,10 @@ class BusRepositoryBase: Repository, BusRepository {
     }
 
     internal func nodesForBusLines(dto: BusNodesForBusLinesDTO) throws -> [BusNodeLocalized] {
-        let request = BusRequestBuilder()
+        let request = RequestBuilder()
             .post()
             .url("/bus/GetRouteLines.php")
+            .skip(key: "resultValues")
             .parameter(parameter: dto)
             .buildForJsonResponseFor(BusNodeLocalized.self)
         
@@ -75,9 +80,10 @@ class BusRepositoryBase: Repository, BusRepository {
     }
     
     internal func busLineSchedule(dto: BusLinesScheduleDTO) throws -> BusLineSchedule {
-        let request = BusRequestBuilder()
+        let request = RequestBuilder()
             .post()
             .url("/bus/GetTimesLines.php")
+            .skip(key: "resultValues")
             .parameter(parameter: dto)
             .buildForStringResponse()
         
@@ -89,9 +95,10 @@ class BusRepositoryBase: Repository, BusRepository {
     }
     
     internal func busLineTimeTable(dto: BusLineTimeTableDTO) throws -> [BusLineTimeTableItem] {
-        let request = BusRequestBuilder()
+        let request = RequestBuilder()
             .post()
             .url("/bus/GetTimeTableLines.php")
+            .skip(key: "resultValues")
             .parameter(parameter: dto)
             .buildForJsonResponseFor(BusLineTimeTableItem.self)
         
