@@ -60,4 +60,16 @@ class BusRepositoryBase: Repository, BusRepository {
             return [node]
         }
     }
+
+    internal func nodesForBusLines(dto: BusNodesForBusLinesDTO) throws -> [BusNodeLocalized] {
+        let request = RequestBuilder()
+            .post()
+            .url("/bus/GetRouteLines.php")
+            .parameter(parameter: dto)
+            .buildForJsonResponseFor(BusNodeLocalized.self)
+        
+        requestClient.execute(request)
+        
+        return try processMultiResponse(response: request.response)
+    }
 }

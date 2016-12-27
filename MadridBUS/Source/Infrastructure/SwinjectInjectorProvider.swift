@@ -28,6 +28,7 @@ class SwinjectInjectorProvider: InjectorProvider, Injector {
         container.register(BusCalendarInteractor.self) { _ in BusCalendarAsyncInteractor(injector: self) }
         container.register(BusLinesBasicInfoInteractor.self) { _ in BusLinesBasicInfoAsyncInteractor(injector: self) }
         container.register(BusNodesBasicInfoInteractor.self) { _ in BusNodesBasicInfoAsyncInteractor(injector: self) }
+        container.register(BusNodesForBusLinesInteractor.self) { _ in BusNodesForBusLinesAsyncInteractor(injector: self) }
 
         //Helpers
         

@@ -6,4 +6,5 @@ protocol BusRepository {
     
     func lineBasicInfo(dto: BusLinesBasicInfoDTO) throws -> [BusLineBasicInfo]
     func nodeBasicInfo(dto: BusNodesBasicInfoDTO) throws -> [BusNodeBasicInfo]
+    func nodesForBusLines(dto: BusNodesForBusLinesDTO) throws -> [BusNodeLocalized]
 }

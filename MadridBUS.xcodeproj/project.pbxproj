@@ -21,6 +21,12 @@
 		303725351E12568700FABC93 /* BusNodeBasicInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303725331E12568700FABC93 /* BusNodeBasicInfo.swift */; };
 		303725371E12575C00FABC93 /* BusNodesBasicInfoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303725361E12575C00FABC93 /* BusNodesBasicInfoDTO.swift */; };
 		303725381E12575C00FABC93 /* BusNodesBasicInfoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303725361E12575C00FABC93 /* BusNodesBasicInfoDTO.swift */; };
+		3037253A1E125AA500FABC93 /* BusNodesForBusLinesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303725391E125AA500FABC93 /* BusNodesForBusLinesInteractor.swift */; };
+		3037253B1E125AA500FABC93 /* BusNodesForBusLinesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303725391E125AA500FABC93 /* BusNodesForBusLinesInteractor.swift */; };
+		3037253D1E125C6100FABC93 /* BusNodeLocalized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3037253C1E125C6100FABC93 /* BusNodeLocalized.swift */; };
+		3037253E1E125C6100FABC93 /* BusNodeLocalized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3037253C1E125C6100FABC93 /* BusNodeLocalized.swift */; };
+		303725401E1265CD00FABC93 /* BusNodesForBusLinesDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3037253F1E1265CD00FABC93 /* BusNodesForBusLinesDTO.swift */; };
+		303725411E1265CD00FABC93 /* BusNodesForBusLinesDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3037253F1E1265CD00FABC93 /* BusNodesForBusLinesDTO.swift */; };
 		30A5401A1E1116A600362E8B /* MadridBUSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A540191E1116A600362E8B /* MadridBUSTests.swift */; };
 		30A540251E1116A600362E8B /* MadridBUSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A540241E1116A600362E8B /* MadridBUSUITests.swift */; };
 		30D02BA41E111C3700F51304 /* BusinessError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D02AEC1E111C3700F51304 /* BusinessError.swift */; };
@@ -213,6 +219,9 @@
 		303725301E12566C00FABC93 /* BusNodesBasicInfoInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusNodesBasicInfoInteractor.swift; sourceTree = "<group>"; };
 		303725331E12568700FABC93 /* BusNodeBasicInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusNodeBasicInfo.swift; sourceTree = "<group>"; };
 		303725361E12575C00FABC93 /* BusNodesBasicInfoDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusNodesBasicInfoDTO.swift; sourceTree = "<group>"; };
+		303725391E125AA500FABC93 /* BusNodesForBusLinesInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusNodesForBusLinesInteractor.swift; sourceTree = "<group>"; };
+		3037253C1E125C6100FABC93 /* BusNodeLocalized.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusNodeLocalized.swift; sourceTree = "<group>"; };
+		3037253F1E1265CD00FABC93 /* BusNodesForBusLinesDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusNodesForBusLinesDTO.swift; sourceTree = "<group>"; };
 		30A540011E1116A500362E8B /* MadridBUS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MadridBUS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30A540101E1116A500362E8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		30A540151E1116A600362E8B /* MadridBUSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MadridBUSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -311,6 +320,7 @@
 				30D02E3B1E1174A600F51304 /* BusCalendarItem.swift */,
 				303725271E124C7400FABC93 /* BusLineBasicInfo.swift */,
 				303725331E12568700FABC93 /* BusNodeBasicInfo.swift */,
+				3037253C1E125C6100FABC93 /* BusNodeLocalized.swift */,
 			);
 			name = Bus;
 			sourceTree = "<group>";
@@ -322,6 +332,7 @@
 				30D02E371E11744800F51304 /* BusCalendarInteractor.swift */,
 				303725241E124BA000FABC93 /* BusLinesBasicInfoInteractor.swift */,
 				303725301E12566C00FABC93 /* BusNodesBasicInfoInteractor.swift */,
+				303725391E125AA500FABC93 /* BusNodesForBusLinesInteractor.swift */,
 			);
 			name = Bus;
 			sourceTree = "<group>";
@@ -404,6 +415,7 @@
 				30D02E3F1E117AEC00F51304 /* BusCalendarDTO.swift */,
 				3037252D1E124F7E00FABC93 /* BusLinesBasicInfoDTO.swift */,
 				303725361E12575C00FABC93 /* BusNodesBasicInfoDTO.swift */,
+				3037253F1E1265CD00FABC93 /* BusNodesForBusLinesDTO.swift */,
 			);
 			path = Business;
 			sourceTree = "<group>";
@@ -751,6 +763,7 @@
 				30D02DD41E11231500F51304 /* Fonts.swift in Sources */,
 				30D02DB71E11206E00F51304 /* WelcomePresenter.swift in Sources */,
 				30D02DF81E11247D00F51304 /* ErrorView.swift in Sources */,
+				303725401E1265CD00FABC93 /* BusNodesForBusLinesDTO.swift in Sources */,
 				30D02C491E111C3700F51304 /* ApplicationManager.swift in Sources */,
 				30D02C251E111C3700F51304 /* JsonRequest.swift in Sources */,
 				30D02DDA1E11232600F51304 /* Spinner.swift in Sources */,
@@ -761,7 +774,9 @@
 				30D02C461E111C3700F51304 /* AppDelegate.swift in Sources */,
 				30D02E0E1E11254A00F51304 /* Date+Components.swift in Sources */,
 				303725371E12575C00FABC93 /* BusNodesBasicInfoDTO.swift in Sources */,
+				3037253D1E125C6100FABC93 /* BusNodeLocalized.swift in Sources */,
 				30D02DF51E11247D00F51304 /* ErrorPresenter.swift in Sources */,
+				3037253A1E125AA500FABC93 /* BusNodesForBusLinesInteractor.swift in Sources */,
 				30D02C041E111C3700F51304 /* RepositoryError.swift in Sources */,
 				30D02C4C1E111C3700F51304 /* Injector.swift in Sources */,
 				30D02E441E117B1200F51304 /* DTO.swift in Sources */,
@@ -806,12 +821,14 @@
 				303725291E124C7400FABC93 /* BusLineBasicInfo.swift in Sources */,
 				30D02C2C1E111C3700F51304 /* RequestBuilder.swift in Sources */,
 				30D02DE91E1123F300F51304 /* Presenter.swift in Sources */,
+				3037253E1E125C6100FABC93 /* BusNodeLocalized.swift in Sources */,
 				30D02DD51E11231500F51304 /* Fonts.swift in Sources */,
 				30D02E051E1124E500F51304 /* ErrorViewController.swift in Sources */,
 				30D02C3E1E111C3700F51304 /* Repository.swift in Sources */,
 				30D02DB81E11206E00F51304 /* WelcomePresenter.swift in Sources */,
 				303725261E124BA000FABC93 /* BusLinesBasicInfoInteractor.swift in Sources */,
 				30D02DEC1E1123F300F51304 /* View.swift in Sources */,
+				303725411E1265CD00FABC93 /* BusNodesForBusLinesDTO.swift in Sources */,
 				30D02E2D1E11283500F51304 /* BusGroup.swift in Sources */,
 				30D02DD21E11231500F51304 /* Colors.swift in Sources */,
 				303725321E12566C00FABC93 /* BusNodesBasicInfoInteractor.swift in Sources */,
@@ -820,6 +837,7 @@
 				30D02DF61E11247D00F51304 /* ErrorPresenter.swift in Sources */,
 				30D02E351E115A4B00F51304 /* StringRequest.swift in Sources */,
 				30D02E1F1E1125A100F51304 /* LocalizedLiteral.swift in Sources */,
+				3037253B1E125AA500FABC93 /* BusNodesForBusLinesInteractor.swift in Sources */,
 				30D02C231E111C3700F51304 /* Empty.swift in Sources */,
 				30D02DDE1E11232600F51304 /* SpinnerPresentation.swift in Sources */,
 				303725351E12568700FABC93 /* BusNodeBasicInfo.swift in Sources */,

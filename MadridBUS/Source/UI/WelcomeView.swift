@@ -20,6 +20,6 @@ class WelcomeViewBase: UIViewController, WelcomeView {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
-        presenter.obtainBusNodeBasicInfo(from: "3989")
+        presenter.obtainBusNodes(from: "116")
     }
 }
