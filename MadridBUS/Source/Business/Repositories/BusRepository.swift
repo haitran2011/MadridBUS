@@ -1,6 +1,8 @@
 import Foundation
 
 protocol BusRepository {
-    func lineTypes() throws -> [BusLineType]
+    func groups() throws -> [BusGroup]
     func calendar(dto: BusCalendarDTO) throws -> [BusCalendarItem]
+    
+    func lineBasicInfo(dto: BusLinesBasicInfoDTO) throws -> [BusLineBasicInfo]
 }

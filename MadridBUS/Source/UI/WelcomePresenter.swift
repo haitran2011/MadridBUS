@@ -1,24 +1,27 @@
 import Foundation
 
 protocol WelcomePresenter {
-    var availableBusLineTypes: [BusLineType] { get }
+    var availableBusGroups: [BusGroup] { get }
     
-    func obtainBusLineTypes()
+    func obtainBusGroups()
     func obtainBusCalendar()
+    func obtainBusLineBasicInfo(from lines: String...)
     
     func config(using view: View)
 }
 
 class WelcomePresenterBase: Presenter, WelcomePresenter {
     private weak var view: WelcomeView!
-    private var busLineTypes: BusLineTypesInteractor!
+    private var busGroups: BusGroupsInteractor!
     private var busCalendar: BusCalendarInteractor!
+    private var busLinesBasicInfo: BusLinesBasicInfoInteractor!
     
-    var availableBusLineTypes: [BusLineType] = []
+    var availableBusGroups: [BusGroup] = []
     
     required init(injector: Injector) {
-        busLineTypes = injector.instanceOf(BusLineTypesInteractor.self)
+        busGroups = injector.instanceOf(BusGroupsInteractor.self)
         busCalendar = injector.instanceOf(BusCalendarInteractor.self)
+        busLinesBasicInfo = injector.instanceOf(BusLinesBasicInfoInteractor.self)
         super.init(injector: injector)
     }
 
@@ -31,11 +34,11 @@ class WelcomePresenterBase: Presenter, WelcomePresenter {
         super.config(view: view)
     }
     
-    func obtainBusLineTypes() {
-        busLineTypes.subscribeHandleErrorDelegate(delegate: self)
+    func obtainBusGroups() {
+        busGroups.subscribeHandleErrorDelegate(delegate: self)
         
-        busLineTypes.execute { (busLineTypesArray) in
-            self.availableBusLineTypes = busLineTypesArray
+        busGroups.execute { (busGroups) in
+            self.availableBusGroups = busGroups
         }
     }
     
@@ -45,6 +48,16 @@ class WelcomePresenterBase: Presenter, WelcomePresenter {
         let dto = BusCalendarDTO(from: Date(), to: Date.nextWeek())
         
         busCalendar.execute(dto) { (calendarItems) in
+            
+        }
+    }
+    
+    func obtainBusLineBasicInfo(from lines: String...) {
+        busLinesBasicInfo.subscribeHandleErrorDelegate(delegate: self)
+        
+        let dto = BusLinesBasicInfoDTO(using: lines)
+        
+        busLinesBasicInfo.execute(dto) { (busLines) in
             
         }
     }

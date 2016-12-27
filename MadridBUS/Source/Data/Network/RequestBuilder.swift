@@ -10,7 +10,7 @@ class RequestBuilder {
     private var method: HTTPMethod?
     
     func url(_ partialUrl: String) -> Self {
-        self.endPoint = "/bus" + partialUrl
+        self.endPoint = partialUrl
         return self
     }
     

@@ -1,12 +1,12 @@
 import Foundation
 
 class BusRepositoryBase: Repository, BusRepository {
-    func lineTypes() throws -> [BusLineType] {
+    func groups() throws -> [BusGroup] {
         let request = RequestBuilder()
             .post()
-            .url("/GetGroups.php")
+            .url("/bus/GetGroups.php")
             .parameter(parameter: DTO())
-            .buildForJsonResponseFor(BusLineType.self)
+            .buildForJsonResponseFor(BusGroup.self)
         
         requestClient.execute(request)
 
@@ -16,12 +16,30 @@ class BusRepositoryBase: Repository, BusRepository {
     func calendar(dto: BusCalendarDTO) throws -> [BusCalendarItem] {
         let request = RequestBuilder()
             .post()
-            .url("/GetCalendar.php")
+            .url("/bus/GetCalendar.php")
             .parameter(parameter: dto)
             .buildForJsonResponseFor(BusCalendarItem.self)
         
         requestClient.execute(request)
         
         return try processMultiResponse(response: request.response)
+    }
+
+    internal func lineBasicInfo(dto: BusLinesBasicInfoDTO) throws -> [BusLineBasicInfo] {
+        let request = RequestBuilder()
+            .post()
+            .url("/bus/GetListLines.php")
+            .parameter(parameter: dto)
+            .buildForJsonResponseFor(BusLineBasicInfo.self)
+        
+        requestClient.execute(request)
+        
+        do {
+            let lines = try processMultiResponse(response: request.response)
+            return lines
+        } catch {
+            let line = try processSingleResponse(response: request.response)
+            return [line]
+        }
     }
 }

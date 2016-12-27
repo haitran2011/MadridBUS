@@ -1,7 +1,8 @@
 import Foundation
 import ObjectMapper
 
-final class BusLineType: Mappable {
+final class BusSubgroup: Mappable {
+    var groupId: String = ""
     var id: String = ""
     var description: String = ""
     
@@ -9,7 +10,8 @@ final class BusLineType: Mappable {
     required init?(map: Map) {}
     
     func mapping(map: Map) {
-        id <- map["groupId"]
+        groupId <- map["groupId"]
+        id <- map["subGroupId"]
         description <- map["groupDescription"]
     }
 }

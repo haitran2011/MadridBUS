@@ -19,12 +19,14 @@ class SwinjectInjectorProvider: InjectorProvider, Injector {
         container.register(UIApplication.self) { _ in UIApplication.shared }.inObjectScope(.container)
         container.register(ApplicationManagerAdapter.self) { _ in ApplicationManager(injector: self) }.inObjectScope(.container)
         container.register(Wireframe.self) { _ in WireframeBase() }
+        container.register(ErrorPresenter.self) { _ in ErrorPresenterBase(injector: self) }
 
         container.register(WelcomePresenter.self) { _ in WelcomePresenterBase(injector: self) }
 
         //Business
-        container.register(BusLineTypesInteractor.self) { _ in BusLineTypesAsyncInteractor(injector: self) }
+        container.register(BusGroupsInteractor.self) { _ in BusGroupsAsyncInteractor(injector: self) }
         container.register(BusCalendarInteractor.self) { _ in BusCalendarAsyncInteractor(injector: self) }
+        container.register(BusLinesBasicInfoInteractor.self) { _ in BusLinesBasicInfoAsyncInteractor(injector: self) }
 
         //Helpers
         
