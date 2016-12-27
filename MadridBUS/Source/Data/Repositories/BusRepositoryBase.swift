@@ -42,4 +42,22 @@ class BusRepositoryBase: Repository, BusRepository {
             return [line]
         }
     }
+
+    internal func nodeBasicInfo(dto: BusNodesBasicInfoDTO) throws -> [BusNodeBasicInfo] {
+        let request = RequestBuilder()
+            .post()
+            .url("/bus/GetNodesLines.php")
+            .parameter(parameter: dto)
+            .buildForJsonResponseFor(BusNodeBasicInfo.self)
+        
+        requestClient.execute(request)
+        
+        do {
+            let nodes = try processMultiResponse(response: request.response)
+            return nodes
+        } catch {
+            let node = try processSingleResponse(response: request.response)
+            return [node]
+        }
+    }
 }

@@ -6,6 +6,7 @@ protocol WelcomePresenter {
     func obtainBusGroups()
     func obtainBusCalendar()
     func obtainBusLineBasicInfo(from lines: String...)
+    func obtainBusNodeBasicInfo(from nodes: String...)
     
     func config(using view: View)
 }
@@ -15,6 +16,7 @@ class WelcomePresenterBase: Presenter, WelcomePresenter {
     private var busGroups: BusGroupsInteractor!
     private var busCalendar: BusCalendarInteractor!
     private var busLinesBasicInfo: BusLinesBasicInfoInteractor!
+    private var busNodesBasicInfo: BusNodesBasicInfoInteractor!
     
     var availableBusGroups: [BusGroup] = []
     
@@ -22,6 +24,7 @@ class WelcomePresenterBase: Presenter, WelcomePresenter {
         busGroups = injector.instanceOf(BusGroupsInteractor.self)
         busCalendar = injector.instanceOf(BusCalendarInteractor.self)
         busLinesBasicInfo = injector.instanceOf(BusLinesBasicInfoInteractor.self)
+        busNodesBasicInfo = injector.instanceOf(BusNodesBasicInfoInteractor.self)
         super.init(injector: injector)
     }
 
@@ -58,6 +61,16 @@ class WelcomePresenterBase: Presenter, WelcomePresenter {
         let dto = BusLinesBasicInfoDTO(using: lines)
         
         busLinesBasicInfo.execute(dto) { (busLines) in
+            
+        }
+    }
+    
+    func obtainBusNodeBasicInfo(from nodes: String...) {
+        busNodesBasicInfo.subscribeHandleErrorDelegate(delegate: self)
+        
+        let dto = BusNodesBasicInfoDTO(using: nodes)
+        
+        busNodesBasicInfo.execute(dto) { (busNodes) in
             
         }
     }
