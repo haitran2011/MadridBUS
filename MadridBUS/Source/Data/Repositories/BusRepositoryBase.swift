@@ -3,7 +3,7 @@ import ObjectMapper
 
 class BusRepositoryBase: Repository, BusRepository {
     func groups() throws -> [BusGroup] {
-        let request = RequestBuilder()
+        let request = BusRequestBuilder()
             .post()
             .url("/bus/GetGroups.php")
             .parameter(parameter: DTO())
@@ -15,7 +15,7 @@ class BusRepositoryBase: Repository, BusRepository {
     }
     
     func calendar(dto: BusCalendarDTO) throws -> [BusCalendarItem] {
-        let request = RequestBuilder()
+        let request = BusRequestBuilder()
             .post()
             .url("/bus/GetCalendar.php")
             .parameter(parameter: dto)
@@ -27,7 +27,7 @@ class BusRepositoryBase: Repository, BusRepository {
     }
 
     internal func lineBasicInfo(dto: BusLinesBasicInfoDTO) throws -> [BusLineBasicInfo] {
-        let request = RequestBuilder()
+        let request = BusRequestBuilder()
             .post()
             .url("/bus/GetListLines.php")
             .parameter(parameter: dto)
@@ -45,7 +45,7 @@ class BusRepositoryBase: Repository, BusRepository {
     }
 
     internal func nodeBasicInfo(dto: BusNodesBasicInfoDTO) throws -> [BusNodeBasicInfo] {
-        let request = RequestBuilder()
+        let request = BusRequestBuilder()
             .post()
             .url("/bus/GetNodesLines.php")
             .parameter(parameter: dto)
@@ -63,7 +63,7 @@ class BusRepositoryBase: Repository, BusRepository {
     }
 
     internal func nodesForBusLines(dto: BusNodesForBusLinesDTO) throws -> [BusNodeLocalized] {
-        let request = RequestBuilder()
+        let request = BusRequestBuilder()
             .post()
             .url("/bus/GetRouteLines.php")
             .parameter(parameter: dto)
@@ -75,7 +75,7 @@ class BusRepositoryBase: Repository, BusRepository {
     }
     
     internal func busLineSchedule(dto: BusLinesScheduleDTO) throws -> BusLineSchedule {
-        let request = RequestBuilder()
+        let request = BusRequestBuilder()
             .post()
             .url("/bus/GetTimesLines.php")
             .parameter(parameter: dto)
@@ -89,7 +89,7 @@ class BusRepositoryBase: Repository, BusRepository {
     }
     
     internal func busLineTimeTable(dto: BusLineTimeTableDTO) throws -> [BusLineTimeTableItem] {
-        let request = RequestBuilder()
+        let request = BusRequestBuilder()
             .post()
             .url("/bus/GetTimeTableLines.php")
             .parameter(parameter: dto)

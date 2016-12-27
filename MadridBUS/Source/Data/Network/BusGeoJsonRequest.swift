@@ -2,7 +2,7 @@ import Foundation
 import Alamofire
 import ObjectMapper
 
-class JsonRequest<ResponseType:Mappable>: Request {
+class BusGeoJsonRequest<ResponseType:Mappable>: Request {
     var group: DispatchGroup = DispatchGroup()
     
     var stringURL: String
@@ -27,11 +27,10 @@ class JsonRequest<ResponseType:Mappable>: Request {
         do {
             
             let json = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments)
-            let dictionary = (json as! NSDictionary)["resultValues"]
-            
-            if let dataArrayResponse = Mapper<ResponseType>().mapArray(JSONObject: dictionary) {
+ 
+            if let dataArrayResponse = Mapper<ResponseType>().mapArray(JSONObject: json) {
                 response.dataArrayResponse = dataArrayResponse
-            } else if let dataResponse = Mapper<ResponseType>().map(JSONObject: dictionary) {
+            } else if let dataResponse = Mapper<ResponseType>().map(JSONObject: json) {
                 response.dataResponse = dataResponse
             } else {
                 response.dataError = RepositoryError(message: "Can't map json to type \(ResponseType.self)")

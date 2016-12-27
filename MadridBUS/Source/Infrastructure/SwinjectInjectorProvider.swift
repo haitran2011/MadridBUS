@@ -32,11 +32,14 @@ class SwinjectInjectorProvider: InjectorProvider, Injector {
         container.register(BusLinesScheduleInteractor.self) { _ in BusLineScheduleAsyncInteractor(injector: self) }
         container.register(BusLineTimeTableInteractor.self) { _ in BusLineTimeTableAsyncInteractor(injector: self) }
 
+        container.register(BusGeoPOIInteractor.self) { _ in BusGeoPOIAsyncInteractor(injector: self) }
+        
         //Helpers
         
         //Data
         container.register(RequestClient.self) { _ in AlamofireRequestClient() }.inObjectScope(.container)
         container.register(BusRepository.self) { _ in BusRepositoryBase(injector: self) }
+        container.register(BusGeoRepository.self) { _ in BusGeoRepositoryBase(injector: self) }
     }
     
     func instanceOf<T>(_ type: T.Type) -> T {

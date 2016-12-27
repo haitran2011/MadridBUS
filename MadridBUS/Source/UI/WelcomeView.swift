@@ -20,6 +20,6 @@ class WelcomeViewBase: UIViewController, WelcomeView {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
-        presenter.obtainBusLineTimeTable(from: "17")
+        presenter.obtainPOIList(latitude: 40.3833394, longitude: -3.7237334, radius: 1000)
     }
 }

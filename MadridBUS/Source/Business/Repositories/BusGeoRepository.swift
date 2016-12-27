@@ -1,0 +1,5 @@
+import Foundation
+
+protocol BusGeoRepository {
+    func poi(dto: BusGeoPOIDTO) throws -> [POI]
+}
