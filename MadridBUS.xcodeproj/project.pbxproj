@@ -33,6 +33,12 @@
 		303725471E127B8C00FABC93 /* BusLinesScheduleDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303725451E127B8C00FABC93 /* BusLinesScheduleDTO.swift */; };
 		303725491E127BCF00FABC93 /* BusLinesScheduleInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303725481E127BCF00FABC93 /* BusLinesScheduleInteractor.swift */; };
 		3037254A1E127BCF00FABC93 /* BusLinesScheduleInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303725481E127BCF00FABC93 /* BusLinesScheduleInteractor.swift */; };
+		3037254C1E12989800FABC93 /* BusLineTimeTableItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3037254B1E12989800FABC93 /* BusLineTimeTableItem.swift */; };
+		3037254D1E12989800FABC93 /* BusLineTimeTableItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3037254B1E12989800FABC93 /* BusLineTimeTableItem.swift */; };
+		3037254F1E129A3F00FABC93 /* BusLineTimeTableDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3037254E1E129A3F00FABC93 /* BusLineTimeTableDTO.swift */; };
+		303725501E129A3F00FABC93 /* BusLineTimeTableDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3037254E1E129A3F00FABC93 /* BusLineTimeTableDTO.swift */; };
+		303725521E129AA300FABC93 /* BusLineTimeTableInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303725511E129AA300FABC93 /* BusLineTimeTableInteractor.swift */; };
+		303725531E129AA300FABC93 /* BusLineTimeTableInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303725511E129AA300FABC93 /* BusLineTimeTableInteractor.swift */; };
 		30A5401A1E1116A600362E8B /* MadridBUSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A540191E1116A600362E8B /* MadridBUSTests.swift */; };
 		30A540251E1116A600362E8B /* MadridBUSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A540241E1116A600362E8B /* MadridBUSUITests.swift */; };
 		30D02BA41E111C3700F51304 /* BusinessError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D02AEC1E111C3700F51304 /* BusinessError.swift */; };
@@ -231,6 +237,9 @@
 		303725421E12683200FABC93 /* BusLineSchedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusLineSchedule.swift; sourceTree = "<group>"; };
 		303725451E127B8C00FABC93 /* BusLinesScheduleDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusLinesScheduleDTO.swift; sourceTree = "<group>"; };
 		303725481E127BCF00FABC93 /* BusLinesScheduleInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusLinesScheduleInteractor.swift; sourceTree = "<group>"; };
+		3037254B1E12989800FABC93 /* BusLineTimeTableItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusLineTimeTableItem.swift; sourceTree = "<group>"; };
+		3037254E1E129A3F00FABC93 /* BusLineTimeTableDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusLineTimeTableDTO.swift; sourceTree = "<group>"; };
+		303725511E129AA300FABC93 /* BusLineTimeTableInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusLineTimeTableInteractor.swift; sourceTree = "<group>"; };
 		30A540011E1116A500362E8B /* MadridBUS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MadridBUS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30A540101E1116A500362E8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		30A540151E1116A600362E8B /* MadridBUSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MadridBUSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -331,6 +340,7 @@
 				303725331E12568700FABC93 /* BusNodeBasicInfo.swift */,
 				3037253C1E125C6100FABC93 /* BusNodeLocalized.swift */,
 				303725421E12683200FABC93 /* BusLineSchedule.swift */,
+				3037254B1E12989800FABC93 /* BusLineTimeTableItem.swift */,
 			);
 			name = Bus;
 			sourceTree = "<group>";
@@ -344,6 +354,29 @@
 				303725301E12566C00FABC93 /* BusNodesBasicInfoInteractor.swift */,
 				303725391E125AA500FABC93 /* BusNodesForBusLinesInteractor.swift */,
 				303725481E127BCF00FABC93 /* BusLinesScheduleInteractor.swift */,
+				303725511E129AA300FABC93 /* BusLineTimeTableInteractor.swift */,
+			);
+			name = Bus;
+			sourceTree = "<group>";
+		};
+		303725541E12A0FD00FABC93 /* DTOs */ = {
+			isa = PBXGroup;
+			children = (
+				30D02E431E117B1200F51304 /* DTO.swift */,
+				303725551E12A10700FABC93 /* Bus */,
+			);
+			name = DTOs;
+			sourceTree = "<group>";
+		};
+		303725551E12A10700FABC93 /* Bus */ = {
+			isa = PBXGroup;
+			children = (
+				30D02E3F1E117AEC00F51304 /* BusCalendarDTO.swift */,
+				3037252D1E124F7E00FABC93 /* BusLinesBasicInfoDTO.swift */,
+				303725361E12575C00FABC93 /* BusNodesBasicInfoDTO.swift */,
+				3037253F1E1265CD00FABC93 /* BusNodesForBusLinesDTO.swift */,
+				303725451E127B8C00FABC93 /* BusLinesScheduleDTO.swift */,
+				3037254E1E129A3F00FABC93 /* BusLineTimeTableDTO.swift */,
 			);
 			name = Bus;
 			sourceTree = "<group>";
@@ -422,12 +455,7 @@
 				30D02D9D1E111D3F00F51304 /* Errors */,
 				30D02AF21E111C3700F51304 /* Interactors */,
 				30D02B081E111C3700F51304 /* Repositories */,
-				30D02E431E117B1200F51304 /* DTO.swift */,
-				30D02E3F1E117AEC00F51304 /* BusCalendarDTO.swift */,
-				3037252D1E124F7E00FABC93 /* BusLinesBasicInfoDTO.swift */,
-				303725361E12575C00FABC93 /* BusNodesBasicInfoDTO.swift */,
-				3037253F1E1265CD00FABC93 /* BusNodesForBusLinesDTO.swift */,
-				303725451E127B8C00FABC93 /* BusLinesScheduleDTO.swift */,
+				303725541E12A0FD00FABC93 /* DTOs */,
 			);
 			path = Business;
 			sourceTree = "<group>";
@@ -760,6 +788,7 @@
 			files = (
 				30D02E111E11254A00F51304 /* Date+Formatters.swift in Sources */,
 				30D02DEB1E1123F300F51304 /* View.swift in Sources */,
+				3037254C1E12989800FABC93 /* BusLineTimeTableItem.swift in Sources */,
 				30D02C3D1E111C3700F51304 /* Repository.swift in Sources */,
 				303725491E127BCF00FABC93 /* BusLinesScheduleInteractor.swift in Sources */,
 				30D02DDD1E11232600F51304 /* SpinnerPresentation.swift in Sources */,
@@ -801,11 +830,13 @@
 				30D02C2E1E111C3700F51304 /* RequestClient.swift in Sources */,
 				30D02BB61E111C3700F51304 /* Interactor.swift in Sources */,
 				30D02E1A1E11254A00F51304 /* UIViewController+ShowCompletion.swift in Sources */,
+				3037254F1E129A3F00FABC93 /* BusLineTimeTableDTO.swift in Sources */,
 				30D02E141E11254A00F51304 /* String+Truncated.swift in Sources */,
 				30D02DEE1E1123F300F51304 /* Wireframe.swift in Sources */,
 				30D02E261E1127DD00F51304 /* BusRepository.swift in Sources */,
 				30D02E341E115A4B00F51304 /* StringRequest.swift in Sources */,
 				30D02E3C1E1174A600F51304 /* BusCalendarItem.swift in Sources */,
+				303725521E129AA300FABC93 /* BusLineTimeTableInteractor.swift in Sources */,
 				303725251E124BA000FABC93 /* BusLinesBasicInfoInteractor.swift in Sources */,
 				30D02BA41E111C3700F51304 /* BusinessError.swift in Sources */,
 				3037252E1E124F7E00FABC93 /* BusLinesBasicInfoDTO.swift in Sources */,
@@ -822,7 +853,10 @@
 			files = (
 				30D02BAE1E111C3700F51304 /* Errors.swift in Sources */,
 				30D02BA51E111C3700F51304 /* BusinessError.swift in Sources */,
+				303725531E129AA300FABC93 /* BusLineTimeTableInteractor.swift in Sources */,
+				3037254D1E12989800FABC93 /* BusLineTimeTableItem.swift in Sources */,
 				30D02E3D1E1174A600F51304 /* BusCalendarItem.swift in Sources */,
+				303725501E129A3F00FABC93 /* BusLineTimeTableDTO.swift in Sources */,
 				30D02DE61E1123F300F51304 /* ParameterizedView.swift in Sources */,
 				30D02C261E111C3700F51304 /* JsonRequest.swift in Sources */,
 				3037252F1E124F7E00FABC93 /* BusLinesBasicInfoDTO.swift in Sources */,

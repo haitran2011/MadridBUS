@@ -6,7 +6,7 @@ final class BusLineBasicInfo: Mappable {
     var id: String = ""
     var name: String = ""
     var header: String = ""
-    var end: String = ""
+    var terminus: String = ""
     
     required init?(map: Map) {}
     
@@ -15,6 +15,6 @@ final class BusLineBasicInfo: Mappable {
         id <- map["line"]
         name <- map["label"]
         header <- map["nameA"]
-        end <- map["nameB"]
+        terminus <- map["nameB"]
     }
 }

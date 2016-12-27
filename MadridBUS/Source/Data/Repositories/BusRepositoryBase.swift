@@ -87,4 +87,16 @@ class BusRepositoryBase: Repository, BusRepository {
 
         return BusLineSchedule(using: jsonString) 
     }
+    
+    internal func busLineTimeTable(dto: BusLineTimeTableDTO) throws -> [BusLineTimeTableItem] {
+        let request = RequestBuilder()
+            .post()
+            .url("/bus/GetTimeTableLines.php")
+            .parameter(parameter: dto)
+            .buildForJsonResponseFor(BusLineTimeTableItem.self)
+        
+        requestClient.execute(request)
+        
+        return try processMultiResponse(response: request.response)
+    }
 }
