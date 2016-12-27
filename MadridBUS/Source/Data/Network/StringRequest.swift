@@ -22,6 +22,14 @@ class StringRequest: Request {
     }
     
     func addSuccessResponse(_ data: Data) {
-        response.dataResponse = String(data: data, encoding: .utf8)
+        do {
+            let json = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments)
+            let jsonDictionary = (json as! NSDictionary)["resultValues"]
+            let validData = try JSONSerialization.data(withJSONObject: jsonDictionary!, options: .prettyPrinted)
+        
+            response.dataResponse = String(data: validData, encoding: .utf8)
+        } catch {
+            response.dataResponse = ""
+        }
     }
 }

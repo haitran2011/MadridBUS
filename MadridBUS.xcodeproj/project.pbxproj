@@ -27,6 +27,12 @@
 		3037253E1E125C6100FABC93 /* BusNodeLocalized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3037253C1E125C6100FABC93 /* BusNodeLocalized.swift */; };
 		303725401E1265CD00FABC93 /* BusNodesForBusLinesDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3037253F1E1265CD00FABC93 /* BusNodesForBusLinesDTO.swift */; };
 		303725411E1265CD00FABC93 /* BusNodesForBusLinesDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3037253F1E1265CD00FABC93 /* BusNodesForBusLinesDTO.swift */; };
+		303725431E12683200FABC93 /* BusLineSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303725421E12683200FABC93 /* BusLineSchedule.swift */; };
+		303725441E12683200FABC93 /* BusLineSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303725421E12683200FABC93 /* BusLineSchedule.swift */; };
+		303725461E127B8C00FABC93 /* BusLinesScheduleDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303725451E127B8C00FABC93 /* BusLinesScheduleDTO.swift */; };
+		303725471E127B8C00FABC93 /* BusLinesScheduleDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303725451E127B8C00FABC93 /* BusLinesScheduleDTO.swift */; };
+		303725491E127BCF00FABC93 /* BusLinesScheduleInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303725481E127BCF00FABC93 /* BusLinesScheduleInteractor.swift */; };
+		3037254A1E127BCF00FABC93 /* BusLinesScheduleInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303725481E127BCF00FABC93 /* BusLinesScheduleInteractor.swift */; };
 		30A5401A1E1116A600362E8B /* MadridBUSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A540191E1116A600362E8B /* MadridBUSTests.swift */; };
 		30A540251E1116A600362E8B /* MadridBUSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A540241E1116A600362E8B /* MadridBUSUITests.swift */; };
 		30D02BA41E111C3700F51304 /* BusinessError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D02AEC1E111C3700F51304 /* BusinessError.swift */; };
@@ -222,6 +228,9 @@
 		303725391E125AA500FABC93 /* BusNodesForBusLinesInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusNodesForBusLinesInteractor.swift; sourceTree = "<group>"; };
 		3037253C1E125C6100FABC93 /* BusNodeLocalized.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusNodeLocalized.swift; sourceTree = "<group>"; };
 		3037253F1E1265CD00FABC93 /* BusNodesForBusLinesDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusNodesForBusLinesDTO.swift; sourceTree = "<group>"; };
+		303725421E12683200FABC93 /* BusLineSchedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusLineSchedule.swift; sourceTree = "<group>"; };
+		303725451E127B8C00FABC93 /* BusLinesScheduleDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusLinesScheduleDTO.swift; sourceTree = "<group>"; };
+		303725481E127BCF00FABC93 /* BusLinesScheduleInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusLinesScheduleInteractor.swift; sourceTree = "<group>"; };
 		30A540011E1116A500362E8B /* MadridBUS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MadridBUS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30A540101E1116A500362E8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		30A540151E1116A600362E8B /* MadridBUSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MadridBUSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -321,6 +330,7 @@
 				303725271E124C7400FABC93 /* BusLineBasicInfo.swift */,
 				303725331E12568700FABC93 /* BusNodeBasicInfo.swift */,
 				3037253C1E125C6100FABC93 /* BusNodeLocalized.swift */,
+				303725421E12683200FABC93 /* BusLineSchedule.swift */,
 			);
 			name = Bus;
 			sourceTree = "<group>";
@@ -333,6 +343,7 @@
 				303725241E124BA000FABC93 /* BusLinesBasicInfoInteractor.swift */,
 				303725301E12566C00FABC93 /* BusNodesBasicInfoInteractor.swift */,
 				303725391E125AA500FABC93 /* BusNodesForBusLinesInteractor.swift */,
+				303725481E127BCF00FABC93 /* BusLinesScheduleInteractor.swift */,
 			);
 			name = Bus;
 			sourceTree = "<group>";
@@ -416,6 +427,7 @@
 				3037252D1E124F7E00FABC93 /* BusLinesBasicInfoDTO.swift */,
 				303725361E12575C00FABC93 /* BusNodesBasicInfoDTO.swift */,
 				3037253F1E1265CD00FABC93 /* BusNodesForBusLinesDTO.swift */,
+				303725451E127B8C00FABC93 /* BusLinesScheduleDTO.swift */,
 			);
 			path = Business;
 			sourceTree = "<group>";
@@ -749,12 +761,14 @@
 				30D02E111E11254A00F51304 /* Date+Formatters.swift in Sources */,
 				30D02DEB1E1123F300F51304 /* View.swift in Sources */,
 				30D02C3D1E111C3700F51304 /* Repository.swift in Sources */,
+				303725491E127BCF00FABC93 /* BusLinesScheduleInteractor.swift in Sources */,
 				30D02DDD1E11232600F51304 /* SpinnerPresentation.swift in Sources */,
 				30D02DE51E1123F300F51304 /* ParameterizedView.swift in Sources */,
 				303725281E124C7400FABC93 /* BusLineBasicInfo.swift in Sources */,
 				30D02DD11E11231500F51304 /* Colors.swift in Sources */,
 				30D02C281E111C3700F51304 /* Request.swift in Sources */,
 				30D02BAD1E111C3700F51304 /* Errors.swift in Sources */,
+				303725461E127B8C00FABC93 /* BusLinesScheduleDTO.swift in Sources */,
 				30D02E401E117AEC00F51304 /* BusCalendarDTO.swift in Sources */,
 				30D02C221E111C3700F51304 /* Empty.swift in Sources */,
 				30D02E301E1128FE00F51304 /* BusRepositoryBase.swift in Sources */,
@@ -765,6 +779,7 @@
 				30D02DF81E11247D00F51304 /* ErrorView.swift in Sources */,
 				303725401E1265CD00FABC93 /* BusNodesForBusLinesDTO.swift in Sources */,
 				30D02C491E111C3700F51304 /* ApplicationManager.swift in Sources */,
+				303725431E12683200FABC93 /* BusLineSchedule.swift in Sources */,
 				30D02C251E111C3700F51304 /* JsonRequest.swift in Sources */,
 				30D02DDA1E11232600F51304 /* Spinner.swift in Sources */,
 				30D02DE81E1123F300F51304 /* Presenter.swift in Sources */,
@@ -813,9 +828,11 @@
 				3037252F1E124F7E00FABC93 /* BusLinesBasicInfoDTO.swift in Sources */,
 				30D02DB31E11205F00F51304 /* WelcomeView.swift in Sources */,
 				30D02E0F1E11254A00F51304 /* Date+Components.swift in Sources */,
+				303725441E12683200FABC93 /* BusLineSchedule.swift in Sources */,
 				30D02DDB1E11232600F51304 /* Spinner.swift in Sources */,
 				30D02DEF1E1123F300F51304 /* Wireframe.swift in Sources */,
 				30D02E011E1124C300F51304 /* Button.swift in Sources */,
+				303725471E127B8C00FABC93 /* BusLinesScheduleDTO.swift in Sources */,
 				30D02E1B1E11254A00F51304 /* UIViewController+ShowCompletion.swift in Sources */,
 				30D02DF91E11247D00F51304 /* ErrorView.swift in Sources */,
 				303725291E124C7400FABC93 /* BusLineBasicInfo.swift in Sources */,
@@ -855,6 +872,7 @@
 				30D02E151E11254A00F51304 /* String+Truncated.swift in Sources */,
 				30D02C4D1E111C3700F51304 /* Injector.swift in Sources */,
 				30D02E391E11744800F51304 /* BusCalendarInteractor.swift in Sources */,
+				3037254A1E127BCF00FABC93 /* BusLinesScheduleInteractor.swift in Sources */,
 				30D02E311E1128FE00F51304 /* BusRepositoryBase.swift in Sources */,
 				30D02C051E111C3700F51304 /* RepositoryError.swift in Sources */,
 				303725381E12575C00FABC93 /* BusNodesBasicInfoDTO.swift in Sources */,

@@ -1,4 +1,5 @@
 import Foundation
+import ObjectMapper
 
 class BusRepositoryBase: Repository, BusRepository {
     func groups() throws -> [BusGroup] {
@@ -71,5 +72,19 @@ class BusRepositoryBase: Repository, BusRepository {
         requestClient.execute(request)
         
         return try processMultiResponse(response: request.response)
+    }
+    
+    internal func busLineSchedule(dto: BusLinesScheduleDTO) throws -> BusLineSchedule {
+        let request = RequestBuilder()
+            .post()
+            .url("/bus/GetTimesLines.php")
+            .parameter(parameter: dto)
+            .buildForStringResponse()
+        
+        requestClient.execute(request)
+        
+        let jsonString = try processSingleResponse(response: request.response)
+
+        return BusLineSchedule(using: jsonString) 
     }
 }
