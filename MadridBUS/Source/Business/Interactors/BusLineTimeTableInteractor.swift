@@ -12,7 +12,7 @@ class BusLineTimeTableAsyncInteractor: AsyncInteractor<BusLineTimeTableDTO, [Bus
     }
     
     func execute(_ dto: BusLineTimeTableDTO, success: @escaping ([BusLineTimeTableItem]) -> ()) {
-        super.execute(success: success, params: dto)
+        super.execute(params: dto, success: success)
     }
     
     override func runInBackground(params: [BusLineTimeTableDTO]) throws -> [BusLineTimeTableItem] {

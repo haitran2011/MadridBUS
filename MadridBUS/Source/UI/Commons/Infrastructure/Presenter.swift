@@ -29,17 +29,21 @@ class Presenter: HandleErrorDelegate {
     
     func handleErrors(error: Error) {
         let errorController = ErrorViewBase()
-        errorController.configure(using: .error(description: error.localizedDescription))
-		errorController.action = {
-            errorController.dismiss()
-        }
-        
-        if spinner != nil {
-            spinner.dismiss(animated: true, completion: { 
-                self.wireframe.present(controller: errorController)
-            })
+        if error._code != 1 {
+            errorController.configure(using: .error(description: error.localizedDescription))
+            errorController.action = {
+                errorController.dismiss()
+            }
+            
+            if spinner != nil {
+                spinner.dismiss(animated: true, completion: {
+                    self.wireframe.present(controller: errorController)
+                })
+            } else {
+                wireframe.present(controller: errorController)
+            }
         } else {
-            wireframe.present(controller: errorController)
+            
         }
     }
     
@@ -57,8 +61,8 @@ class Presenter: HandleErrorDelegate {
         spinner.dismiss(animated: true, completion: completion)
     }
     
-    func showBanner(displaying message: String) {
-        let banner = Banner(title: LocalizedLiteral.localize(using: "VALIDATIONERROR_TITLE"), subtitle: message, image: #imageLiteral(resourceName: "ErrorIcon"), backgroundColor: Colors.red)
+    func showBanner(displaying message: String, title: String) {
+        let banner = Banner(title: title, subtitle: message, image: nil, backgroundColor: Colors.red)
         banner.shouldTintImage = false
         banner.dismissesOnTap = true
         banner.show(duration: 3.0)

@@ -30,12 +30,14 @@ class LocationHelperBase: NSObject, LocationHelper {
     }
     
     func acquireLocation(success: @escaping (CLLocation) -> ()) {
-        locationManager.startUpdatingLocation()
+        locationManager.desiredAccuracy = 100
         locationAcquiredSuccessBlock = success
         locationManager.delegate = self
+        locationManager.startUpdatingLocation()
     }
     
     func stopAcquiringLocation() {
+        locationManager.delegate = nil
         locationManager.stopUpdatingLocation()
     }
     
@@ -51,9 +53,9 @@ extension LocationHelperBase: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         for aLocation in locations {
-            if aLocation.horizontalAccuracy <= 10 {
-                locationAcquiredSuccessBlock!(aLocation)
+            if aLocation.horizontalAccuracy <= 65 {
                 stopAcquiringLocation()
+                locationAcquiredSuccessBlock!(aLocation)
                 break
             }
         }

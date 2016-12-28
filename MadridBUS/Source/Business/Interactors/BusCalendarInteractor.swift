@@ -12,7 +12,7 @@ class BusCalendarAsyncInteractor: AsyncInteractor<BusCalendarDTO, [BusCalendarIt
     }
     
     func execute(_ dto: BusCalendarDTO, success: @escaping ([BusCalendarItem]) -> ()) {
-        super.execute(success: success, params: dto)
+        super.execute(params: dto, success: success)
     }
 
     override func runInBackground(params: [BusCalendarDTO]) throws -> [BusCalendarItem] {

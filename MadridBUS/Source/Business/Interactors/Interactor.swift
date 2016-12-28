@@ -12,14 +12,18 @@ class AsyncInteractor<ParameterType, ResponseType>: Interactor {
     
     private var handleErrorDelegate: HandleErrorDelegate?
     
-    func execute(success: @escaping (ResponseType) -> (), params: ParameterType...) {
+    func execute(params: ParameterType..., success: @escaping (ResponseType) -> (), error: ((Error) -> ())? = nil) {
         DispatchQueue.global(qos: .background).async {
             do {
                 let result = try self.runInBackground(params: params)
                 
                 self.notifyResult(result: result, success: success)
-            } catch Errors.RepositoryError(let error) {
-                self.notifyError(error: error)
+            } catch Errors.RepositoryError(let errorObject) {
+                if let errorBlock = error {
+                    errorBlock(errorObject)
+                } else {
+                    self.notifyError(error: errorObject)
+                }
             } catch {
                 
             }
@@ -27,7 +31,7 @@ class AsyncInteractor<ParameterType, ResponseType>: Interactor {
     }
 
     func runInBackground(params: [ParameterType]) throws -> ResponseType {
-        fatalError("Method runInBackground must be override!!! in \(self)")
+        fatalError("Method runInBackground must be overrided!!! in \(self)")
     }
     
     private func notifyResult(result: ResponseType, success: @escaping (ResponseType) -> ()) {

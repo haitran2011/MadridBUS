@@ -142,10 +142,12 @@ class WelcomePresenterBase: Presenter, WelcomePresenter {
     
     func nodesAround(latitude: Double, longitude: Double, radius: Int) {
         nodesAroundLocation.subscribeHandleErrorDelegate(delegate: self)
-        
+
         let dto = BusGeoNodesAroundLocationDTO(latitude: latitude, longitude: longitude, radius: radius)
         
-        nodesAroundLocation.execute(dto) { (nodesList) in
+        nodesAroundLocation.execute(dto, success: { (nodesList) in
+            
+        }) { (error) in
             
         }
     }
@@ -161,8 +163,11 @@ class WelcomePresenterBase: Presenter, WelcomePresenter {
     }
     
     func obtainLocation() {
-        locationHelper.acquireLocation { (acquiredLocation) in
-            
+        if locationHelper.isLocationAvailable {
+            locationHelper.acquireLocation { (acquiredLocation) in
+                self.view.updateMap(with: acquiredLocation)
+                self.nodesAround(latitude: acquiredLocation.coordinate.latitude, longitude: acquiredLocation.coordinate.longitude, radius: 100)
+            }
         }
     }
 }

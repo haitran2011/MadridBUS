@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WelcomeViewBase" customModule="MadridBUS" customModuleProvider="target">
             <connections>
                 <outlet property="locationMap" destination="FNg-90-SGY" id="x9I-PN-kL8"/>
+                <outlet property="nodesTable" destination="RWP-LH-XsU" id="kRs-GR-Wgi"/>
                 <outlet property="view" destination="iN0-l3-epB" id="MRv-Up-5Iu"/>
             </connections>
         </placeholder>
@@ -24,15 +25,23 @@
                 <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="FNg-90-SGY">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="333.5"/>
                 </mapView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RWP-LH-XsU">
+                    <rect key="frame" x="0.0" y="333.5" width="375" height="333.5"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstAttribute="bottom" secondItem="RWP-LH-XsU" secondAttribute="bottom" id="6JD-vL-L7r"/>
                 <constraint firstItem="FNg-90-SGY" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="C9k-0S-3Ce"/>
+                <constraint firstAttribute="trailing" secondItem="RWP-LH-XsU" secondAttribute="trailing" id="VgW-X6-ahm"/>
+                <constraint firstItem="RWP-LH-XsU" firstAttribute="top" secondItem="FNg-90-SGY" secondAttribute="bottom" id="X3B-Y3-6qN"/>
                 <constraint firstItem="FNg-90-SGY" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="1/2" id="blC-S6-QiS"/>
+                <constraint firstItem="RWP-LH-XsU" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="m2E-Nu-E60"/>
                 <constraint firstAttribute="trailing" secondItem="FNg-90-SGY" secondAttribute="trailing" id="mw3-Su-nZe"/>
                 <constraint firstItem="FNg-90-SGY" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="xzw-oN-srQ"/>
             </constraints>
-            <point key="canvasLocation" x="-31.5" y="49.5"/>
+            <point key="canvasLocation" x="-694" y="56"/>
         </view>
     </objects>
 </document>

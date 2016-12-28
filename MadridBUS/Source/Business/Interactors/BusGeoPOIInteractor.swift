@@ -12,7 +12,7 @@ class BusGeoPOIAsyncInteractor: AsyncInteractor<BusGeoPOIDTO, [POI]>, BusGeoPOII
     }
     
     internal func execute(_ dto: BusGeoPOIDTO, success: @escaping ([POI]) -> ()) {
-        super.execute(success: success, params: dto)
+        super.execute(params: dto, success: success)
     }
     
     override func runInBackground(params: [BusGeoPOIDTO]) throws -> [POI] {

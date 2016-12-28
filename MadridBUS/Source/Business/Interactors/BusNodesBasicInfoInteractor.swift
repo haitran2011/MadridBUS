@@ -12,7 +12,7 @@ class BusNodesBasicInfoAsyncInteractor: AsyncInteractor<BusNodesBasicInfoDTO, [B
     }
     
     func execute(_ dto: BusNodesBasicInfoDTO, success: @escaping ([BusNodeBasicInfo]) -> ()) {
-        super.execute(success: success, params: dto)
+        super.execute(params: dto, success: success)
     }
     
     override func runInBackground(params: [BusNodesBasicInfoDTO]) throws -> [BusNodeBasicInfo] {

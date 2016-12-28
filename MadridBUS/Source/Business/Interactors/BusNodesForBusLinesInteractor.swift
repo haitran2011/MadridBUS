@@ -12,7 +12,7 @@ class BusNodesForBusLinesAsyncInteractor: AsyncInteractor<BusNodesForBusLinesDTO
     }
     
     func execute(_ dto: BusNodesForBusLinesDTO, success: @escaping ([BusNodeLocalized]) -> ()) {
-        super.execute(success: success, params: dto)
+        super.execute(params: dto, success: success)
     }
     
     override func runInBackground(params: [BusNodesForBusLinesDTO]) throws -> [BusNodeLocalized] {

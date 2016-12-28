@@ -12,7 +12,7 @@ class BusLineScheduleAsyncInteractor: AsyncInteractor<BusLinesScheduleDTO, BusLi
     }
     
     func execute(_ dto: BusLinesScheduleDTO, success: @escaping (BusLineSchedule) -> ()) {
-        super.execute(success: success, params: dto)
+        super.execute(params: dto, success: success)
     }
     
     override func runInBackground(params: [BusLinesScheduleDTO]) throws -> BusLineSchedule {
