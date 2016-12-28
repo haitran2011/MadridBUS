@@ -1,7 +1,7 @@
 import Foundation
 
 protocol BusGeoNodesAroundLocationInteractor: Interactor {
-    func execute(_ dto: BusGeoNodesAroundLocationDTO, success: @escaping ([BusGeoNode]) -> (), error: @escaping (Error) -> ())
+    func execute(_ dto: BusGeoNodesAroundLocationDTO, success: @escaping ([BusGeoNode]) -> ())
 }
 
 class BusGeoNodesAroundLocationAsyncInteractor: AsyncInteractor<BusGeoNodesAroundLocationDTO, [BusGeoNode]>, BusGeoNodesAroundLocationInteractor {
@@ -11,8 +11,8 @@ class BusGeoNodesAroundLocationAsyncInteractor: AsyncInteractor<BusGeoNodesAroun
         busGeoRepository = injector.instanceOf(BusGeoRepository.self)
     }
     
-    internal func execute(_ dto: BusGeoNodesAroundLocationDTO, success: @escaping ([BusGeoNode]) -> (), error: @escaping (Error) -> ()) {
-        super.execute(params: dto, success: success, error: error)
+    internal func execute(_ dto: BusGeoNodesAroundLocationDTO, success: @escaping ([BusGeoNode]) -> ()) {
+        super.execute(params: dto, success: success)
     }
     
     override func runInBackground(params: [BusGeoNodesAroundLocationDTO]) throws -> [BusGeoNode] {

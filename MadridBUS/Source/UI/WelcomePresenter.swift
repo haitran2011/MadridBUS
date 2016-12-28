@@ -62,6 +62,12 @@ class WelcomePresenterBase: Presenter, WelcomePresenter {
         super.config(view: view)
     }
     
+    override func handleErrors(error: Error) {
+        if error._code == 101 {
+            
+        }
+    }
+    
     func obtainBusGroups() {
         busGroups.subscribeHandleErrorDelegate(delegate: self)
         
@@ -145,9 +151,7 @@ class WelcomePresenterBase: Presenter, WelcomePresenter {
 
         let dto = BusGeoNodesAroundLocationDTO(latitude: latitude, longitude: longitude, radius: radius)
         
-        nodesAroundLocation.execute(dto, success: { (nodesList) in
-            
-        }) { (error) in
+        nodesAroundLocation.execute(dto) { (nodesList) in
             
         }
     }

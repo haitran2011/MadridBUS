@@ -29,21 +29,17 @@ class Presenter: HandleErrorDelegate {
     
     func handleErrors(error: Error) {
         let errorController = ErrorViewBase()
-        if error._code != 1 {
-            errorController.configure(using: .error(description: error.localizedDescription))
-            errorController.action = {
-                errorController.dismiss()
-            }
-            
-            if spinner != nil {
-                spinner.dismiss(animated: true, completion: {
-                    self.wireframe.present(controller: errorController)
-                })
-            } else {
-                wireframe.present(controller: errorController)
-            }
+        errorController.configure(using: .error(description: error.localizedDescription))
+        errorController.action = {
+            errorController.dismiss()
+        }
+        
+        if spinner != nil {
+            spinner.dismiss(animated: true, completion: {
+                self.wireframe.present(controller: errorController)
+            })
         } else {
-            
+            wireframe.present(controller: errorController)
         }
     }
     

@@ -32,7 +32,7 @@ class JsonRequest<ResponseType:Mappable>: Request {
                 if let jsonFromKey = (json as! NSDictionary)[key] {
                     json = jsonFromKey
                 } else {
-                    response.dataError = RepositoryError(message: "There's no results")
+                    response.dataError = RepositoryError(message: "Empty data", code: 101)
                 }
             }
             

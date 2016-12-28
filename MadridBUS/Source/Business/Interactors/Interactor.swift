@@ -12,18 +12,14 @@ class AsyncInteractor<ParameterType, ResponseType>: Interactor {
     
     private var handleErrorDelegate: HandleErrorDelegate?
     
-    func execute(params: ParameterType..., success: @escaping (ResponseType) -> (), error: ((Error) -> ())? = nil) {
+    func execute(params: ParameterType..., success: @escaping (ResponseType) -> ()) {
         DispatchQueue.global(qos: .background).async {
             do {
                 let result = try self.runInBackground(params: params)
                 
                 self.notifyResult(result: result, success: success)
-            } catch Errors.RepositoryError(let errorObject) {
-                if let errorBlock = error {
-                    errorBlock(errorObject)
-                } else {
-                    self.notifyError(error: errorObject)
-                }
+            } catch Errors.RepositoryError(let error) {
+                self.notifyError(error: error)
             } catch {
                 
             }

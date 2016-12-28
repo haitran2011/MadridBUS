@@ -77,6 +77,21 @@
 		303725AA1E13A8BF00FABC93 /* Languages.strings in Resources */ = {isa = PBXBuildFile; fileRef = 303725AE1E13A8BF00FABC93 /* Languages.strings */; };
 		303725AB1E13A8BF00FABC93 /* Languages.strings in Resources */ = {isa = PBXBuildFile; fileRef = 303725AE1E13A8BF00FABC93 /* Languages.strings */; };
 		303725AC1E13A8BF00FABC93 /* Languages.strings in Resources */ = {isa = PBXBuildFile; fileRef = 303725AE1E13A8BF00FABC93 /* Languages.strings */; };
+		303725B31E13C81C00FABC93 /* WelcomeNodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303725B21E13C81C00FABC93 /* WelcomeNodeCell.swift */; };
+		303725B41E13C81C00FABC93 /* WelcomeNodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303725B21E13C81C00FABC93 /* WelcomeNodeCell.swift */; };
+		303725B51E13C81C00FABC93 /* WelcomeNodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303725B21E13C81C00FABC93 /* WelcomeNodeCell.swift */; };
+		303725B71E13C82800FABC93 /* WelcomeNodeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 303725B61E13C82800FABC93 /* WelcomeNodeCell.xib */; };
+		303725B81E13C82800FABC93 /* WelcomeNodeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 303725B61E13C82800FABC93 /* WelcomeNodeCell.xib */; };
+		303725B91E13C82800FABC93 /* WelcomeNodeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 303725B61E13C82800FABC93 /* WelcomeNodeCell.xib */; };
+		303725BE1E13D21600FABC93 /* BusLineTimeTableItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3037254B1E12989800FABC93 /* BusLineTimeTableItem.swift */; };
+		303725BF1E13D22000FABC93 /* BusLinesBasicInfoInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303725241E124BA000FABC93 /* BusLinesBasicInfoInteractor.swift */; };
+		303725C01E13D22000FABC93 /* BusNodesBasicInfoInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303725301E12566C00FABC93 /* BusNodesBasicInfoInteractor.swift */; };
+		303725C11E13D22000FABC93 /* BusNodesForBusLinesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303725391E125AA500FABC93 /* BusNodesForBusLinesInteractor.swift */; };
+		303725C21E13D22000FABC93 /* BusLinesScheduleInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303725481E127BCF00FABC93 /* BusLinesScheduleInteractor.swift */; };
+		303725C31E13D22000FABC93 /* BusLineTimeTableInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303725511E129AA300FABC93 /* BusLineTimeTableInteractor.swift */; };
+		303725C41E13D22300FABC93 /* BusGeoPOIInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3037256B1E12AAA700FABC93 /* BusGeoPOIInteractor.swift */; };
+		303725C51E13D22300FABC93 /* BusGeoNodesAroundLocationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303725861E1398AF00FABC93 /* BusGeoNodesAroundLocationInteractor.swift */; };
+		303725C61E13D22300FABC93 /* BusGeoNodeArrivalsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3037258F1E139BE700FABC93 /* BusGeoNodeArrivalsInteractor.swift */; };
 		30A5401A1E1116A600362E8B /* MadridBUSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A540191E1116A600362E8B /* MadridBUSTests.swift */; };
 		30A540251E1116A600362E8B /* MadridBUSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A540241E1116A600362E8B /* MadridBUSUITests.swift */; };
 		30D02BA41E111C3700F51304 /* BusinessError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D02AEC1E111C3700F51304 /* BusinessError.swift */; };
@@ -292,6 +307,8 @@
 		303725A51E13A84400FABC93 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		303725AD1E13A8BF00FABC93 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Languages.strings; sourceTree = "<group>"; };
 		303725AF1E13A8C000FABC93 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Languages.strings; sourceTree = "<group>"; };
+		303725B21E13C81C00FABC93 /* WelcomeNodeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeNodeCell.swift; sourceTree = "<group>"; };
+		303725B61E13C82800FABC93 /* WelcomeNodeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WelcomeNodeCell.xib; sourceTree = "<group>"; };
 		30A540011E1116A500362E8B /* MadridBUS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MadridBUS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30A540101E1116A500362E8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		30A540151E1116A600362E8B /* MadridBUSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MadridBUSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -491,6 +508,23 @@
 			name = Languages;
 			sourceTree = "<group>";
 		};
+		303725B01E13C7FE00FABC93 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				303725B11E13C80600FABC93 /* WelcomeNodeCell */,
+			);
+			name = Components;
+			sourceTree = "<group>";
+		};
+		303725B11E13C80600FABC93 /* WelcomeNodeCell */ = {
+			isa = PBXGroup;
+			children = (
+				303725B21E13C81C00FABC93 /* WelcomeNodeCell.swift */,
+				303725B61E13C82800FABC93 /* WelcomeNodeCell.xib */,
+			);
+			name = WelcomeNodeCell;
+			sourceTree = "<group>";
+		};
 		30A53FF81E1116A500362E8B = {
 			isa = PBXGroup;
 			children = (
@@ -670,6 +704,7 @@
 		30D02DB01E11204B00F51304 /* WelcomeView */ = {
 			isa = PBXGroup;
 			children = (
+				303725B01E13C7FE00FABC93 /* Components */,
 				30D02DB61E11206E00F51304 /* WelcomePresenter.swift */,
 				30D02DB11E11205F00F51304 /* WelcomeView.swift */,
 				30D02DBA1E11207D00F51304 /* WelcomeView.xib */,
@@ -871,6 +906,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				303725B71E13C82800FABC93 /* WelcomeNodeCell.xib in Resources */,
 				30D02DFB1E11247D00F51304 /* ErrorView.xib in Resources */,
 				303725A01E13A83B00FABC93 /* InfoPlist.strings in Resources */,
 				30D02D9A1E111C8F00F51304 /* Assets.xcassets in Resources */,
@@ -883,6 +919,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				303725B81E13C82800FABC93 /* WelcomeNodeCell.xib in Resources */,
 				30D02DFC1E11247D00F51304 /* ErrorView.xib in Resources */,
 				303725A11E13A83B00FABC93 /* InfoPlist.strings in Resources */,
 				30D02D9B1E111C8F00F51304 /* Assets.xcassets in Resources */,
@@ -895,6 +932,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				303725B91E13C82800FABC93 /* WelcomeNodeCell.xib in Resources */,
 				30D02DFD1E11247D00F51304 /* ErrorView.xib in Resources */,
 				303725A21E13A83B00FABC93 /* InfoPlist.strings in Resources */,
 				30D02D9C1E111C8F00F51304 /* Assets.xcassets in Resources */,
@@ -936,6 +974,7 @@
 				303725401E1265CD00FABC93 /* BusNodesForBusLinesDTO.swift in Sources */,
 				30D02C491E111C3700F51304 /* ApplicationManager.swift in Sources */,
 				303725431E12683200FABC93 /* BusLineSchedule.swift in Sources */,
+				303725B31E13C81C00FABC93 /* WelcomeNodeCell.swift in Sources */,
 				30D02DDA1E11232600F51304 /* Spinner.swift in Sources */,
 				303725621E12A87400FABC93 /* BusGeoRepository.swift in Sources */,
 				30D02DE81E1123F300F51304 /* Presenter.swift in Sources */,
@@ -1052,6 +1091,7 @@
 				30D02E271E1127DD00F51304 /* BusRepository.swift in Sources */,
 				30D02E151E11254A00F51304 /* String+Truncated.swift in Sources */,
 				30D02C4D1E111C3700F51304 /* Injector.swift in Sources */,
+				303725B41E13C81C00FABC93 /* WelcomeNodeCell.swift in Sources */,
 				303725821E13937E00FABC93 /* BusGeoNode.swift in Sources */,
 				303725911E139BE700FABC93 /* BusGeoNodeArrivalsInteractor.swift in Sources */,
 				3037258E1E139B3900FABC93 /* BusGeoNodeArrivals.swift in Sources */,
@@ -1068,8 +1108,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				30D02BAF1E111C3700F51304 /* Errors.swift in Sources */,
+				303725C61E13D22300FABC93 /* BusGeoNodeArrivalsInteractor.swift in Sources */,
 				30D02BA61E111C3700F51304 /* BusinessError.swift in Sources */,
 				30D02DE71E1123F300F51304 /* ParameterizedView.swift in Sources */,
+				303725C11E13D22000FABC93 /* BusNodesForBusLinesInteractor.swift in Sources */,
 				30D02DB41E11205F00F51304 /* WelcomeView.swift in Sources */,
 				30D02E101E11254A00F51304 /* Date+Components.swift in Sources */,
 				30D02DDC1E11232600F51304 /* Spinner.swift in Sources */,
@@ -1078,7 +1120,10 @@
 				30D02E1C1E11254A00F51304 /* UIViewController+ShowCompletion.swift in Sources */,
 				30D02DFA1E11247D00F51304 /* ErrorView.swift in Sources */,
 				30D02C2D1E111C3700F51304 /* RequestBuilder.swift in Sources */,
+				303725C41E13D22300FABC93 /* BusGeoPOIInteractor.swift in Sources */,
 				30D02DEA1E1123F300F51304 /* Presenter.swift in Sources */,
+				303725C51E13D22300FABC93 /* BusGeoNodesAroundLocationInteractor.swift in Sources */,
+				303725B51E13C81C00FABC93 /* WelcomeNodeCell.swift in Sources */,
 				30D02DD61E11231500F51304 /* Fonts.swift in Sources */,
 				30D02E061E1124E500F51304 /* ErrorViewController.swift in Sources */,
 				30D02C3F1E111C3700F51304 /* Repository.swift in Sources */,
@@ -1089,13 +1134,16 @@
 				30D02C481E111C3700F51304 /* AppDelegate.swift in Sources */,
 				30D02E421E117AEC00F51304 /* BusCalendarDTO.swift in Sources */,
 				30D02DF71E11247D00F51304 /* ErrorPresenter.swift in Sources */,
+				303725C31E13D22000FABC93 /* BusLineTimeTableInteractor.swift in Sources */,
 				30D02E201E1125A100F51304 /* LocalizedLiteral.swift in Sources */,
 				30D02C241E111C3700F51304 /* Empty.swift in Sources */,
 				30D02DDF1E11232600F51304 /* SpinnerPresentation.swift in Sources */,
 				30D02C2A1E111C3700F51304 /* Request.swift in Sources */,
 				30D02E461E117B1200F51304 /* DTO.swift in Sources */,
+				303725C01E13D22000FABC93 /* BusNodesBasicInfoInteractor.swift in Sources */,
 				30A540251E1116A600362E8B /* MadridBUSUITests.swift in Sources */,
 				30D02C4B1E111C3700F51304 /* ApplicationManager.swift in Sources */,
+				303725C21E13D22000FABC93 /* BusLinesScheduleInteractor.swift in Sources */,
 				30D02BB81E111C3700F51304 /* Interactor.swift in Sources */,
 				30D02C301E111C3700F51304 /* RequestClient.swift in Sources */,
 				30D02E241E11278D00F51304 /* BusGroupsInteractor.swift in Sources */,
@@ -1104,9 +1152,11 @@
 				30D02E281E1127DD00F51304 /* BusRepository.swift in Sources */,
 				30D02E161E11254A00F51304 /* String+Truncated.swift in Sources */,
 				30D02C4E1E111C3700F51304 /* Injector.swift in Sources */,
+				303725BF1E13D22000FABC93 /* BusLinesBasicInfoInteractor.swift in Sources */,
 				30D02E3A1E11744800F51304 /* BusCalendarInteractor.swift in Sources */,
 				30D02E321E1128FE00F51304 /* BusRepositoryBase.swift in Sources */,
 				30D02C061E111C3700F51304 /* RepositoryError.swift in Sources */,
+				303725BE1E13D21600FABC93 /* BusLineTimeTableItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
