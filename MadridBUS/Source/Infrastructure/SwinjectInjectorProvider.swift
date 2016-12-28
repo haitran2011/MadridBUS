@@ -37,6 +37,7 @@ class SwinjectInjectorProvider: InjectorProvider, Injector {
         container.register(BusGeoNodeArrivalsInteractor.self) { _ in BusGeoNodeArrivalsAsyncInteractor(injector: self) }
         
         //Helpers
+        container.register(LocationHelper.self) { _ in LocationHelperBase() }
         
         //Data
         container.register(RequestClient.self) { _ in AlamofireRequestClient() }.inObjectScope(.container)

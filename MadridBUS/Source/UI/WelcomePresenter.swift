@@ -15,6 +15,8 @@ protocol WelcomePresenter {
     func nodesAround(latitude: Double, longitude: Double, radius: Int)
     func nodeArrivals(using nodeId: String)
     
+    func obtainLocation()
+    
     func config(using view: View)
 }
 
@@ -32,6 +34,8 @@ class WelcomePresenterBase: Presenter, WelcomePresenter {
     private var nodesAroundLocation: BusGeoNodesAroundLocationInteractor!
     private var nodeArrivals: BusGeoNodeArrivalsInteractor!
     
+    private var locationHelper: LocationHelper!
+    
     var availableBusGroups: [BusGroup] = []
     
     required init(injector: Injector) {
@@ -45,6 +49,7 @@ class WelcomePresenterBase: Presenter, WelcomePresenter {
         poiList = injector.instanceOf(BusGeoPOIInteractor.self)
         nodesAroundLocation = injector.instanceOf(BusGeoNodesAroundLocationInteractor.self)
         nodeArrivals = injector.instanceOf(BusGeoNodeArrivalsInteractor.self)
+        locationHelper = injector.instanceOf(LocationHelper.self)
         super.init(injector: injector)
     }
 
@@ -151,6 +156,12 @@ class WelcomePresenterBase: Presenter, WelcomePresenter {
         let dto = BusGeoNodeArrivalsDTO(nodeId: nodeId)
         
         nodeArrivals.execute(dto) { (arrivalsList) in
+            
+        }
+    }
+    
+    func obtainLocation() {
+        locationHelper.acquireLocation { (acquiredLocation) in
             
         }
     }

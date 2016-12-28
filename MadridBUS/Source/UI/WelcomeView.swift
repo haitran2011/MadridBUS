@@ -1,4 +1,5 @@
 import UIKit
+import MapKit
 
 protocol WelcomeView: View {
     
@@ -6,6 +7,8 @@ protocol WelcomeView: View {
 
 class WelcomeViewBase: UIViewController, WelcomeView {
     private var presenter: WelcomePresenter
+    
+    @IBOutlet weak var locationMap: MKMapView!
     
     init(injector: Injector = SwinjectInjectorProvider.injector, nibName: String? = "WelcomeView") {
         self.presenter = injector.instanceOf(WelcomePresenter.self)
@@ -20,6 +23,6 @@ class WelcomeViewBase: UIViewController, WelcomeView {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
-        presenter.nodeArrivals(using: "3989")
+        presenter.obtainLocation()
     }
 }
