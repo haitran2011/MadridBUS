@@ -1,18 +1,25 @@
 import UIKit
 import MapKit
 
+enum WelcomeViewMode {
+    case normal
+    case zeroNodesAround
+}
+
 protocol WelcomeView: View {
     func updateMap(with location: CLLocation)
     func updateBusNodes()
+    func enable(mode: WelcomeViewMode)
 }
 
 class WelcomeViewBase: UIViewController, WelcomeView {
     internal var presenter: WelcomePresenter
-    
+    internal var manualSearch = ManualSearchViewBase()
     internal let nodeCell = "NodeCell"
     
     @IBOutlet weak var locationMap: MKMapView!
     @IBOutlet weak var nodesTable: UITableView!
+    @IBOutlet weak var locationMap_heightConstraint: NSLayoutConstraint!
     
     init(injector: Injector = SwinjectInjectorProvider.injector, nibName: String? = "WelcomeView") {
         self.presenter = injector.instanceOf(WelcomePresenter.self)
@@ -26,6 +33,7 @@ class WelcomeViewBase: UIViewController, WelcomeView {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = Colors.blue
         
         nodesTable.register(UINib(nibName: "WelcomeNodeCell", bundle: nil), forCellReuseIdentifier: nodeCell)
         nodesTable.delegate = self
@@ -43,10 +51,19 @@ class WelcomeViewBase: UIViewController, WelcomeView {
     func updateMap(with location: CLLocation) {
         let region = MKCoordinateRegion(center: location.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
         locationMap.setRegion(region, animated: true)
+        locationMap.showsUserLocation = true
     }
     
     func updateBusNodes() {
         nodesTable.reloadData()
+    }
+    
+    func enable(mode: WelcomeViewMode) {
+        switch mode {
+        case .normal: break
+        case .zeroNodesAround:
+            manualSearch.show(over: nodesTable)
+        }
     }
 }
 

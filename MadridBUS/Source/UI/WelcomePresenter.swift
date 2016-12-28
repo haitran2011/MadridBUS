@@ -38,7 +38,7 @@ class WelcomePresenterBase: Presenter, WelcomePresenter {
     
     override func handleErrors(error: Error) {
         if error._code == 101 {
-            
+            view.enable(mode: .zeroNodesAround)
         }
     }
     
@@ -46,7 +46,7 @@ class WelcomePresenterBase: Presenter, WelcomePresenter {
         if locationHelper.isLocationAvailable {
             locationHelper.acquireLocation { (acquiredLocation) in
                 self.view.updateMap(with: acquiredLocation)
-                self.nodesAround(latitude: acquiredLocation.coordinate.latitude, longitude: acquiredLocation.coordinate.longitude, radius: 100)
+                self.nodesAround(latitude: acquiredLocation.coordinate.latitude, longitude: acquiredLocation.coordinate.longitude, radius: 10)
             }
         }
     }

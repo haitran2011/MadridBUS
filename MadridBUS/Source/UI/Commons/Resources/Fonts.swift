@@ -2,20 +2,16 @@ import UIKit
 
 struct Fonts {
     struct standards {
-        static let black = "Calibre-Black"
-        static let black_italic = "Calibre-BlackItalic"
-        static let bold = "Calibre-Bold"
-        static let bold_italic = "Cablibre-BoldItalic"
-        static let light = "Calibre-Light"
-        static let light_italic = "Calibre-LightItalic"
-        static let medium = "Calibre-Medium"
-        static let medium_italic = "Calibre-MediumItalic"
-        static let regular_italic = "Calibre-RegularItalic"
-        static let semibold = "Calibre-SemiBold"
-        static let semibold_italic = "Calibre-SemiboldItalic"
-        static let thin = "Calibre-Thin"
-        static let thin_italic = "Calibre-ThinItalic"
+        static let bold = "AppleSDGothicNeo-Bold"
+        static let light = "AppleSDGothicNeo-Light"
+        static let medium = "AppleSDGothicNeo-Medium"
+        static let regular = "AppleSDGothicNeo-Regular"
+        static let semibold = "AppleSDGothicNeo-SemiBold"
+        static let thin = "AppleSDGothicNeo-Thin"
+        static let ultra_light = "AppleSDGothicNeo-UltraLight"
     }
     
     static let busLineName = UIFont(name: "Anton", size: 20)!
+    static let standardExplanation = UIFont(name: standards.light, size: 16)!
+    static let button = UIFont(name: standards.bold, size: 20)!
 }

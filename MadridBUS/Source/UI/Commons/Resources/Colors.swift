@@ -5,4 +5,5 @@ struct Colors {
     static let marine = UIColor(red: 0/255, green: 129/255, blue: 153/255, alpha: 1)
     static let red = UIColor(red: 192/255, green: 57/255, blue: 43/255, alpha: 1)
     static let blue = UIColor(red: 41/255, green: 128/255, blue: 185/255, alpha: 1)
+    static let green = UIColor(red: 39/255, green: 174/255, blue: 96/255, alpha: 1)
 }

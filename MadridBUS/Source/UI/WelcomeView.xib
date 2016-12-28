@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -13,20 +13,21 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WelcomeViewBase" customModule="MadridBUS" customModuleProvider="target">
             <connections>
                 <outlet property="locationMap" destination="FNg-90-SGY" id="x9I-PN-kL8"/>
+                <outlet property="locationMap_heightConstraint" destination="blC-S6-QiS" id="zRW-JI-exf"/>
                 <outlet property="nodesTable" destination="RWP-LH-XsU" id="kRs-GR-Wgi"/>
                 <outlet property="view" destination="iN0-l3-epB" id="MRv-Up-5Iu"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="FNg-90-SGY">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="333.5"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="284"/>
                 </mapView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RWP-LH-XsU">
-                    <rect key="frame" x="0.0" y="333.5" width="375" height="333.5"/>
+                    <rect key="frame" x="0.0" y="284" width="320" height="284"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
             </subviews>
@@ -41,7 +42,7 @@
                 <constraint firstAttribute="trailing" secondItem="FNg-90-SGY" secondAttribute="trailing" id="mw3-Su-nZe"/>
                 <constraint firstItem="FNg-90-SGY" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="xzw-oN-srQ"/>
             </constraints>
-            <point key="canvasLocation" x="-694" y="56"/>
+            <point key="canvasLocation" x="-686" y="17"/>
         </view>
     </objects>
 </document>
