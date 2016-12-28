@@ -53,6 +53,14 @@
 		303725731E12BBD500FABC93 /* JsonRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303725711E12BBD500FABC93 /* JsonRequest.swift */; };
 		3037257B1E12C34400FABC93 /* StringRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3037257A1E12C34400FABC93 /* StringRequest.swift */; };
 		3037257C1E12C34400FABC93 /* StringRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3037257A1E12C34400FABC93 /* StringRequest.swift */; };
+		3037257E1E13933600FABC93 /* BusGeoLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3037257D1E13933600FABC93 /* BusGeoLine.swift */; };
+		3037257F1E13933600FABC93 /* BusGeoLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3037257D1E13933600FABC93 /* BusGeoLine.swift */; };
+		303725811E13937E00FABC93 /* BusGeoNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303725801E13937E00FABC93 /* BusGeoNode.swift */; };
+		303725821E13937E00FABC93 /* BusGeoNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303725801E13937E00FABC93 /* BusGeoNode.swift */; };
+		303725841E1397E100FABC93 /* BusGeoNodesAroundLocationDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303725831E1397E100FABC93 /* BusGeoNodesAroundLocationDTO.swift */; };
+		303725851E1397E100FABC93 /* BusGeoNodesAroundLocationDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303725831E1397E100FABC93 /* BusGeoNodesAroundLocationDTO.swift */; };
+		303725871E1398AF00FABC93 /* BusGeoNodesAroundLocationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303725861E1398AF00FABC93 /* BusGeoNodesAroundLocationInteractor.swift */; };
+		303725881E1398AF00FABC93 /* BusGeoNodesAroundLocationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303725861E1398AF00FABC93 /* BusGeoNodesAroundLocationInteractor.swift */; };
 		30A5401A1E1116A600362E8B /* MadridBUSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A540191E1116A600362E8B /* MadridBUSTests.swift */; };
 		30A540251E1116A600362E8B /* MadridBUSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A540241E1116A600362E8B /* MadridBUSUITests.swift */; };
 		30D02BA41E111C3700F51304 /* BusinessError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D02AEC1E111C3700F51304 /* BusinessError.swift */; };
@@ -255,6 +263,10 @@
 		3037256B1E12AAA700FABC93 /* BusGeoPOIInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusGeoPOIInteractor.swift; sourceTree = "<group>"; };
 		303725711E12BBD500FABC93 /* JsonRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonRequest.swift; sourceTree = "<group>"; };
 		3037257A1E12C34400FABC93 /* StringRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringRequest.swift; sourceTree = "<group>"; };
+		3037257D1E13933600FABC93 /* BusGeoLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusGeoLine.swift; sourceTree = "<group>"; };
+		303725801E13937E00FABC93 /* BusGeoNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusGeoNode.swift; sourceTree = "<group>"; };
+		303725831E1397E100FABC93 /* BusGeoNodesAroundLocationDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusGeoNodesAroundLocationDTO.swift; sourceTree = "<group>"; };
+		303725861E1398AF00FABC93 /* BusGeoNodesAroundLocationInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusGeoNodesAroundLocationInteractor.swift; sourceTree = "<group>"; };
 		30A540011E1116A500362E8B /* MadridBUS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MadridBUS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30A540101E1116A500362E8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		30A540151E1116A600362E8B /* MadridBUSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MadridBUSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -399,6 +411,8 @@
 			isa = PBXGroup;
 			children = (
 				303725671E12A9C200FABC93 /* POI.swift */,
+				303725801E13937E00FABC93 /* BusGeoNode.swift */,
+				3037257D1E13933600FABC93 /* BusGeoLine.swift */,
 			);
 			name = BusGeo;
 			sourceTree = "<group>";
@@ -407,6 +421,7 @@
 			isa = PBXGroup;
 			children = (
 				303725641E12A8B400FABC93 /* BusGeoPOIDTO.swift */,
+				303725831E1397E100FABC93 /* BusGeoNodesAroundLocationDTO.swift */,
 			);
 			name = BusGeo;
 			sourceTree = "<group>";
@@ -415,6 +430,7 @@
 			isa = PBXGroup;
 			children = (
 				3037256B1E12AAA700FABC93 /* BusGeoPOIInteractor.swift */,
+				303725861E1398AF00FABC93 /* BusGeoNodesAroundLocationInteractor.swift */,
 			);
 			name = BusGeo;
 			sourceTree = "<group>";
@@ -885,6 +901,7 @@
 				30D02BB61E111C3700F51304 /* Interactor.swift in Sources */,
 				30D02E1A1E11254A00F51304 /* UIViewController+ShowCompletion.swift in Sources */,
 				3037254F1E129A3F00FABC93 /* BusLineTimeTableDTO.swift in Sources */,
+				303725841E1397E100FABC93 /* BusGeoNodesAroundLocationDTO.swift in Sources */,
 				30D02E141E11254A00F51304 /* String+Truncated.swift in Sources */,
 				30D02DEE1E1123F300F51304 /* Wireframe.swift in Sources */,
 				30D02E261E1127DD00F51304 /* BusRepository.swift in Sources */,
@@ -892,7 +909,10 @@
 				303725521E129AA300FABC93 /* BusLineTimeTableInteractor.swift in Sources */,
 				3037256C1E12AAA700FABC93 /* BusGeoPOIInteractor.swift in Sources */,
 				303725251E124BA000FABC93 /* BusLinesBasicInfoInteractor.swift in Sources */,
+				3037257E1E13933600FABC93 /* BusGeoLine.swift in Sources */,
+				303725811E13937E00FABC93 /* BusGeoNode.swift in Sources */,
 				30D02BA41E111C3700F51304 /* BusinessError.swift in Sources */,
+				303725871E1398AF00FABC93 /* BusGeoNodesAroundLocationInteractor.swift in Sources */,
 				303725721E12BBD500FABC93 /* JsonRequest.swift in Sources */,
 				3037252E1E124F7E00FABC93 /* BusLinesBasicInfoDTO.swift in Sources */,
 				30D02E2C1E11283500F51304 /* BusGroup.swift in Sources */,
@@ -933,6 +953,7 @@
 				30D02E051E1124E500F51304 /* ErrorViewController.swift in Sources */,
 				30D02C3E1E111C3700F51304 /* Repository.swift in Sources */,
 				30D02DB81E11206E00F51304 /* WelcomePresenter.swift in Sources */,
+				303725851E1397E100FABC93 /* BusGeoNodesAroundLocationDTO.swift in Sources */,
 				303725691E12A9C200FABC93 /* POI.swift in Sources */,
 				303725261E124BA000FABC93 /* BusLinesBasicInfoInteractor.swift in Sources */,
 				30D02DEC1E1123F300F51304 /* View.swift in Sources */,
@@ -952,6 +973,7 @@
 				30D02DDE1E11232600F51304 /* SpinnerPresentation.swift in Sources */,
 				303725351E12568700FABC93 /* BusNodeBasicInfo.swift in Sources */,
 				30D02C291E111C3700F51304 /* Request.swift in Sources */,
+				303725881E1398AF00FABC93 /* BusGeoNodesAroundLocationInteractor.swift in Sources */,
 				30D02E451E117B1200F51304 /* DTO.swift in Sources */,
 				30A5401A1E1116A600362E8B /* MadridBUSTests.swift in Sources */,
 				30D02C4A1E111C3700F51304 /* ApplicationManager.swift in Sources */,
@@ -961,10 +983,12 @@
 				30D02E231E11278D00F51304 /* BusGroupsInteractor.swift in Sources */,
 				3037252C1E124E2B00FABC93 /* BusSubgroup.swift in Sources */,
 				30D02E121E11254A00F51304 /* Date+Formatters.swift in Sources */,
+				3037257F1E13933600FABC93 /* BusGeoLine.swift in Sources */,
 				30D02C501E111C3700F51304 /* SwinjectInjectorProvider.swift in Sources */,
 				30D02E271E1127DD00F51304 /* BusRepository.swift in Sources */,
 				30D02E151E11254A00F51304 /* String+Truncated.swift in Sources */,
 				30D02C4D1E111C3700F51304 /* Injector.swift in Sources */,
+				303725821E13937E00FABC93 /* BusGeoNode.swift in Sources */,
 				30D02E391E11744800F51304 /* BusCalendarInteractor.swift in Sources */,
 				3037254A1E127BCF00FABC93 /* BusLinesScheduleInteractor.swift in Sources */,
 				30D02E311E1128FE00F51304 /* BusRepositoryBase.swift in Sources */,

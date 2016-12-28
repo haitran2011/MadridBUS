@@ -12,6 +12,7 @@ protocol WelcomePresenter {
     func obtainBusLineTimeTable(from line: String)
     
     func obtainPOIList(latitude: Double, longitude: Double, radius: Int)
+    func nodesAround(latitude: Double, longitude: Double, radius: Int)
     
     func config(using view: View)
 }
@@ -27,6 +28,7 @@ class WelcomePresenterBase: Presenter, WelcomePresenter {
     private var busLineTimeTable: BusLineTimeTableInteractor!
     
     private var poiList: BusGeoPOIInteractor!
+    private var nodesAroundLocation: BusGeoNodesAroundLocationInteractor!
     
     var availableBusGroups: [BusGroup] = []
     
@@ -39,6 +41,7 @@ class WelcomePresenterBase: Presenter, WelcomePresenter {
         busLinesSchedule = injector.instanceOf(BusLinesScheduleInteractor.self)
         busLineTimeTable = injector.instanceOf(BusLineTimeTableInteractor.self)
         poiList = injector.instanceOf(BusGeoPOIInteractor.self)
+        nodesAroundLocation = injector.instanceOf(BusGeoNodesAroundLocationInteractor.self)
         super.init(injector: injector)
     }
 
@@ -125,6 +128,16 @@ class WelcomePresenterBase: Presenter, WelcomePresenter {
         let dto = BusGeoPOIDTO(latitude: latitude, longitude: longitude, radius: radius)
         
         poiList.execute(dto) { (poiList) in
+            
+        }
+    }
+    
+    func nodesAround(latitude: Double, longitude: Double, radius: Int) {
+        nodesAroundLocation.subscribeHandleErrorDelegate(delegate: self)
+        
+        let dto = BusGeoNodesAroundLocationDTO(latitude: latitude, longitude: longitude, radius: radius)
+        
+        nodesAroundLocation.execute(dto) { (nodesList) in
             
         }
     }

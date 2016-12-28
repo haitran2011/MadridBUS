@@ -14,4 +14,17 @@ class BusGeoRepositoryBase: Repository, BusGeoRepository {
         
         return try processMultiResponse(response: request.response)
     }
+    
+    func busNodesAroundLocation(dto: BusGeoNodesAroundLocationDTO) throws -> [BusGeoNode] {
+        let request = RequestBuilder()
+            .post()
+            .url("/geo/GetStopsFromXY.php")
+            .skip(key: "stop")
+            .parameter(parameter: dto)
+            .buildForJsonResponseFor(BusGeoNode.self)
+        
+        requestClient.execute(request)
+        
+        return try processMultiResponse(response: request.response)
+    }
 }
