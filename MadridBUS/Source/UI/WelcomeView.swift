@@ -3,10 +3,11 @@ import MapKit
 
 protocol WelcomeView: View {
     func updateMap(with location: CLLocation)
+    func updateBusNodes()
 }
 
 class WelcomeViewBase: UIViewController, WelcomeView {
-    private var presenter: WelcomePresenter
+    internal var presenter: WelcomePresenter
     
     internal let nodeCell = "NodeCell"
     
@@ -22,11 +23,11 @@ class WelcomeViewBase: UIViewController, WelcomeView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    override func loadView() {
-        super.loadView()
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
-        nodesTable.register(WelcomeNodeCell.self, forCellReuseIdentifier: nodeCell)
+        nodesTable.register(UINib(nibName: "WelcomeNodeCell", bundle: nil), forCellReuseIdentifier: nodeCell)
         nodesTable.delegate = self
         nodesTable.dataSource = self
         
@@ -43,19 +44,34 @@ class WelcomeViewBase: UIViewController, WelcomeView {
         let region = MKCoordinateRegion(center: location.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
         locationMap.setRegion(region, animated: true)
     }
+    
+    func updateBusNodes() {
+        nodesTable.reloadData()
+    }
 }
 
 extension WelcomeViewBase: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return presenter.numberOfSections()
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return presenter.node(at: section).address
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return presenter.numberOfItems(in: section)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: nodeCell, for: indexPath) as! WelcomeNodeCell
+        
+        let model = presenter.model(at: indexPath)
+        cell.configure(using: model)
+        
+        if let arrivals = presenter.arrivals(at: model.name, on: Int(presenter.node(at: indexPath.section).id)!) {
+            cell.update(using: arrivals)
+        }
         
         return cell
     }

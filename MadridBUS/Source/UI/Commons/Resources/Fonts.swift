@@ -17,25 +17,5 @@ struct Fonts {
         static let thin_italic = "Calibre-ThinItalic"
     }
     
-    static let primaryButtonTitle = UIFont(name: standards.bold, size: 20)!
-    static let secondaryButtonTitle = UIFont(name: standards.bold, size: 18)!
-    
-    static let bigTitle = UIFont(name: standards.bold, size: 30)!
-    static let listTitle = UIFont(name: standards.bold, size: 18)!
-    static let listSubtitle = UIFont(name: standards.light, size: 18)!
-    static let listItem = UIFont(name: standards.light, size: 18)!
-    static let listItemBold = UIFont(name: standards.semibold, size: 18)!
-    
-    static let headerTitle = UIFont(name: standards.bold, size: 26)!
-    static let headerReason = UIFont(name: standards.thin, size: 20)!
-    
-    static let centeredTitle = UIFont(name: standards.thin, size: 26)!
-    static let centeredSubtitle = UIFont(name: standards.medium, size: 26)!
-    
-    static let textField = UIFont(name: standards.light, size: 18)!
-    
-    static let giantNumber = UIFont(name: standards.black, size: 200)!
-    
-    static let miniLight = UIFont(name: standards.light, size: 14)
-    static let miniBold = UIFont(name: standards.bold, size: 14)!
+    static let busLineName = UIFont(name: "Anton", size: 20)!
 }

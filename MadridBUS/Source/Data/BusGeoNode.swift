@@ -2,7 +2,7 @@ import Foundation
 import ObjectMapper
 
 final class BusGeoNode: Mappable {
-    var id: Int = 0
+    var id: String = ""
     var name: String = ""
     var lines: [BusGeoLine] = []
     var address: String = ""

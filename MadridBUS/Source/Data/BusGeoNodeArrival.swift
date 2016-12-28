@@ -7,6 +7,7 @@ enum BusGeoPositionType: Int {
 }
 
 final class BusGeoNodeArrival: Mappable {
+    var nodeId: Int = 0
     var lineId: String = ""
     var busId: String = ""
     var isHeader: Bool = false
@@ -19,6 +20,7 @@ final class BusGeoNodeArrival: Mappable {
     required init?(map: Map) {}
     
     func mapping(map: Map) {
+        nodeId <- map["stopId"]
         lineId <- map["lineId"]
         busId <- map["busId"]
         isHeader <- map["isHead"]

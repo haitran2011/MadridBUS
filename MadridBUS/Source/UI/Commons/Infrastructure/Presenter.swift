@@ -2,7 +2,6 @@ import Foundation
 import BRYXBanner
 
 class Presenter: HandleErrorDelegate {
-
     var spinner: SpinnerBase!
     let wireframe: Wireframe
     var params: [String:Any] = [:]

@@ -34,7 +34,7 @@ final class BusGeoLine: Mappable {
         var minFrequency = 0
         minFrequency <- map["minimumFrequency"]
         
-        name <- map["name"]
+        name <- map["line"]
         dayType <- (map["TipoDia"], EnumTransform<BusDayType>())
         header <- map["headerA"]
         terminus <- map["headerB"]

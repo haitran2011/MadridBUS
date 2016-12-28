@@ -94,6 +94,10 @@
 		303725C61E13D22300FABC93 /* BusGeoNodeArrivalsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3037258F1E139BE700FABC93 /* BusGeoNodeArrivalsInteractor.swift */; };
 		30A5401A1E1116A600362E8B /* MadridBUSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A540191E1116A600362E8B /* MadridBUSTests.swift */; };
 		30A540251E1116A600362E8B /* MadridBUSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A540241E1116A600362E8B /* MadridBUSUITests.swift */; };
+		30BF1F7B1E13D33A006DED45 /* ListAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BF1F7A1E13D33A006DED45 /* ListAdapter.swift */; };
+		30BF1F7E1E13E5DF006DED45 /* Anton.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 30BF1F7D1E13E5DF006DED45 /* Anton.ttf */; };
+		30BF1F7F1E13E5DF006DED45 /* Anton.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 30BF1F7D1E13E5DF006DED45 /* Anton.ttf */; };
+		30BF1F801E13E5DF006DED45 /* Anton.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 30BF1F7D1E13E5DF006DED45 /* Anton.ttf */; };
 		30D02BA41E111C3700F51304 /* BusinessError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D02AEC1E111C3700F51304 /* BusinessError.swift */; };
 		30D02BA51E111C3700F51304 /* BusinessError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D02AEC1E111C3700F51304 /* BusinessError.swift */; };
 		30D02BA61E111C3700F51304 /* BusinessError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D02AEC1E111C3700F51304 /* BusinessError.swift */; };
@@ -317,6 +321,8 @@
 		30A540201E1116A600362E8B /* MadridBUSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MadridBUSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		30A540241E1116A600362E8B /* MadridBUSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadridBUSUITests.swift; sourceTree = "<group>"; };
 		30A540261E1116A600362E8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		30BF1F7A1E13D33A006DED45 /* ListAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListAdapter.swift; sourceTree = "<group>"; };
+		30BF1F7D1E13E5DF006DED45 /* Anton.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Anton.ttf; sourceTree = "<group>"; };
 		30D02AEC1E111C3700F51304 /* BusinessError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessError.swift; sourceTree = "<group>"; };
 		30D02AEF1E111C3700F51304 /* Errors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		30D02AF31E111C3700F51304 /* Interactor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Interactor.swift; sourceTree = "<group>"; };
@@ -574,6 +580,14 @@
 			path = MadridBUSUITests;
 			sourceTree = "<group>";
 		};
+		30BF1F7C1E13E5D4006DED45 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				30BF1F7D1E13E5DF006DED45 /* Anton.ttf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
 		30D02AE91E111C3700F51304 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -725,6 +739,7 @@
 		30D02DCE1E11231500F51304 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				30BF1F7C1E13E5D4006DED45 /* Fonts */,
 				3037259B1E13A78000FABC93 /* Languages */,
 				30D02DCF1E11231500F51304 /* Colors.swift */,
 				30D02DD01E11231500F51304 /* Fonts.swift */,
@@ -749,6 +764,7 @@
 				30D02DE21E1123F300F51304 /* Presenter.swift */,
 				30D02DE31E1123F300F51304 /* View.swift */,
 				30D02DE41E1123F300F51304 /* Wireframe.swift */,
+				30BF1F7A1E13D33A006DED45 /* ListAdapter.swift */,
 			);
 			path = Infrastructure;
 			sourceTree = "<group>";
@@ -908,6 +924,7 @@
 			files = (
 				303725B71E13C82800FABC93 /* WelcomeNodeCell.xib in Resources */,
 				30D02DFB1E11247D00F51304 /* ErrorView.xib in Resources */,
+				30BF1F7E1E13E5DF006DED45 /* Anton.ttf in Resources */,
 				303725A01E13A83B00FABC93 /* InfoPlist.strings in Resources */,
 				30D02D9A1E111C8F00F51304 /* Assets.xcassets in Resources */,
 				30D02DBB1E11207D00F51304 /* WelcomeView.xib in Resources */,
@@ -921,6 +938,7 @@
 			files = (
 				303725B81E13C82800FABC93 /* WelcomeNodeCell.xib in Resources */,
 				30D02DFC1E11247D00F51304 /* ErrorView.xib in Resources */,
+				30BF1F7F1E13E5DF006DED45 /* Anton.ttf in Resources */,
 				303725A11E13A83B00FABC93 /* InfoPlist.strings in Resources */,
 				30D02D9B1E111C8F00F51304 /* Assets.xcassets in Resources */,
 				30D02DBC1E11207D00F51304 /* WelcomeView.xib in Resources */,
@@ -934,6 +952,7 @@
 			files = (
 				303725B91E13C82800FABC93 /* WelcomeNodeCell.xib in Resources */,
 				30D02DFD1E11247D00F51304 /* ErrorView.xib in Resources */,
+				30BF1F801E13E5DF006DED45 /* Anton.ttf in Resources */,
 				303725A21E13A83B00FABC93 /* InfoPlist.strings in Resources */,
 				30D02D9C1E111C8F00F51304 /* Assets.xcassets in Resources */,
 				30D02DBD1E11207D00F51304 /* WelcomeView.xib in Resources */,
@@ -992,6 +1011,7 @@
 				30D02C041E111C3700F51304 /* RepositoryError.swift in Sources */,
 				30D02C4C1E111C3700F51304 /* Injector.swift in Sources */,
 				30D02E441E117B1200F51304 /* DTO.swift in Sources */,
+				30BF1F7B1E13D33A006DED45 /* ListAdapter.swift in Sources */,
 				30D02E041E1124E500F51304 /* ErrorViewController.swift in Sources */,
 				303725341E12568700FABC93 /* BusNodeBasicInfo.swift in Sources */,
 				30D02DB21E11205F00F51304 /* WelcomeView.swift in Sources */,
