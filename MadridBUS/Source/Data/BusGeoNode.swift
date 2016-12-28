@@ -8,7 +8,7 @@ final class BusGeoNode: Mappable {
     var address: String = ""
     var latitude: Double = 0.0
     var longitude: Double = 0.0
-    
+
     required init?(map: Map) {}
     
     func mapping(map: Map) {
@@ -18,5 +18,11 @@ final class BusGeoNode: Mappable {
         address <- map["postalAddress"]
         latitude <- map["latitude"]
         longitude <- map["longitude"]
+        
+        if lines.count == 0 {
+            var line: BusGeoLine = BusGeoLine()
+            line <- map["line"]
+            lines = [line]
+        }
     }
 }

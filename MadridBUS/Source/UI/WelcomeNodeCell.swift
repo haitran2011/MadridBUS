@@ -1,17 +1,27 @@
 import UIKit
 
-class WelcomeNodeCell: UITableViewCell {
+protocol WelcomeNodeCell: class {
+    func update(using ETA: String)
+}
+
+class WelcomeNodeCellBase: UITableViewCell, WelcomeNodeCell {
+    
+    internal var presenter: WelcomeNodeCellPresenter!
     
     @IBOutlet weak var busLineLabel: UILabel!
     @IBOutlet weak var nextBusTimeLabel: UILabel!
     @IBOutlet weak var spinnerETA: UIActivityIndicatorView!
 
-    var line: String = ""
-    
     override func awakeFromNib() {
+        let injector: Injector = SwinjectInjectorProvider.injector
+        presenter = injector.instanceOf(WelcomeNodeCellPresenter.self)
+        presenter.config(using: self)
+        
         super.awakeFromNib()
         commonInit()
     }
+    
+
     
     private func commonInit() {
         busLineLabel.backgroundColor = Colors.blue
@@ -21,21 +31,23 @@ class WelcomeNodeCell: UITableViewCell {
         busLineLabel.adjustsFontSizeToFitWidth = true
         
         nextBusTimeLabel.isHidden = true
-    }
-    
-    func configure(using model: BusGeoLine) {
-        line = model.name
-        busLineLabel.text = model.name
-    }
-    
-    func update(using arrivals: [BusGeoNodeArrival]?) {
-        spinnerETA.isHidden = true
         
-        guard let busArrivals = arrivals else {
-            return
-        }
+        nextBusTimeLabel.backgroundColor = .white
+        nextBusTimeLabel.textAlignment = .right
+        nextBusTimeLabel.font = Fonts.busLineName
+        nextBusTimeLabel.textColor = .black
+        nextBusTimeLabel.adjustsFontSizeToFitWidth = true
+    }
     
-        nextBusTimeLabel.text = String(busArrivals[0].ETA / 60)
+    func configure(using model: BusGeoLine, on node: BusGeoNode) {
+        busLineLabel.text = model.name
+        
+        presenter.nextArrival(at: model.name, on: node.id)
+    }
+    
+    func update(using ETA: String) {
+        spinnerETA.isHidden = true
         nextBusTimeLabel.isHidden = false
+        nextBusTimeLabel.text = ETA
     }
 }

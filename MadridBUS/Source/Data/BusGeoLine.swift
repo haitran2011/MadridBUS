@@ -22,6 +22,7 @@ final class BusGeoLine: Mappable {
     var startTime: Date = Date()
     var endTime: Date = Date()
     
+    init () {}
     required init?(map: Map) {}
     
     func mapping(map: Map) {

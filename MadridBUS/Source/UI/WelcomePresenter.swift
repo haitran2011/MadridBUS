@@ -5,7 +5,6 @@ protocol WelcomePresenter: ListAdapter {
     func config(using view: View)
     
     func node(at section: Int) -> BusGeoNode
-    func arrivals(at line: String, on node: Int) -> [BusGeoNodeArrival]?
     func model(at index: IndexPath) -> BusGeoLine
 }
 
@@ -13,30 +12,17 @@ class WelcomePresenterBase: Presenter, WelcomePresenter {
     private weak var view: WelcomeView!
 
     private var nodesAroundLocation: BusGeoNodesAroundLocationInteractor!
-    private var nodeArrivals: BusGeoNodeArrivalsInteractor!
     
     private var locationHelper: LocationHelper!
     
     internal var nearBusGeoNodes: [BusGeoNode] = [] {
         didSet {
             view.updateBusNodes()
-            
-            nearArrivals = []
-            for aNode in nearBusGeoNodes {
-                obtainArrivals(using: aNode.id)
-            }
         }
     }
-    
-    internal var nearArrivals: [BusGeoNodeArrival] = [] {
-        didSet {
-            view.updateBusNodes()
-        }
-    }
-    
+
     required init(injector: Injector) {
         nodesAroundLocation = injector.instanceOf(BusGeoNodesAroundLocationInteractor.self)
-        nodeArrivals = injector.instanceOf(BusGeoNodeArrivalsInteractor.self)
         locationHelper = injector.instanceOf(LocationHelper.self)
         super.init(injector: injector)
     }
@@ -60,8 +46,7 @@ class WelcomePresenterBase: Presenter, WelcomePresenter {
         if locationHelper.isLocationAvailable {
             locationHelper.acquireLocation { (acquiredLocation) in
                 self.view.updateMap(with: acquiredLocation)
-                //self.nodesAround(latitude: acquiredLocation.coordinate.latitude, longitude: acquiredLocation.coordinate.longitude, radius: 100)
-                self.nodesAround(latitude: 40.3833394, longitude: -3.7237334, radius: 100)
+                self.nodesAround(latitude: acquiredLocation.coordinate.latitude, longitude: acquiredLocation.coordinate.longitude, radius: 100)
             }
         }
     }
@@ -73,16 +58,6 @@ class WelcomePresenterBase: Presenter, WelcomePresenter {
         
         nodesAroundLocation.execute(dto) { (nodesList) in
             self.nearBusGeoNodes = nodesList
-        }
-    }
-    
-    private func obtainArrivals(using nodeId: String) {
-        nodeArrivals.subscribeHandleErrorDelegate(delegate: self)
-        
-        let dto = BusGeoNodeArrivalsDTO(nodeId: nodeId)
-        
-        nodeArrivals.execute(dto) { (arrivalsList) in
-            self.nearArrivals.append(contentsOf: arrivalsList)
         }
     }
 }
@@ -102,14 +77,5 @@ extension WelcomePresenterBase {
     
     internal func model(at index: IndexPath) -> BusGeoLine {
         return nearBusGeoNodes[index.section].lines[index.row]
-    }
-    
-    internal func arrivals(at line: String, on node: Int) -> [BusGeoNodeArrival]? {
-        let arrivals = nearArrivals.filter { $0.lineId == line && $0.nodeId == node}
-        if arrivals.count > 0 {
-            return arrivals
-        } else {
-            return nil
-        }
     }
 }

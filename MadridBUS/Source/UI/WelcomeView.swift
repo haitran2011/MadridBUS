@@ -64,15 +64,11 @@ extension WelcomeViewBase: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: nodeCell, for: indexPath) as! WelcomeNodeCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: nodeCell, for: indexPath) as! WelcomeNodeCellBase
         
         let model = presenter.model(at: indexPath)
-        cell.configure(using: model)
-        
-        if let arrivals = presenter.arrivals(at: model.name, on: Int(presenter.node(at: indexPath.section).id)!) {
-            cell.update(using: arrivals)
-        }
-        
+        cell.configure(using: model, on: presenter.node(at: indexPath.section))
+
         return cell
     }
 }
