@@ -27,4 +27,17 @@ class BusGeoRepositoryBase: Repository, BusGeoRepository {
         
         return try processMultiResponse(response: request.response)
     }
+    
+    func nodeArrivals(dto: BusGeoNodeArrivalsDTO) throws -> [BusGeoNodeArrival] {
+        let request = RequestBuilder()
+            .post()
+            .url("/geo/GetArriveStop.php")
+            .skip(key: "arrives")
+            .parameter(parameter: dto)
+            .buildForJsonResponseFor(BusGeoNodeArrival.self)
+        
+        requestClient.execute(request)
+        
+        return try processMultiResponse(response: request.response)
+    }
 }

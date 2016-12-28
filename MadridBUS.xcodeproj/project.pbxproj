@@ -61,6 +61,12 @@
 		303725851E1397E100FABC93 /* BusGeoNodesAroundLocationDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303725831E1397E100FABC93 /* BusGeoNodesAroundLocationDTO.swift */; };
 		303725871E1398AF00FABC93 /* BusGeoNodesAroundLocationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303725861E1398AF00FABC93 /* BusGeoNodesAroundLocationInteractor.swift */; };
 		303725881E1398AF00FABC93 /* BusGeoNodesAroundLocationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303725861E1398AF00FABC93 /* BusGeoNodesAroundLocationInteractor.swift */; };
+		3037258A1E1399FD00FABC93 /* BusGeoNodeArrival.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303725891E1399FD00FABC93 /* BusGeoNodeArrival.swift */; };
+		3037258B1E1399FD00FABC93 /* BusGeoNodeArrival.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303725891E1399FD00FABC93 /* BusGeoNodeArrival.swift */; };
+		3037258D1E139B3900FABC93 /* BusGeoNodeArrivals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3037258C1E139B3900FABC93 /* BusGeoNodeArrivals.swift */; };
+		3037258E1E139B3900FABC93 /* BusGeoNodeArrivals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3037258C1E139B3900FABC93 /* BusGeoNodeArrivals.swift */; };
+		303725901E139BE700FABC93 /* BusGeoNodeArrivalsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3037258F1E139BE700FABC93 /* BusGeoNodeArrivalsInteractor.swift */; };
+		303725911E139BE700FABC93 /* BusGeoNodeArrivalsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3037258F1E139BE700FABC93 /* BusGeoNodeArrivalsInteractor.swift */; };
 		30A5401A1E1116A600362E8B /* MadridBUSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A540191E1116A600362E8B /* MadridBUSTests.swift */; };
 		30A540251E1116A600362E8B /* MadridBUSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A540241E1116A600362E8B /* MadridBUSUITests.swift */; };
 		30D02BA41E111C3700F51304 /* BusinessError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D02AEC1E111C3700F51304 /* BusinessError.swift */; };
@@ -267,6 +273,9 @@
 		303725801E13937E00FABC93 /* BusGeoNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusGeoNode.swift; sourceTree = "<group>"; };
 		303725831E1397E100FABC93 /* BusGeoNodesAroundLocationDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusGeoNodesAroundLocationDTO.swift; sourceTree = "<group>"; };
 		303725861E1398AF00FABC93 /* BusGeoNodesAroundLocationInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusGeoNodesAroundLocationInteractor.swift; sourceTree = "<group>"; };
+		303725891E1399FD00FABC93 /* BusGeoNodeArrival.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusGeoNodeArrival.swift; sourceTree = "<group>"; };
+		3037258C1E139B3900FABC93 /* BusGeoNodeArrivals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusGeoNodeArrivals.swift; sourceTree = "<group>"; };
+		3037258F1E139BE700FABC93 /* BusGeoNodeArrivalsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusGeoNodeArrivalsInteractor.swift; sourceTree = "<group>"; };
 		30A540011E1116A500362E8B /* MadridBUS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MadridBUS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30A540101E1116A500362E8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		30A540151E1116A600362E8B /* MadridBUSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MadridBUSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -413,6 +422,7 @@
 				303725671E12A9C200FABC93 /* POI.swift */,
 				303725801E13937E00FABC93 /* BusGeoNode.swift */,
 				3037257D1E13933600FABC93 /* BusGeoLine.swift */,
+				303725891E1399FD00FABC93 /* BusGeoNodeArrival.swift */,
 			);
 			name = BusGeo;
 			sourceTree = "<group>";
@@ -422,6 +432,7 @@
 			children = (
 				303725641E12A8B400FABC93 /* BusGeoPOIDTO.swift */,
 				303725831E1397E100FABC93 /* BusGeoNodesAroundLocationDTO.swift */,
+				3037258C1E139B3900FABC93 /* BusGeoNodeArrivals.swift */,
 			);
 			name = BusGeo;
 			sourceTree = "<group>";
@@ -431,19 +442,9 @@
 			children = (
 				3037256B1E12AAA700FABC93 /* BusGeoPOIInteractor.swift */,
 				303725861E1398AF00FABC93 /* BusGeoNodesAroundLocationInteractor.swift */,
+				3037258F1E139BE700FABC93 /* BusGeoNodeArrivalsInteractor.swift */,
 			);
 			name = BusGeo;
-			sourceTree = "<group>";
-		};
-		3037256E1E12BB9E00FABC93 /* Requests */ = {
-			isa = PBXGroup;
-			children = (
-				30D02B1C1E111C3700F51304 /* Request.swift */,
-				30D02B1D1E111C3700F51304 /* RequestBuilder.swift */,
-				303725711E12BBD500FABC93 /* JsonRequest.swift */,
-				3037257A1E12C34400FABC93 /* StringRequest.swift */,
-			);
-			name = Requests;
 			sourceTree = "<group>";
 		};
 		30A53FF81E1116A500362E8B = {
@@ -557,8 +558,11 @@
 		30D02B1A1E111C3700F51304 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				3037256E1E12BB9E00FABC93 /* Requests */,
+				30D02B1C1E111C3700F51304 /* Request.swift */,
 				30D02B1E1E111C3700F51304 /* RequestClient.swift */,
+				30D02B1D1E111C3700F51304 /* RequestBuilder.swift */,
+				303725711E12BBD500FABC93 /* JsonRequest.swift */,
+				3037257A1E12C34400FABC93 /* StringRequest.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -873,6 +877,7 @@
 				30D02DD41E11231500F51304 /* Fonts.swift in Sources */,
 				3037255F1E12A84300FABC93 /* BusGeoRepositoryBase.swift in Sources */,
 				30D02DB71E11206E00F51304 /* WelcomePresenter.swift in Sources */,
+				303725901E139BE700FABC93 /* BusGeoNodeArrivalsInteractor.swift in Sources */,
 				30D02DF81E11247D00F51304 /* ErrorView.swift in Sources */,
 				303725401E1265CD00FABC93 /* BusNodesForBusLinesDTO.swift in Sources */,
 				30D02C491E111C3700F51304 /* ApplicationManager.swift in Sources */,
@@ -896,6 +901,7 @@
 				30D02E041E1124E500F51304 /* ErrorViewController.swift in Sources */,
 				303725341E12568700FABC93 /* BusNodeBasicInfo.swift in Sources */,
 				30D02DB21E11205F00F51304 /* WelcomeView.swift in Sources */,
+				3037258A1E1399FD00FABC93 /* BusGeoNodeArrival.swift in Sources */,
 				3037257B1E12C34400FABC93 /* StringRequest.swift in Sources */,
 				30D02C2E1E111C3700F51304 /* RequestClient.swift in Sources */,
 				30D02BB61E111C3700F51304 /* Interactor.swift in Sources */,
@@ -915,6 +921,7 @@
 				303725871E1398AF00FABC93 /* BusGeoNodesAroundLocationInteractor.swift in Sources */,
 				303725721E12BBD500FABC93 /* JsonRequest.swift in Sources */,
 				3037252E1E124F7E00FABC93 /* BusLinesBasicInfoDTO.swift in Sources */,
+				3037258D1E139B3900FABC93 /* BusGeoNodeArrivals.swift in Sources */,
 				30D02E2C1E11283500F51304 /* BusGroup.swift in Sources */,
 				30D02C4F1E111C3700F51304 /* SwinjectInjectorProvider.swift in Sources */,
 				30D02E381E11744800F51304 /* BusCalendarInteractor.swift in Sources */,
@@ -956,6 +963,7 @@
 				303725851E1397E100FABC93 /* BusGeoNodesAroundLocationDTO.swift in Sources */,
 				303725691E12A9C200FABC93 /* POI.swift in Sources */,
 				303725261E124BA000FABC93 /* BusLinesBasicInfoInteractor.swift in Sources */,
+				3037258B1E1399FD00FABC93 /* BusGeoNodeArrival.swift in Sources */,
 				30D02DEC1E1123F300F51304 /* View.swift in Sources */,
 				303725411E1265CD00FABC93 /* BusNodesForBusLinesDTO.swift in Sources */,
 				30D02E2D1E11283500F51304 /* BusGroup.swift in Sources */,
@@ -989,6 +997,8 @@
 				30D02E151E11254A00F51304 /* String+Truncated.swift in Sources */,
 				30D02C4D1E111C3700F51304 /* Injector.swift in Sources */,
 				303725821E13937E00FABC93 /* BusGeoNode.swift in Sources */,
+				303725911E139BE700FABC93 /* BusGeoNodeArrivalsInteractor.swift in Sources */,
+				3037258E1E139B3900FABC93 /* BusGeoNodeArrivals.swift in Sources */,
 				30D02E391E11744800F51304 /* BusCalendarInteractor.swift in Sources */,
 				3037254A1E127BCF00FABC93 /* BusLinesScheduleInteractor.swift in Sources */,
 				30D02E311E1128FE00F51304 /* BusRepositoryBase.swift in Sources */,

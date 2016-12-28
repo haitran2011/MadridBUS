@@ -34,6 +34,7 @@ class SwinjectInjectorProvider: InjectorProvider, Injector {
 
         container.register(BusGeoPOIInteractor.self) { _ in BusGeoPOIAsyncInteractor(injector: self) }
         container.register(BusGeoNodesAroundLocationInteractor.self) { _ in BusGeoNodesAroundLocationAsyncInteractor(injector: self) }
+        container.register(BusGeoNodeArrivalsInteractor.self) { _ in BusGeoNodeArrivalsAsyncInteractor(injector: self) }
         
         //Helpers
         
