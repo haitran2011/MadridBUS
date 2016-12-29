@@ -9,7 +9,7 @@ enum WelcomeViewMode {
 protocol WelcomeView: View {
     func updateMap(with location: CLLocation)
     func updateMap(with nodes: [BusGeoNode])
-    func updateBusNodes()
+    func updateNodesTable()
     func enable(mode: WelcomeViewMode)
 }
 
@@ -53,15 +53,26 @@ class WelcomeViewBase: UIViewController, WelcomeView {
     
     func updateMap(with nodes: [BusGeoNode]) {
         for aNode in nodes {
-            let annotation = MKPointAnnotation()
+            let annotation = NodeAnnotation()
             annotation.coordinate = CLLocationCoordinate2D(latitude: aNode.latitude, longitude: aNode.longitude)
             annotation.title = "(\(aNode.id)) \(aNode.name)"
+            annotation.nodeId = aNode.id
             locationMap.addAnnotation(annotation)
         }
     }
     
-    func updateBusNodes() {
+    func updateNodesTable() {
         enable(mode: .foundNodesAround)
+        nodesTable.reloadData()
+    }
+    
+    func updateNodesTable(with annotation: NodeAnnotation?) {
+        if let selectedAnnotation = annotation {
+            presenter.activeAnnotationId = selectedAnnotation.nodeId
+        } else {
+            presenter.activeAnnotationId = nil
+        }
+        
         nodesTable.reloadData()
     }
     
@@ -100,8 +111,13 @@ extension WelcomeViewBase: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: nodesTable.nodeCell, for: indexPath) as! WelcomeNodeCellBase
         
         let model = presenter.model(at: indexPath)
-        cell.configure(using: model, on: presenter.node(at: indexPath.section))
-
+        
+        if presenter.shouldHighlightNodeCell(at: indexPath) {
+            cell.configure(using: model, on: presenter.node(at: indexPath.section), highlighted: true)
+        } else {
+            cell.configure(using: model, on: presenter.node(at: indexPath.section), highlighted: false)
+        }
+        
         return cell
     }
 }
@@ -112,16 +128,25 @@ extension WelcomeViewBase: MKMapViewDelegate {
             return nil
         }
         
+        let nodeAnnotation = annotation as! NodeAnnotation
         let annotationReuseId = "BusNodeAnnotation"
         
         var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: annotationReuseId)
         if annotationView == nil {
-            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: annotationReuseId)
+            annotationView = MKPinAnnotationView(annotation: nodeAnnotation, reuseIdentifier: annotationReuseId)
             annotationView?.canShowCallout = true
         } else {
-            annotationView?.annotation = annotation
+            annotationView?.annotation = nodeAnnotation
         }
         
         return annotationView
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        updateNodesTable(with: view.annotation as? NodeAnnotation)
+    }
+    
+    func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
+        updateNodesTable(with: nil)
     }
 }

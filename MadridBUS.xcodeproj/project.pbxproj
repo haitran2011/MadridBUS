@@ -105,6 +105,7 @@
 		30D02E3C1E1174A600F51304 /* BusCalendarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D02E3B1E1174A600F51304 /* BusCalendarItem.swift */; };
 		30D02E401E117AEC00F51304 /* BusCalendarDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D02E3F1E117AEC00F51304 /* BusCalendarDTO.swift */; };
 		30D02E441E117B1200F51304 /* DTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D02E431E117B1200F51304 /* DTO.swift */; };
+		30D482491E150533007330D2 /* NodeAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D482481E150533007330D2 /* NodeAnnotation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -223,6 +224,7 @@
 		30D02E3B1E1174A600F51304 /* BusCalendarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusCalendarItem.swift; sourceTree = "<group>"; };
 		30D02E3F1E117AEC00F51304 /* BusCalendarDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusCalendarDTO.swift; sourceTree = "<group>"; };
 		30D02E431E117B1200F51304 /* DTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTO.swift; sourceTree = "<group>"; };
+		30D482481E150533007330D2 /* NodeAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeAnnotation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -364,6 +366,7 @@
 		303725B01E13C7FE00FABC93 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				30D482471E150525007330D2 /* NodeAnnotation */,
 				3017F4031E14E3E60087BABA /* NodesNearTable */,
 				30BF1F851E1436A4006DED45 /* ManualSearchView */,
 				303725B11E13C80600FABC93 /* WelcomeNodeCell */,
@@ -656,6 +659,14 @@
 			name = Assets;
 			sourceTree = "<group>";
 		};
+		30D482471E150525007330D2 /* NodeAnnotation */ = {
+			isa = PBXGroup;
+			children = (
+				30D482481E150533007330D2 /* NodeAnnotation.swift */,
+			);
+			name = NodeAnnotation;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -797,6 +808,7 @@
 				30D02E261E1127DD00F51304 /* BusRepository.swift in Sources */,
 				30D02E3C1E1174A600F51304 /* BusCalendarItem.swift in Sources */,
 				30BF1F821E1422B7006DED45 /* WelcomeNodeCellPresenter.swift in Sources */,
+				30D482491E150533007330D2 /* NodeAnnotation.swift in Sources */,
 				303725521E129AA300FABC93 /* BusLineTimeTableInteractor.swift in Sources */,
 				3037256C1E12AAA700FABC93 /* BusGeoPOIInteractor.swift in Sources */,
 				303725251E124BA000FABC93 /* BusLinesBasicInfoInteractor.swift in Sources */,

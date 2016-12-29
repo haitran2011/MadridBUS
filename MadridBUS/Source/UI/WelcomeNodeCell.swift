@@ -23,16 +23,19 @@ class WelcomeNodeCellBase: UITableViewCell, WelcomeNodeCell {
     }
 
     private func commonInit() {
+        contentView.backgroundColor = .clear
         accessoryType = .detailButton
+        tintColor = Colors.blue
         
         busLineLabel.backgroundColor = Colors.blue
         busLineLabel.textAlignment = .center
         busLineLabel.font = Fonts.busLineName
         busLineLabel.textColor = .white
         busLineLabel.adjustsFontSizeToFitWidth = true
+        busLineLabel.layer.borderColor = UIColor.white.cgColor
         
         directionLabel.isHidden = true
-        directionLabel.backgroundColor = .white
+        directionLabel.backgroundColor = .clear
         directionLabel.textAlignment = .left
         directionLabel.font = Fonts.standardRegular
         directionLabel.textColor = .black
@@ -40,15 +43,28 @@ class WelcomeNodeCellBase: UITableViewCell, WelcomeNodeCell {
         directionLabel.lineBreakMode = .byTruncatingTail
         
         nextBusTimeLabel.isHidden = true
-        nextBusTimeLabel.backgroundColor = .white
+        nextBusTimeLabel.backgroundColor = .clear
         nextBusTimeLabel.textAlignment = .right
         nextBusTimeLabel.font = Fonts.standardSemibold
         nextBusTimeLabel.textColor = .black
         nextBusTimeLabel.adjustsFontSizeToFitWidth = true
     }
     
-    func configure(using model: BusGeoLine, on node: BusGeoNode) {
+    func configure(using model: BusGeoLine, on node: BusGeoNode, highlighted: Bool) {
         busLineLabel.text = model.name
+        if highlighted {
+            backgroundColor = Colors.green
+            tintColor = .white
+            nextBusTimeLabel.textColor = .white
+            busLineLabel.layer.borderWidth = 2
+            directionLabel.textColor = .white
+        } else {
+            backgroundColor = .white
+            tintColor = Colors.blue
+            nextBusTimeLabel.textColor = .black
+            busLineLabel.layer.borderWidth = 0
+            directionLabel.textColor = .black
+        }
         
         presenter.nextArrival(at: model.name, on: node.id)
     }

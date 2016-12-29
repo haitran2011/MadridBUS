@@ -1,24 +1,28 @@
 import Foundation
 
 protocol WelcomePresenter: ListAdapter {
+    var activeAnnotationId: String? { get set }
+    
     func obtainLocation()
     func config(using view: View)
+    func shouldHighlightNodeCell(at index: IndexPath) -> Bool
     
     func node(at section: Int) -> BusGeoNode
     func model(at index: IndexPath) -> BusGeoLine
 }
 
 class WelcomePresenterBase: Presenter, WelcomePresenter {
+    var activeAnnotationId: String?
+    
     private weak var view: WelcomeView!
 
     private var nodesAroundLocation: BusGeoNodesAroundLocationInteractor!
-    
     private var locationHelper: LocationHelper!
     
     internal var nearBusGeoNodes: [BusGeoNode] = [] {
         didSet {
             view.updateMap(with: nearBusGeoNodes)
-            view.updateBusNodes()
+            view.updateNodesTable()
         }
     }
 
@@ -40,6 +44,18 @@ class WelcomePresenterBase: Presenter, WelcomePresenter {
     override func handleErrors(error: Error) {
         if error._code == 101 {
             view.enable(mode: .zeroNodesAround)
+        }
+    }
+    
+    func shouldHighlightNodeCell(at index: IndexPath) -> Bool {
+        if let currentNodeId = activeAnnotationId {
+            if node(at: index.section).id == currentNodeId {
+                return true
+            } else {
+                return false
+            }
+        } else {
+            return false
         }
     }
     
