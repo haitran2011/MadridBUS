@@ -51,7 +51,6 @@
 		30BF1F871E1436D1006DED45 /* ManualSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BF1F861E1436D1006DED45 /* ManualSearchView.swift */; };
 		30BF1F8F1E143F67006DED45 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30BF1F8E1E143F67006DED45 /* SnapKit.framework */; };
 		30BF1F901E143F67006DED45 /* SnapKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 30BF1F8E1E143F67006DED45 /* SnapKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		30BF1F921E14466E006DED45 /* NSLayoutConstraint+SetMultiplier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BF1F911E14466E006DED45 /* NSLayoutConstraint+SetMultiplier.swift */; };
 		30D02BA41E111C3700F51304 /* BusinessError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D02AEC1E111C3700F51304 /* BusinessError.swift */; };
 		30D02BAD1E111C3700F51304 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D02AEF1E111C3700F51304 /* Errors.swift */; };
 		30D02BB61E111C3700F51304 /* Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D02AF31E111C3700F51304 /* Interactor.swift */; };
@@ -176,7 +175,6 @@
 		30BF1F811E1422B7006DED45 /* NodesNearTableCellPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodesNearTableCellPresenter.swift; sourceTree = "<group>"; };
 		30BF1F861E1436D1006DED45 /* ManualSearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManualSearchView.swift; sourceTree = "<group>"; };
 		30BF1F8E1E143F67006DED45 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = ../../Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
-		30BF1F911E14466E006DED45 /* NSLayoutConstraint+SetMultiplier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+SetMultiplier.swift"; sourceTree = "<group>"; };
 		30D02AEC1E111C3700F51304 /* BusinessError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessError.swift; sourceTree = "<group>"; };
 		30D02AEF1E111C3700F51304 /* Errors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		30D02AF31E111C3700F51304 /* Interactor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Interactor.swift; sourceTree = "<group>"; };
@@ -639,7 +637,6 @@
 				30D02E0A1E11254A00F51304 /* Date+Formatters.swift */,
 				30D02E0B1E11254A00F51304 /* String+Truncated.swift */,
 				30D02E0D1E11254A00F51304 /* UIViewController+ShowCompletion.swift */,
-				30BF1F911E14466E006DED45 /* NSLayoutConstraint+SetMultiplier.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -785,7 +782,6 @@
 				303725991E139EE600FABC93 /* LocationHelper.swift in Sources */,
 				303725651E12A8B400FABC93 /* BusGeoPOIDTO.swift in Sources */,
 				30D02E221E11278D00F51304 /* BusGroupsInteractor.swift in Sources */,
-				30BF1F921E14466E006DED45 /* NSLayoutConstraint+SetMultiplier.swift in Sources */,
 				30D02C461E111C3700F51304 /* AppDelegate.swift in Sources */,
 				30D02E0E1E11254A00F51304 /* Date+Components.swift in Sources */,
 				303725371E12575C00FABC93 /* BusNodesBasicInfoDTO.swift in Sources */,

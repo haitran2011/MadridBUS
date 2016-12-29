@@ -56,8 +56,7 @@ class WelcomeViewBase: UIViewController, WelcomeView {
     }
     
     func updateMap(with location: CLLocation) {
-        //let region = MKCoordinateRegion(center: location.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
-        let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 40.382797016999334, longitude:  -3.7231069600644706), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        let region = MKCoordinateRegion(center: location.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
         locationMap.setRegion(region, animated: true)
         locationMap.showsUserLocation = true
     }

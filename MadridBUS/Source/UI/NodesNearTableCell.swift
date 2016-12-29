@@ -1,12 +1,15 @@
 import UIKit
 
 protocol NodesNearTableCell: class {
-    func update(using ETA: String, heading: String)
+    var nextArrival: BusGeoNodeArrival? { get set }
+    
+    func update(using ETA: Int, heading: String)
 }
 
 class NodesNearTableCellBase: UITableViewCell, NodesNearTableCell {
-    
     internal var presenter: NodesNearTableCellPresenter!
+    
+    var nextArrival: BusGeoNodeArrival?
     
     @IBOutlet weak var busLineLabel: UILabel!
     @IBOutlet weak var directionLabel: UILabel!
@@ -69,9 +72,18 @@ class NodesNearTableCellBase: UITableViewCell, NodesNearTableCell {
         presenter.nextArrival(at: model.name, on: node.id)
     }
     
-    func update(using ETA: String, heading: String) {
-        nextBusTimeLabel.text = ETA
-        directionLabel.text = heading
+    func update(using ETA: Int, heading: String) {
+        var stringETA = ""
+        if ETA < 60 {
+            stringETA = LocalizedLiteral.localize(using: "WELCOMENODECELL_LB_ETA")
+        } else if ETA >= 9999 {
+            stringETA = "+ 20 min."
+        } else {
+            stringETA = "\(ETA / 60) min."
+        }
+        
+        nextBusTimeLabel.text = stringETA
+        directionLabel.text = LocalizedLiteral.localize(using: "WELCOMENODECELL_LB_DIRECTION", with: heading)
         
         spinnerETA.isHidden = true
         nextBusTimeLabel.isHidden = false
@@ -80,6 +92,8 @@ class NodesNearTableCellBase: UITableViewCell, NodesNearTableCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        
+        nextArrival = nil
         
         spinnerETA.isHidden = false
         nextBusTimeLabel.isHidden = true

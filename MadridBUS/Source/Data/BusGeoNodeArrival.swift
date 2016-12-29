@@ -17,6 +17,7 @@ final class BusGeoNodeArrival: Mappable {
     var latitude: Double = 0.0
     var longitude: Double = 0.0
     
+    init() {}
     required init?(map: Map) {}
     
     func mapping(map: Map) {

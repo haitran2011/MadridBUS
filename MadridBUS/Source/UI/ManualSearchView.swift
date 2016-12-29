@@ -13,6 +13,8 @@ class ManualSearchViewBase: UIView, ManualSearchView {
     var relatedActionButton = UIButton(type: .custom)
     var backgroundImage = UIImageView()
     
+    fileprivate let backgroundRotation = CABasicAnimation(keyPath: "transform.rotation")
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -27,12 +29,17 @@ class ManualSearchViewBase: UIView, ManualSearchView {
         backgroundColor = Colors.blue
         clipsToBounds = true
         
+        backgroundRotation.fromValue = 0.0
+        backgroundRotation.toValue = CGFloat(M_PI * 2.0)
+        backgroundRotation.duration = 2.0
+        backgroundRotation.repeatCount = HUGE
+        
         backgroundImage.image = #imageLiteral(resourceName: "Radar")
         backgroundImage.tintColor = .white
         backgroundImage.contentMode = .scaleAspectFit
         backgroundImage.alpha = 0.2
         
-        explanationLabel.font = Fonts.standardLight
+        explanationLabel.font = Fonts.standardRegular
         explanationLabel.textAlignment = .left
         explanationLabel.textColor = .white
         explanationLabel.numberOfLines = 0
@@ -43,8 +50,9 @@ class ManualSearchViewBase: UIView, ManualSearchView {
         radiusSegmentedControl.insertSegment(withTitle: "100 m.", at: 1, animated: false)
         radiusSegmentedControl.insertSegment(withTitle: "200 m.", at: 2, animated: false)
         radiusSegmentedControl.tintColor = .white
+        radiusSegmentedControl.selectedSegmentIndex = 0
         
-        relatedActionLabel.font = Fonts.standardLight
+        relatedActionLabel.font = Fonts.standardRegular
         relatedActionLabel.textAlignment = .left
         relatedActionLabel.textColor = .white
         relatedActionLabel.numberOfLines = 0
@@ -71,7 +79,8 @@ class ManualSearchViewBase: UIView, ManualSearchView {
         
         explanationLabel.snp.makeConstraints { (make) in
             make.top.equalTo(radiusSegmentedControl.snp.bottom).offset(8)
-            make.leading.trailing.equalToSuperview().offset(16)
+            make.leading.equalToSuperview().offset(16)
+            make.trailing.equalToSuperview().offset(-16)
         }
 
         relatedActionLabel.snp.makeConstraints { (make) in
@@ -95,6 +104,8 @@ class ManualSearchViewBase: UIView, ManualSearchView {
         }
         
         layoutIfNeeded()
+
+        backgroundImage.layer.add(backgroundRotation, forKey: nil)
     }
     
     func hide() {
