@@ -28,9 +28,24 @@ class WelcomeNodeCellPresenterBase: WelcomeNodeCellPresenter, HandleErrorDelegat
         let dto = BusGeoNodeArrivalsDTO(nodeId: node)
         
         nodeArrivals.execute(dto) { (arrivalsList) in
-            let secondsETA = arrivalsList.first!.ETA
+            if let firstToArrive = arrivalsList.first {
+                let secondsETA = firstToArrive.ETA
+                
+                var stringETA = ""
+                if secondsETA < 60 {
+                    stringETA = LocalizedLiteral.localize(using: "WELCOMENODECELL_LB_ETA")
+                } else if secondsETA >= 9999 {
+                    stringETA = "+ 20 min."
+                } else {
+                    stringETA = "\(secondsETA / 60) min."
+                }
+                
+                self.cell.update(using: stringETA,
+                                 heading: LocalizedLiteral.localize(using: "WELCOMENODECELL_LB_DIRECTION", with: firstToArrive.destination))
+            } else {
+                
+            }
             
-            self.cell.update(using: "\(secondsETA / 60) min.")
         }
     }
 }

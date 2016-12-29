@@ -15,7 +15,7 @@ class NodesNearTable: UITableView {
     }
     
     private func commonInit() {
-        backgroundColor = Colors.blue
+        backgroundColor = .white
         clipsToBounds = true
     }
 

@@ -32,7 +32,7 @@ class ManualSearchViewBase: UIView, ManualSearchView {
         backgroundImage.contentMode = .scaleAspectFit
         backgroundImage.alpha = 0.2
         
-        explanationLabel.font = Fonts.standard
+        explanationLabel.font = Fonts.standardLight
         explanationLabel.textAlignment = .left
         explanationLabel.textColor = .white
         explanationLabel.numberOfLines = 0
@@ -44,7 +44,7 @@ class ManualSearchViewBase: UIView, ManualSearchView {
         radiusSegmentedControl.insertSegment(withTitle: "200 m.", at: 2, animated: false)
         radiusSegmentedControl.tintColor = .white
         
-        relatedActionLabel.font = Fonts.standard
+        relatedActionLabel.font = Fonts.standardLight
         relatedActionLabel.textAlignment = .left
         relatedActionLabel.textColor = .white
         relatedActionLabel.numberOfLines = 0

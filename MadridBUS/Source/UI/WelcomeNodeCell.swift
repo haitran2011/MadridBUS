@@ -1,7 +1,7 @@
 import UIKit
 
 protocol WelcomeNodeCell: class {
-    func update(using ETA: String)
+    func update(using ETA: String, heading: String)
 }
 
 class WelcomeNodeCellBase: UITableViewCell, WelcomeNodeCell {
@@ -9,6 +9,7 @@ class WelcomeNodeCellBase: UITableViewCell, WelcomeNodeCell {
     internal var presenter: WelcomeNodeCellPresenter!
     
     @IBOutlet weak var busLineLabel: UILabel!
+    @IBOutlet weak var directionLabel: UILabel!
     @IBOutlet weak var nextBusTimeLabel: UILabel!
     @IBOutlet weak var spinnerETA: UIActivityIndicatorView!
 
@@ -20,9 +21,7 @@ class WelcomeNodeCellBase: UITableViewCell, WelcomeNodeCell {
         super.awakeFromNib()
         commonInit()
     }
-    
 
-    
     private func commonInit() {
         busLineLabel.backgroundColor = Colors.blue
         busLineLabel.textAlignment = .center
@@ -30,11 +29,17 @@ class WelcomeNodeCellBase: UITableViewCell, WelcomeNodeCell {
         busLineLabel.textColor = .white
         busLineLabel.adjustsFontSizeToFitWidth = true
         
-        nextBusTimeLabel.isHidden = true
+        directionLabel.isHidden = true
+        directionLabel.backgroundColor = .white
+        directionLabel.textAlignment = .left
+        directionLabel.font = Fonts.standardBold
+        directionLabel.textColor = .black
+        directionLabel.adjustsFontSizeToFitWidth = true
         
+        nextBusTimeLabel.isHidden = true
         nextBusTimeLabel.backgroundColor = .white
         nextBusTimeLabel.textAlignment = .right
-        nextBusTimeLabel.font = Fonts.standard
+        nextBusTimeLabel.font = Fonts.standardLight
         nextBusTimeLabel.textColor = .black
         nextBusTimeLabel.adjustsFontSizeToFitWidth = true
     }
@@ -45,9 +50,12 @@ class WelcomeNodeCellBase: UITableViewCell, WelcomeNodeCell {
         presenter.nextArrival(at: model.name, on: node.id)
     }
     
-    func update(using ETA: String) {
+    func update(using ETA: String, heading: String) {
+        nextBusTimeLabel.text = ETA
+        directionLabel.text = heading
+        
         spinnerETA.isHidden = true
         nextBusTimeLabel.isHidden = false
-        nextBusTimeLabel.text = ETA
+        directionLabel.isHidden = false
     }
 }
