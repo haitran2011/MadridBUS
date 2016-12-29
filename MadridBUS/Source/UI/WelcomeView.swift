@@ -7,8 +7,9 @@ enum WelcomeViewMode {
 }
 
 protocol WelcomeView: View {
+    var nodesTableDataSet: [BusGeoNode] { get set }
+    
     func updateMap(with location: CLLocation)
-    func updateMap(with nodes: [BusGeoNode])
     func updateNodesTable()
     func enable(mode: WelcomeViewMode)
 }
@@ -61,10 +62,8 @@ class WelcomeViewBase: UIViewController, WelcomeView {
         locationMap.showsUserLocation = true
     }
     
-    func updateMap(with nodes: [BusGeoNode]) {
-        nodesTableDataSet = nodes
-        
-        for aNode in nodes {
+    func updateMapForAnnotations() {
+        for aNode in nodesTableDataSet {
             let annotation = NodeAnnotation()
             annotation.coordinate = CLLocationCoordinate2D(latitude: aNode.latitude, longitude: aNode.longitude)
             annotation.title = "(\(aNode.id)) \(aNode.name)"
@@ -98,8 +97,12 @@ class WelcomeViewBase: UIViewController, WelcomeView {
         view.layoutIfNeeded()
         
         locationMap_heightConstraint.constant = -view.bounds.size.height * 0.5
-        UIView.animate(withDuration: 0.5) {
+        UIView.animate(withDuration: 0.5, animations: { 
             self.view.layoutIfNeeded()
+        }) { (completed) in
+            if completed {
+                self.updateMapForAnnotations()
+            }
         }
     }
 }
@@ -159,10 +162,12 @@ extension WelcomeViewBase: MKMapViewDelegate {
         let nodeAnnotation = annotation as! NodeAnnotation
         let annotationReuseId = "BusNodeAnnotation"
         
-        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: annotationReuseId)
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: annotationReuseId) as? MKPinAnnotationView
         if annotationView == nil {
             annotationView = MKPinAnnotationView(annotation: nodeAnnotation, reuseIdentifier: annotationReuseId)
             annotationView?.canShowCallout = true
+            annotationView?.animatesDrop = true
+            annotationView?.pinTintColor = Colors.blue
         } else {
             annotationView?.annotation = nodeAnnotation
         }

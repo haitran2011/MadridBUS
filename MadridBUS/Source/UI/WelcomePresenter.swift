@@ -10,12 +10,6 @@ class WelcomePresenterBase: Presenter, WelcomePresenter {
 
     private var nodesAroundLocation: BusGeoNodesAroundLocationInteractor!
     private var locationHelper: LocationHelper!
-    
-    internal var nearBusGeoNodes: [BusGeoNode] = [] {
-        didSet {
-            view.updateMap(with: nearBusGeoNodes)
-        }
-    }
 
     required init(injector: Injector) {
         nodesAroundLocation = injector.instanceOf(BusGeoNodesAroundLocationInteractor.self)
@@ -54,7 +48,7 @@ class WelcomePresenterBase: Presenter, WelcomePresenter {
         let dto = BusGeoNodesAroundLocationDTO(latitude: latitude, longitude: longitude, radius: radius)
         
         nodesAroundLocation.execute(dto) { (nodesList) in
-            self.nearBusGeoNodes = nodesList
+            self.view.nodesTableDataSet = nodesList
         }
     }
 }

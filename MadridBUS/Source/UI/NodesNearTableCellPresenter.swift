@@ -11,7 +11,6 @@ class NodesNearTableCellPresenterBase: NodesNearTableCellPresenter, HandleErrorD
     
     required init(injector: Injector = SwinjectInjectorProvider.injector) {
         nodeArrivals = injector.instanceOf(BusGeoNodeArrivalsInteractor.self)
-
     }
     
     func config(using cell: NodesNearTableCell) {
@@ -40,12 +39,10 @@ class NodesNearTableCellPresenterBase: NodesNearTableCellPresenter, HandleErrorD
                     stringETA = "\(secondsETA / 60) min."
                 }
                 
-                self.cell.update(using: stringETA,
-                                 heading: LocalizedLiteral.localize(using: "WELCOMENODECELL_LB_DIRECTION", with: firstToArrive.destination))
+                self.cell.update(using: stringETA, heading: LocalizedLiteral.localize(using: "WELCOMENODECELL_LB_DIRECTION", with: firstToArrive.destination))
             } else {
-                
+                self.cell.update(using: "ERROR", heading: LocalizedLiteral.localize(using: "WELCOMENODECELL_LB_DIRECTION", with: "ERROR"))
             }
-            
         }
     }
 }
