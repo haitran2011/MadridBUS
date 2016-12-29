@@ -8,6 +8,7 @@ enum WelcomeViewMode {
 
 protocol WelcomeView: View {
     func updateMap(with location: CLLocation)
+    func updateMap(with nodes: [BusGeoNode])
     func updateBusNodes()
     func enable(mode: WelcomeViewMode)
 }
@@ -33,7 +34,7 @@ class WelcomeViewBase: UIViewController, WelcomeView {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //contentWrapper.backgroundColor = Colors.blue
+        contentWrapper.backgroundColor = Colors.blue
         locationMap.delegate = self
     }
     
@@ -44,9 +45,19 @@ class WelcomeViewBase: UIViewController, WelcomeView {
     }
     
     func updateMap(with location: CLLocation) {
-        let region = MKCoordinateRegion(center: location.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        //let region = MKCoordinateRegion(center: location.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 40.382797016999334, longitude:  -3.7231069600644706), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
         locationMap.setRegion(region, animated: true)
         locationMap.showsUserLocation = true
+    }
+    
+    func updateMap(with nodes: [BusGeoNode]) {
+        for aNode in nodes {
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = CLLocationCoordinate2D(latitude: aNode.latitude, longitude: aNode.longitude)
+            annotation.title = "(\(aNode.id)) \(aNode.name)"
+            locationMap.addAnnotation(annotation)
+        }
     }
     
     func updateBusNodes() {
@@ -96,5 +107,21 @@ extension WelcomeViewBase: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension WelcomeViewBase: MKMapViewDelegate {
-    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if (annotation is MKUserLocation) {
+            return nil
+        }
+        
+        let annotationReuseId = "BusNodeAnnotation"
+        
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: annotationReuseId)
+        if annotationView == nil {
+            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: annotationReuseId)
+            annotationView?.canShowCallout = true
+        } else {
+            annotationView?.annotation = annotation
+        }
+        
+        return annotationView
+    }
 }

@@ -17,6 +17,7 @@ class WelcomePresenterBase: Presenter, WelcomePresenter {
     
     internal var nearBusGeoNodes: [BusGeoNode] = [] {
         didSet {
+            view.updateMap(with: nearBusGeoNodes)
             view.updateBusNodes()
         }
     }
