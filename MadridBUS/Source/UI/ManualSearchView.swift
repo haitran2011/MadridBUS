@@ -1,12 +1,20 @@
 import UIKit
 import SnapKit
 
+protocol ManualSearchViewDelegate: class {
+    func didSelect(radius: Int)
+}
+
 protocol ManualSearchView {
-    func show(over view: UIView)
+    var delegate: ManualSearchViewDelegate? { get set }
+    
+    func show(over view: UIView, delegating delegate: ManualSearchViewDelegate)
     func hide()
 }
 
 class ManualSearchViewBase: UIView, ManualSearchView {
+    weak var delegate: ManualSearchViewDelegate?
+    
     var explanationLabel = UILabel()
     var radiusSegmentedControl = UISegmentedControl()
     var relatedActionLabel = UILabel()
@@ -28,7 +36,8 @@ class ManualSearchViewBase: UIView, ManualSearchView {
     private func commonInit() {
         backgroundColor = Colors.blue
         clipsToBounds = true
-        
+        layer.masksToBounds = true
+
         backgroundRotation.fromValue = 0.0
         backgroundRotation.toValue = CGFloat(M_PI * 2.0)
         backgroundRotation.duration = 2.0
@@ -37,7 +46,7 @@ class ManualSearchViewBase: UIView, ManualSearchView {
         backgroundImage.image = #imageLiteral(resourceName: "Radar")
         backgroundImage.tintColor = .white
         backgroundImage.contentMode = .scaleAspectFit
-        backgroundImage.alpha = 0.2
+        backgroundImage.alpha = 0.1
         
         explanationLabel.font = Fonts.standardRegular
         explanationLabel.textAlignment = .left
@@ -51,6 +60,7 @@ class ManualSearchViewBase: UIView, ManualSearchView {
         radiusSegmentedControl.insertSegment(withTitle: "200 m.", at: 2, animated: false)
         radiusSegmentedControl.tintColor = .white
         radiusSegmentedControl.selectedSegmentIndex = 0
+        radiusSegmentedControl.addTarget(self, action: #selector(radiusSegmentedControlValueDidChange), for: .valueChanged)
         
         relatedActionLabel.font = Fonts.standardRegular
         relatedActionLabel.textAlignment = .left
@@ -68,7 +78,7 @@ class ManualSearchViewBase: UIView, ManualSearchView {
         
         backgroundImage.snp.makeConstraints { (make) in
             make.centerX.centerY.equalToSuperview()
-            make.width.height.equalToSuperview().dividedBy(3)
+            make.width.height.equalToSuperview().dividedBy(4)
         }
         
         radiusSegmentedControl.snp.makeConstraints { (make) in
@@ -95,10 +105,11 @@ class ManualSearchViewBase: UIView, ManualSearchView {
         }
     }
     
-    func show(over view: UIView) {
+    func show(over view: UIView, delegating delegate: ManualSearchViewDelegate) {
         view.addSubview(self)
         frame = view.frame
         bounds = view.bounds
+        self.delegate = delegate
         snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
@@ -109,6 +120,17 @@ class ManualSearchViewBase: UIView, ManualSearchView {
     }
     
     func hide() {
-        removeFromSuperview()
+        if superview != nil {
+            removeFromSuperview()
+        }
+    }
+    
+    func radiusSegmentedControlValueDidChange() {
+        switch radiusSegmentedControl.selectedSegmentIndex {
+        case 0: delegate?.didSelect(radius: 50)
+        case 1: delegate?.didSelect(radius: 100)
+        case 2: delegate?.didSelect(radius: 150)
+        default: break
+        }
     }
 }

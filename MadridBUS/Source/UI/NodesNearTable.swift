@@ -37,6 +37,8 @@ class NodesNearTable: UITableView {
     }
     
     func hide() {
-        removeFromSuperview()
+        if superview != nil {
+            removeFromSuperview()
+        }
     }
 }

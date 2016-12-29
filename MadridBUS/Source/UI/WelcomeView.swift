@@ -2,6 +2,7 @@ import UIKit
 import MapKit
 
 enum WelcomeViewMode {
+    case fullMap(shouldReset: Bool, completionHandler: (()->())?)
     case foundNodesAround
     case zeroNodesAround
 }
@@ -19,12 +20,12 @@ class WelcomeViewBase: UIViewController, WelcomeView {
     internal var manualSearch = ManualSearchViewBase()
     internal var nodesTable = NodesNearTable()
     
+    fileprivate var currentMode: WelcomeViewMode?
+    
     internal var nodesTableDataSet: [BusGeoNode] = [] {
         didSet {
             if nodesTableDataSet.count > 0 {
                 enable(mode: .foundNodesAround)
-            } else {
-                enable(mode: .zeroNodesAround)
             }
         }
     }
@@ -52,7 +53,7 @@ class WelcomeViewBase: UIViewController, WelcomeView {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
-        presenter.obtainLocation()
+        presenter.obtainLocation(using: 50)
     }
     
     func updateMap(with location: CLLocation) {
@@ -86,21 +87,49 @@ class WelcomeViewBase: UIViewController, WelcomeView {
     
     func enable(mode: WelcomeViewMode) {
         switch mode {
+        case .fullMap(let shouldReset, let completionHandler):
+            locationMap_heightConstraint.constant = 0
+            animateBottomWrapper(forShowing: false, shouldReset: shouldReset, completionHandler: completionHandler)
+            
         case .foundNodesAround:
             nodesTable.show(over: contentWrapper, delegating: self, sourcing: self)
+            view.layoutIfNeeded()
+            animateBottomWrapper(forShowing: true)
             
         case .zeroNodesAround:
-            manualSearch.show(over: contentWrapper)
+            manualSearch.show(over: contentWrapper, delegating: self)
+            view.layoutIfNeeded()
+            animateBottomWrapper(forShowing: true)
         }
-        
-        view.layoutIfNeeded()
-        
-        locationMap_heightConstraint.constant = -view.bounds.size.height * 0.5
-        UIView.animate(withDuration: 0.5, animations: { 
-            self.view.layoutIfNeeded()
-        }) { (completed) in
-            if completed {
-                self.updateMapForAnnotations()
+    }
+    
+    private func animateBottomWrapper(forShowing shouldShow: Bool, shouldReset: Bool = false, completionHandler: (() -> ())? = nil) {
+
+        if shouldShow {
+            locationMap_heightConstraint.constant = -view.bounds.size.height * 0.5
+            UIView.animate(withDuration: 0.5, animations: {
+                self.view.layoutIfNeeded()
+            }) { (completed) in
+                if completed {
+                    self.updateMapForAnnotations()
+                }
+            }
+        } else {
+            locationMap_heightConstraint.constant = 0
+            UIView.animate(withDuration: 0.5, animations: {
+                self.view.layoutIfNeeded()
+            }) { (completed) in
+                if completed {
+                    self.nodesTable.hide()
+                    self.manualSearch.hide()
+                    
+                    if shouldReset {
+                        self.nodesTableDataSet.removeAll()
+                        self.locationMap.removeAnnotations(self.locationMap.annotations)
+                    }
+                    
+                    completionHandler?()
+                }
             }
         }
     }
@@ -180,5 +209,13 @@ extension WelcomeViewBase: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
         updateNodesTable(with: nil)
+    }
+}
+
+extension WelcomeViewBase: ManualSearchViewDelegate {
+    func didSelect(radius: Int) {
+        enable(mode: .fullMap(shouldReset: true, completionHandler: { 
+            self.presenter.obtainLocation(using: radius)
+        }))
     }
 }

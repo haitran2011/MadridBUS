@@ -1,7 +1,7 @@
 import Foundation
 
 protocol WelcomePresenter {
-    func obtainLocation()
+    func obtainLocation(using radius: Int)
     func config(using view: View)
 }
 
@@ -32,11 +32,11 @@ class WelcomePresenterBase: Presenter, WelcomePresenter {
         }
     }
 
-    func obtainLocation() {
+    func obtainLocation(using radius: Int) {
         if locationHelper.isLocationAvailable {
             locationHelper.acquireLocation { (acquiredLocation) in
                 self.view.updateMap(with: acquiredLocation)
-                self.nodesAround(latitude: acquiredLocation.coordinate.latitude, longitude: acquiredLocation.coordinate.longitude, radius: 50)
+                self.nodesAround(latitude: acquiredLocation.coordinate.latitude, longitude: acquiredLocation.coordinate.longitude, radius: radius)
             }
         }
     }
