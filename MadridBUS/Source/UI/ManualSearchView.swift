@@ -11,6 +11,7 @@ class ManualSearchViewBase: UIView, ManualSearchView {
     var radiusSegmentedControl = UISegmentedControl()
     var relatedActionLabel = UILabel()
     var relatedActionButton = UIButton(type: .custom)
+    var backgroundImage = UIImageView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -25,6 +26,11 @@ class ManualSearchViewBase: UIView, ManualSearchView {
     private func commonInit() {
         backgroundColor = Colors.blue
         clipsToBounds = true
+        
+        backgroundImage.image = #imageLiteral(resourceName: "Radar")
+        backgroundImage.tintColor = .white
+        backgroundImage.contentMode = .scaleAspectFit
+        backgroundImage.alpha = 0.2
         
         explanationLabel.font = Fonts.standard
         explanationLabel.textAlignment = .left
@@ -50,31 +56,33 @@ class ManualSearchViewBase: UIView, ManualSearchView {
         relatedActionButton.setTitleColor(.white, for: .normal)
         relatedActionButton.titleLabel?.font = Fonts.button
         
-        [explanationLabel, radiusSegmentedControl, relatedActionLabel, relatedActionButton].forEach({ addSubview($0) })
+        [backgroundImage, explanationLabel, radiusSegmentedControl, relatedActionLabel, relatedActionButton].forEach({ addSubview($0) })
+        
+        backgroundImage.snp.makeConstraints { (make) in
+            make.centerX.centerY.equalToSuperview()
+            make.width.height.equalToSuperview().dividedBy(3)
+        }
         
         radiusSegmentedControl.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(16)
             make.leading.equalToSuperview().offset(16)
-            make.trailing.equalToSuperview().inset(16)
+            make.trailing.equalToSuperview().offset(-16)
         }
         
         explanationLabel.snp.makeConstraints { (make) in
             make.top.equalTo(radiusSegmentedControl.snp.bottom).offset(8)
-            make.leading.equalToSuperview().offset(16)
-            make.trailing.equalToSuperview().inset(16)
+            make.leading.trailing.equalToSuperview().offset(16)
         }
 
         relatedActionLabel.snp.makeConstraints { (make) in
             make.bottom.equalTo(relatedActionButton.snp.top).offset(-8)
             make.leading.equalToSuperview().offset(16)
-            make.trailing.equalToSuperview().inset(16)
+            make.trailing.equalToSuperview().offset(-16)
         }
         
         relatedActionButton.snp.makeConstraints { (make) in
             make.height.equalTo(50)
-            make.bottom.equalToSuperview()
-            make.leading.equalToSuperview()
-            make.trailing.equalToSuperview()
+            make.leading.trailing.bottom.equalToSuperview()
         }
     }
     

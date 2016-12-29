@@ -66,7 +66,7 @@ class WelcomeViewBase: UIViewController, WelcomeView {
         view.layoutIfNeeded()
         
         locationMap_heightConstraint.constant = -view.bounds.size.height * 0.5
-        UIView.animate(withDuration: 5.5) {
+        UIView.animate(withDuration: 0.5) {
             self.view.layoutIfNeeded()
         }
     }
