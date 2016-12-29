@@ -23,6 +23,8 @@ class WelcomeNodeCellBase: UITableViewCell, WelcomeNodeCell {
     }
 
     private func commonInit() {
+        accessoryType = .detailButton
+        
         busLineLabel.backgroundColor = Colors.blue
         busLineLabel.textAlignment = .center
         busLineLabel.font = Fonts.busLineName
@@ -32,14 +34,15 @@ class WelcomeNodeCellBase: UITableViewCell, WelcomeNodeCell {
         directionLabel.isHidden = true
         directionLabel.backgroundColor = .white
         directionLabel.textAlignment = .left
-        directionLabel.font = Fonts.standardBold
+        directionLabel.font = Fonts.standardRegular
         directionLabel.textColor = .black
-        directionLabel.adjustsFontSizeToFitWidth = true
+        directionLabel.numberOfLines = 1
+        directionLabel.lineBreakMode = .byTruncatingTail
         
         nextBusTimeLabel.isHidden = true
         nextBusTimeLabel.backgroundColor = .white
         nextBusTimeLabel.textAlignment = .right
-        nextBusTimeLabel.font = Fonts.standardLight
+        nextBusTimeLabel.font = Fonts.standardSemibold
         nextBusTimeLabel.textColor = .black
         nextBusTimeLabel.adjustsFontSizeToFitWidth = true
     }
