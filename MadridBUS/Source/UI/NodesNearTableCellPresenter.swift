@@ -1,12 +1,12 @@
 import Foundation
 
-protocol WelcomeNodeCellPresenter {
+protocol NodesNearTableCellPresenter {
     func nextArrival(at line: String, on node: String)
-    func config(using cell: WelcomeNodeCell)
+    func config(using cell: NodesNearTableCell)
 }
 
-class WelcomeNodeCellPresenterBase: WelcomeNodeCellPresenter, HandleErrorDelegate {
-    private weak var cell: WelcomeNodeCell!
+class NodesNearTableCellPresenterBase: NodesNearTableCellPresenter, HandleErrorDelegate {
+    private weak var cell: NodesNearTableCell!
     private var nodeArrivals: BusGeoNodeArrivalsInteractor!
     
     required init(injector: Injector = SwinjectInjectorProvider.injector) {
@@ -14,7 +14,7 @@ class WelcomeNodeCellPresenterBase: WelcomeNodeCellPresenter, HandleErrorDelegat
 
     }
     
-    func config(using cell: WelcomeNodeCell) {
+    func config(using cell: NodesNearTableCell) {
         self.cell = cell
     }
     

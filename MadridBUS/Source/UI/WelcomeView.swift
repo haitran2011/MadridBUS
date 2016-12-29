@@ -98,9 +98,15 @@ extension WelcomeViewBase: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return presenter.numberOfSections()
     }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 30
+    }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return presenter.node(at: section).address
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: nodesTable.headerReuseId) as! NodesNearTableHeader
+        header.titleLabel.text = presenter.node(at: section).address
+        return header
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -108,7 +114,7 @@ extension WelcomeViewBase: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: nodesTable.nodeCell, for: indexPath) as! WelcomeNodeCellBase
+        let cell = tableView.dequeueReusableCell(withIdentifier: nodesTable.cellReuseId, for: indexPath) as! NodesNearTableCellBase
         
         let model = presenter.model(at: indexPath)
         

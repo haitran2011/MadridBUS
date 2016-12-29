@@ -1,12 +1,12 @@
 import UIKit
 
-protocol WelcomeNodeCell: class {
+protocol NodesNearTableCell: class {
     func update(using ETA: String, heading: String)
 }
 
-class WelcomeNodeCellBase: UITableViewCell, WelcomeNodeCell {
+class NodesNearTableCellBase: UITableViewCell, NodesNearTableCell {
     
-    internal var presenter: WelcomeNodeCellPresenter!
+    internal var presenter: NodesNearTableCellPresenter!
     
     @IBOutlet weak var busLineLabel: UILabel!
     @IBOutlet weak var directionLabel: UILabel!
@@ -15,7 +15,7 @@ class WelcomeNodeCellBase: UITableViewCell, WelcomeNodeCell {
 
     override func awakeFromNib() {
         let injector: Injector = SwinjectInjectorProvider.injector
-        presenter = injector.instanceOf(WelcomeNodeCellPresenter.self)
+        presenter = injector.instanceOf(NodesNearTableCellPresenter.self)
         presenter.config(using: self)
         
         super.awakeFromNib()

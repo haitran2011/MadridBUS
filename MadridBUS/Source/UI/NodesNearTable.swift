@@ -2,7 +2,8 @@ import UIKit
 import SnapKit
 
 class NodesNearTable: UITableView {
-    let nodeCell = "NodeCell"
+    let cellReuseId = "NodeCell"
+    let headerReuseId = "NodeHeader"
     
     override init(frame: CGRect, style: UITableViewStyle) {
         super.init(frame: frame, style: style)
@@ -29,7 +30,8 @@ class NodesNearTable: UITableView {
         
         self.delegate = delegate
         self.dataSource = datasource
-        register(UINib(nibName: "WelcomeNodeCell", bundle: nil), forCellReuseIdentifier: nodeCell)
+        register(UINib(nibName: "NodesNearTableCell", bundle: nil), forCellReuseIdentifier: cellReuseId)
+        register(NodesNearTableHeader.self, forHeaderFooterViewReuseIdentifier: headerReuseId)
         
         layoutIfNeeded()
     }

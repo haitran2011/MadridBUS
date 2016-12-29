@@ -22,7 +22,7 @@ class SwinjectInjectorProvider: InjectorProvider, Injector {
         container.register(ErrorPresenter.self) { _ in ErrorPresenterBase(injector: self) }
 
         container.register(WelcomePresenter.self) { _ in WelcomePresenterBase(injector: self) }
-        container.register(WelcomeNodeCellPresenter.self) { _ in WelcomeNodeCellPresenterBase(injector: self) }
+        container.register(NodesNearTableCellPresenter.self) { _ in NodesNearTableCellPresenterBase(injector: self) }
 
         //Business
         container.register(BusGroupsInteractor.self) { _ in BusGroupsAsyncInteractor(injector: self) }

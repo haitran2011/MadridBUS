@@ -43,11 +43,11 @@
 		303725991E139EE600FABC93 /* LocationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303725981E139EE600FABC93 /* LocationHelper.swift */; };
 		303725A01E13A83B00FABC93 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 303725A41E13A83B00FABC93 /* InfoPlist.strings */; };
 		303725AA1E13A8BF00FABC93 /* Languages.strings in Resources */ = {isa = PBXBuildFile; fileRef = 303725AE1E13A8BF00FABC93 /* Languages.strings */; };
-		303725B31E13C81C00FABC93 /* WelcomeNodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303725B21E13C81C00FABC93 /* WelcomeNodeCell.swift */; };
-		303725B71E13C82800FABC93 /* WelcomeNodeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 303725B61E13C82800FABC93 /* WelcomeNodeCell.xib */; };
+		303725B31E13C81C00FABC93 /* NodesNearTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303725B21E13C81C00FABC93 /* NodesNearTableCell.swift */; };
+		303725B71E13C82800FABC93 /* NodesNearTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 303725B61E13C82800FABC93 /* NodesNearTableCell.xib */; };
 		30BF1F7B1E13D33A006DED45 /* ListAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BF1F7A1E13D33A006DED45 /* ListAdapter.swift */; };
 		30BF1F7E1E13E5DF006DED45 /* Anton.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 30BF1F7D1E13E5DF006DED45 /* Anton.ttf */; };
-		30BF1F821E1422B7006DED45 /* WelcomeNodeCellPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BF1F811E1422B7006DED45 /* WelcomeNodeCellPresenter.swift */; };
+		30BF1F821E1422B7006DED45 /* NodesNearTableCellPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BF1F811E1422B7006DED45 /* NodesNearTableCellPresenter.swift */; };
 		30BF1F871E1436D1006DED45 /* ManualSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BF1F861E1436D1006DED45 /* ManualSearchView.swift */; };
 		30BF1F8F1E143F67006DED45 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30BF1F8E1E143F67006DED45 /* SnapKit.framework */; };
 		30BF1F901E143F67006DED45 /* SnapKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 30BF1F8E1E143F67006DED45 /* SnapKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -106,6 +106,7 @@
 		30D02E401E117AEC00F51304 /* BusCalendarDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D02E3F1E117AEC00F51304 /* BusCalendarDTO.swift */; };
 		30D02E441E117B1200F51304 /* DTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D02E431E117B1200F51304 /* DTO.swift */; };
 		30D482491E150533007330D2 /* NodeAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D482481E150533007330D2 /* NodeAnnotation.swift */; };
+		30D4824B1E150AA3007330D2 /* NodesNearTableHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D4824A1E150AA3007330D2 /* NodesNearTableHeader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -166,13 +167,13 @@
 		303725A51E13A84400FABC93 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		303725AD1E13A8BF00FABC93 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Languages.strings; sourceTree = "<group>"; };
 		303725AF1E13A8C000FABC93 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Languages.strings; sourceTree = "<group>"; };
-		303725B21E13C81C00FABC93 /* WelcomeNodeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeNodeCell.swift; sourceTree = "<group>"; };
-		303725B61E13C82800FABC93 /* WelcomeNodeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WelcomeNodeCell.xib; sourceTree = "<group>"; };
+		303725B21E13C81C00FABC93 /* NodesNearTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodesNearTableCell.swift; sourceTree = "<group>"; };
+		303725B61E13C82800FABC93 /* NodesNearTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NodesNearTableCell.xib; sourceTree = "<group>"; };
 		30A540011E1116A500362E8B /* MadridBUS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MadridBUS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30A540101E1116A500362E8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		30BF1F7A1E13D33A006DED45 /* ListAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListAdapter.swift; sourceTree = "<group>"; };
 		30BF1F7D1E13E5DF006DED45 /* Anton.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Anton.ttf; sourceTree = "<group>"; };
-		30BF1F811E1422B7006DED45 /* WelcomeNodeCellPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeNodeCellPresenter.swift; sourceTree = "<group>"; };
+		30BF1F811E1422B7006DED45 /* NodesNearTableCellPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodesNearTableCellPresenter.swift; sourceTree = "<group>"; };
 		30BF1F861E1436D1006DED45 /* ManualSearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManualSearchView.swift; sourceTree = "<group>"; };
 		30BF1F8E1E143F67006DED45 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = ../../Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
 		30BF1F911E14466E006DED45 /* NSLayoutConstraint+SetMultiplier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+SetMultiplier.swift"; sourceTree = "<group>"; };
@@ -225,6 +226,7 @@
 		30D02E3F1E117AEC00F51304 /* BusCalendarDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusCalendarDTO.swift; sourceTree = "<group>"; };
 		30D02E431E117B1200F51304 /* DTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTO.swift; sourceTree = "<group>"; };
 		30D482481E150533007330D2 /* NodeAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeAnnotation.swift; sourceTree = "<group>"; };
+		30D4824A1E150AA3007330D2 /* NodesNearTableHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodesNearTableHeader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -250,6 +252,8 @@
 			isa = PBXGroup;
 			children = (
 				3017F4041E14E4060087BABA /* NodesNearTable.swift */,
+				30D4824A1E150AA3007330D2 /* NodesNearTableHeader.swift */,
+				303725B11E13C80600FABC93 /* NodesNearTableCell */,
 			);
 			name = NodesNearTable;
 			sourceTree = "<group>";
@@ -369,19 +373,18 @@
 				30D482471E150525007330D2 /* NodeAnnotation */,
 				3017F4031E14E3E60087BABA /* NodesNearTable */,
 				30BF1F851E1436A4006DED45 /* ManualSearchView */,
-				303725B11E13C80600FABC93 /* WelcomeNodeCell */,
 			);
 			name = Components;
 			sourceTree = "<group>";
 		};
-		303725B11E13C80600FABC93 /* WelcomeNodeCell */ = {
+		303725B11E13C80600FABC93 /* NodesNearTableCell */ = {
 			isa = PBXGroup;
 			children = (
-				30BF1F811E1422B7006DED45 /* WelcomeNodeCellPresenter.swift */,
-				303725B21E13C81C00FABC93 /* WelcomeNodeCell.swift */,
-				303725B61E13C82800FABC93 /* WelcomeNodeCell.xib */,
+				30BF1F811E1422B7006DED45 /* NodesNearTableCellPresenter.swift */,
+				303725B21E13C81C00FABC93 /* NodesNearTableCell.swift */,
+				303725B61E13C82800FABC93 /* NodesNearTableCell.xib */,
 			);
-			name = WelcomeNodeCell;
+			name = NodesNearTableCell;
 			sourceTree = "<group>";
 		};
 		30A53FF81E1116A500362E8B = {
@@ -729,7 +732,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				303725B71E13C82800FABC93 /* WelcomeNodeCell.xib in Resources */,
+				303725B71E13C82800FABC93 /* NodesNearTableCell.xib in Resources */,
 				30D02DFB1E11247D00F51304 /* ErrorView.xib in Resources */,
 				30BF1F7E1E13E5DF006DED45 /* Anton.ttf in Resources */,
 				303725A01E13A83B00FABC93 /* InfoPlist.strings in Resources */,
@@ -773,7 +776,7 @@
 				303725401E1265CD00FABC93 /* BusNodesForBusLinesDTO.swift in Sources */,
 				30D02C491E111C3700F51304 /* ApplicationManager.swift in Sources */,
 				303725431E12683200FABC93 /* BusLineSchedule.swift in Sources */,
-				303725B31E13C81C00FABC93 /* WelcomeNodeCell.swift in Sources */,
+				303725B31E13C81C00FABC93 /* NodesNearTableCell.swift in Sources */,
 				30D02DDA1E11232600F51304 /* Spinner.swift in Sources */,
 				303725621E12A87400FABC93 /* BusGeoRepository.swift in Sources */,
 				30D02DE81E1123F300F51304 /* Presenter.swift in Sources */,
@@ -789,6 +792,7 @@
 				3037253D1E125C6100FABC93 /* BusNodeLocalized.swift in Sources */,
 				30D02DF51E11247D00F51304 /* ErrorPresenter.swift in Sources */,
 				3037253A1E125AA500FABC93 /* BusNodesForBusLinesInteractor.swift in Sources */,
+				30D4824B1E150AA3007330D2 /* NodesNearTableHeader.swift in Sources */,
 				30D02C041E111C3700F51304 /* RepositoryError.swift in Sources */,
 				30D02C4C1E111C3700F51304 /* Injector.swift in Sources */,
 				30D02E441E117B1200F51304 /* DTO.swift in Sources */,
@@ -807,7 +811,7 @@
 				30D02DEE1E1123F300F51304 /* Wireframe.swift in Sources */,
 				30D02E261E1127DD00F51304 /* BusRepository.swift in Sources */,
 				30D02E3C1E1174A600F51304 /* BusCalendarItem.swift in Sources */,
-				30BF1F821E1422B7006DED45 /* WelcomeNodeCellPresenter.swift in Sources */,
+				30BF1F821E1422B7006DED45 /* NodesNearTableCellPresenter.swift in Sources */,
 				30D482491E150533007330D2 /* NodeAnnotation.swift in Sources */,
 				303725521E129AA300FABC93 /* BusLineTimeTableInteractor.swift in Sources */,
 				3037256C1E12AAA700FABC93 /* BusGeoPOIInteractor.swift in Sources */,
