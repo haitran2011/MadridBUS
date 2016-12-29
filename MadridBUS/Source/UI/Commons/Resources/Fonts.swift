@@ -12,6 +12,6 @@ struct Fonts {
     }
     
     static let busLineName = UIFont(name: "Anton", size: 20)!
-    static let standardExplanation = UIFont(name: standards.light, size: 16)!
+    static let standard = UIFont(name: standards.light, size: 16)!
     static let button = UIFont(name: standards.bold, size: 20)!
 }

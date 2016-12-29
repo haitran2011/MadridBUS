@@ -23,10 +23,10 @@ class ManualSearchViewBase: UIView, ManualSearchView {
     }
     
     private func commonInit() {
-        alpha = 0.0
         backgroundColor = Colors.blue
+        clipsToBounds = true
         
-        explanationLabel.font = Fonts.standardExplanation
+        explanationLabel.font = Fonts.standard
         explanationLabel.textAlignment = .left
         explanationLabel.textColor = .white
         explanationLabel.numberOfLines = 0
@@ -38,7 +38,7 @@ class ManualSearchViewBase: UIView, ManualSearchView {
         radiusSegmentedControl.insertSegment(withTitle: "200 m.", at: 2, animated: false)
         radiusSegmentedControl.tintColor = .white
         
-        relatedActionLabel.font = Fonts.standardExplanation
+        relatedActionLabel.font = Fonts.standard
         relatedActionLabel.textAlignment = .left
         relatedActionLabel.textColor = .white
         relatedActionLabel.numberOfLines = 0
@@ -65,14 +65,13 @@ class ManualSearchViewBase: UIView, ManualSearchView {
         }
 
         relatedActionLabel.snp.makeConstraints { (make) in
-            make.top.greaterThanOrEqualTo(radiusSegmentedControl.snp.bottom).offset(8)
             make.bottom.equalTo(relatedActionButton.snp.top).offset(-8)
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().inset(16)
         }
         
         relatedActionButton.snp.makeConstraints { (make) in
-            make.height.equalTo(44)
+            make.height.lessThanOrEqualTo(50)
             make.bottom.equalToSuperview().offset(-16)
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().inset(16)
@@ -80,23 +79,17 @@ class ManualSearchViewBase: UIView, ManualSearchView {
     }
     
     func show(over view: UIView) {
-        self.frame = view.frame
-        view.superview?.addSubview(self)
-        
-        self.layoutIfNeeded()
-        
-        UIView.animate(withDuration: 1.0) { 
-            self.alpha = 1.0
+        view.addSubview(self)
+        frame = view.frame
+        bounds = view.bounds
+        snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
         }
+        
+        layoutIfNeeded()
     }
     
     func hide() {
-        UIView.animate(withDuration: 1.0) {
-            self.alpha = 0.0
-        }
-    }
-    
-    @IBAction func didTapRelatedActionButton(_ sender: Any) {
-    
+        removeFromSuperview()
     }
 }

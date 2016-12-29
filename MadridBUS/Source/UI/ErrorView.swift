@@ -36,7 +36,7 @@ class ErrorViewBase: ErrorViewController, ErrorView {
         case .noData:
             break
             
-        case .error(let description):
+        case .error(_):
             break
         }
     }

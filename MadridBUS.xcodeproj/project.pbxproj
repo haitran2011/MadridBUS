@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3017F4051E14E4060087BABA /* NodesNearTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3017F4041E14E4060087BABA /* NodesNearTable.swift */; };
+		3017F4061E14E4060087BABA /* NodesNearTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3017F4041E14E4060087BABA /* NodesNearTable.swift */; };
+		3017F4071E14E4060087BABA /* NodesNearTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3017F4041E14E4060087BABA /* NodesNearTable.swift */; };
 		303725251E124BA000FABC93 /* BusLinesBasicInfoInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303725241E124BA000FABC93 /* BusLinesBasicInfoInteractor.swift */; };
 		303725261E124BA000FABC93 /* BusLinesBasicInfoInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303725241E124BA000FABC93 /* BusLinesBasicInfoInteractor.swift */; };
 		303725281E124C7400FABC93 /* BusLineBasicInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303725271E124C7400FABC93 /* BusLineBasicInfo.swift */; };
@@ -286,6 +289,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3017F4041E14E4060087BABA /* NodesNearTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodesNearTable.swift; sourceTree = "<group>"; };
 		303725241E124BA000FABC93 /* BusLinesBasicInfoInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusLinesBasicInfoInteractor.swift; sourceTree = "<group>"; };
 		303725271E124C7400FABC93 /* BusLineBasicInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusLineBasicInfo.swift; sourceTree = "<group>"; };
 		3037252A1E124E2B00FABC93 /* BusSubgroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusSubgroup.swift; sourceTree = "<group>"; };
@@ -422,6 +426,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3017F4031E14E3E60087BABA /* NodesNearTable */ = {
+			isa = PBXGroup;
+			children = (
+				3017F4041E14E4060087BABA /* NodesNearTable.swift */,
+			);
+			name = NodesNearTable;
+			sourceTree = "<group>";
+		};
 		303725221E124B4D00FABC93 /* Bus */ = {
 			isa = PBXGroup;
 			children = (
@@ -534,6 +546,7 @@
 		303725B01E13C7FE00FABC93 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				3017F4031E14E3E60087BABA /* NodesNearTable */,
 				30BF1F851E1436A4006DED45 /* ManualSearchView */,
 				303725B11E13C80600FABC93 /* WelcomeNodeCell */,
 			);
@@ -996,6 +1009,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3017F4051E14E4060087BABA /* NodesNearTable.swift in Sources */,
 				30D02E111E11254A00F51304 /* Date+Formatters.swift in Sources */,
 				30D02DEB1E1123F300F51304 /* View.swift in Sources */,
 				3037254C1E12989800FABC93 /* BusLineTimeTableItem.swift in Sources */,
@@ -1079,6 +1093,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3017F4061E14E4060087BABA /* NodesNearTable.swift in Sources */,
 				30D02BAE1E111C3700F51304 /* Errors.swift in Sources */,
 				30D02BA51E111C3700F51304 /* BusinessError.swift in Sources */,
 				303725531E129AA300FABC93 /* BusLineTimeTableInteractor.swift in Sources */,
@@ -1192,6 +1207,7 @@
 				303725C31E13D22000FABC93 /* BusLineTimeTableInteractor.swift in Sources */,
 				30BF1F841E1422B7006DED45 /* WelcomeNodeCellPresenter.swift in Sources */,
 				30D02E201E1125A100F51304 /* LocalizedLiteral.swift in Sources */,
+				3017F4071E14E4060087BABA /* NodesNearTable.swift in Sources */,
 				30D02C241E111C3700F51304 /* Empty.swift in Sources */,
 				30D02DDF1E11232600F51304 /* SpinnerPresentation.swift in Sources */,
 				30D02C2A1E111C3700F51304 /* Request.swift in Sources */,

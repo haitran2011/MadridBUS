@@ -2,7 +2,7 @@ import UIKit
 import MapKit
 
 enum WelcomeViewMode {
-    case normal
+    case foundNodesAround
     case zeroNodesAround
 }
 
@@ -15,11 +15,11 @@ protocol WelcomeView: View {
 class WelcomeViewBase: UIViewController, WelcomeView {
     internal var presenter: WelcomePresenter
     internal var manualSearch = ManualSearchViewBase()
-    internal let nodeCell = "NodeCell"
+    internal var nodesTable = NodesNearTable()
     
     @IBOutlet weak var locationMap: MKMapView!
-    @IBOutlet weak var nodesTable: UITableView!
     @IBOutlet weak var locationMap_heightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var contentWrapper: UIView!
     
     init(injector: Injector = SwinjectInjectorProvider.injector, nibName: String? = "WelcomeView") {
         self.presenter = injector.instanceOf(WelcomePresenter.self)
@@ -33,12 +33,7 @@ class WelcomeViewBase: UIViewController, WelcomeView {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = Colors.blue
-        
-        nodesTable.register(UINib(nibName: "WelcomeNodeCell", bundle: nil), forCellReuseIdentifier: nodeCell)
-        nodesTable.delegate = self
-        nodesTable.dataSource = self
-        
+        //contentWrapper.backgroundColor = Colors.blue
         locationMap.delegate = self
     }
     
@@ -55,14 +50,24 @@ class WelcomeViewBase: UIViewController, WelcomeView {
     }
     
     func updateBusNodes() {
+        enable(mode: .foundNodesAround)
         nodesTable.reloadData()
     }
     
     func enable(mode: WelcomeViewMode) {
         switch mode {
-        case .normal: break
+        case .foundNodesAround:
+            nodesTable.show(over: contentWrapper, delegating: self, sourcing: self)
+            
         case .zeroNodesAround:
-            manualSearch.show(over: nodesTable)
+            manualSearch.show(over: contentWrapper)
+        }
+        
+        view.layoutIfNeeded()
+        
+        locationMap_heightConstraint.constant = -view.bounds.size.height * 0.5
+        UIView.animate(withDuration: 5.5) {
+            self.view.layoutIfNeeded()
         }
     }
 }
@@ -81,7 +86,7 @@ extension WelcomeViewBase: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: nodeCell, for: indexPath) as! WelcomeNodeCellBase
+        let cell = tableView.dequeueReusableCell(withIdentifier: nodesTable.nodeCell, for: indexPath) as! WelcomeNodeCellBase
         
         let model = presenter.model(at: indexPath)
         cell.configure(using: model, on: presenter.node(at: indexPath.section))

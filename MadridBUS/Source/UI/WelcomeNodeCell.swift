@@ -34,7 +34,7 @@ class WelcomeNodeCellBase: UITableViewCell, WelcomeNodeCell {
         
         nextBusTimeLabel.backgroundColor = .white
         nextBusTimeLabel.textAlignment = .right
-        nextBusTimeLabel.font = Fonts.busLineName
+        nextBusTimeLabel.font = Fonts.standard
         nextBusTimeLabel.textColor = .black
         nextBusTimeLabel.adjustsFontSizeToFitWidth = true
     }
