@@ -31,8 +31,8 @@ class ManualSearchViewBase: UIView, ManualSearchView {
         explanationLabel.textColor = .white
         explanationLabel.numberOfLines = 0
         explanationLabel.adjustsFontSizeToFitWidth = true
-        explanationLabel.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-        
+        explanationLabel.text = LocalizedLiteral.localize(using: "MANUALSEARCHVIEW_LB_REDEFINERADIUS")
+
         radiusSegmentedControl.insertSegment(withTitle: "50 m.", at: 0, animated: false)
         radiusSegmentedControl.insertSegment(withTitle: "100 m.", at: 1, animated: false)
         radiusSegmentedControl.insertSegment(withTitle: "200 m.", at: 2, animated: false)
@@ -43,10 +43,10 @@ class ManualSearchViewBase: UIView, ManualSearchView {
         relatedActionLabel.textColor = .white
         relatedActionLabel.numberOfLines = 0
         relatedActionLabel.adjustsFontSizeToFitWidth = true
-        relatedActionLabel.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        relatedActionLabel.text = LocalizedLiteral.localize(using: "MANUALSEARCHVIEW_LB_MANUALSEARCH")
         
         relatedActionButton.backgroundColor = Colors.green
-        relatedActionButton.setTitle("ACTION", for: .normal)
+        relatedActionButton.setTitle(LocalizedLiteral.localize(using: "MANUALSEARCHVIEW_BT_MANUALSEARCH"), for: .normal)
         relatedActionButton.setTitleColor(.white, for: .normal)
         relatedActionButton.titleLabel?.font = Fonts.button
         
@@ -71,10 +71,10 @@ class ManualSearchViewBase: UIView, ManualSearchView {
         }
         
         relatedActionButton.snp.makeConstraints { (make) in
-            make.height.lessThanOrEqualTo(50)
-            make.bottom.equalToSuperview().offset(-16)
-            make.leading.equalToSuperview().offset(16)
-            make.trailing.equalToSuperview().inset(16)
+            make.height.equalTo(50)
+            make.bottom.equalToSuperview()
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
         }
     }
     
