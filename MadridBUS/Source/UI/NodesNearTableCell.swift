@@ -77,4 +77,12 @@ class NodesNearTableCellBase: UITableViewCell, NodesNearTableCell {
         nextBusTimeLabel.isHidden = false
         directionLabel.isHidden = false
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        spinnerETA.isHidden = false
+        nextBusTimeLabel.isHidden = true
+        directionLabel.isHidden = true
+    }
 }

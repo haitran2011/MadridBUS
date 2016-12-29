@@ -18,6 +18,16 @@ class WelcomeViewBase: UIViewController, WelcomeView {
     internal var manualSearch = ManualSearchViewBase()
     internal var nodesTable = NodesNearTable()
     
+    internal var nodesTableDataSet: [BusGeoNode] = [] {
+        didSet {
+            if nodesTableDataSet.count > 0 {
+                enable(mode: .foundNodesAround)
+            } else {
+                enable(mode: .zeroNodesAround)
+            }
+        }
+    }
+    
     @IBOutlet weak var locationMap: MKMapView!
     @IBOutlet weak var locationMap_heightConstraint: NSLayoutConstraint!
     @IBOutlet weak var contentWrapper: UIView!
@@ -52,6 +62,8 @@ class WelcomeViewBase: UIViewController, WelcomeView {
     }
     
     func updateMap(with nodes: [BusGeoNode]) {
+        nodesTableDataSet = nodes
+        
         for aNode in nodes {
             let annotation = NodeAnnotation()
             annotation.coordinate = CLLocationCoordinate2D(latitude: aNode.latitude, longitude: aNode.longitude)
@@ -68,12 +80,10 @@ class WelcomeViewBase: UIViewController, WelcomeView {
     
     func updateNodesTable(with annotation: NodeAnnotation?) {
         if let selectedAnnotation = annotation {
-            presenter.activeAnnotationId = selectedAnnotation.nodeId
-        } else {
-            presenter.activeAnnotationId = nil
+            let section = nodesTableDataSet.index { (aNode) -> Bool in aNode.id == selectedAnnotation.nodeId }!
+            nodesTable.reloadData()
+            nodesTable.scrollToRow(at: IndexPath(item: 0, section: section), at: .middle, animated: true)
         }
-        
-        nodesTable.reloadData()
     }
     
     func enable(mode: WelcomeViewMode) {
@@ -96,7 +106,7 @@ class WelcomeViewBase: UIViewController, WelcomeView {
 
 extension WelcomeViewBase: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return presenter.numberOfSections()
+        return nodesTableDataSet.count
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -105,26 +115,38 @@ extension WelcomeViewBase: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: nodesTable.headerReuseId) as! NodesNearTableHeader
-        header.titleLabel.text = presenter.node(at: section).address
+        header.titleLabel.text = nodesTableDataSet[section].address
         return header
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return presenter.numberOfItems(in: section)
+        return nodesTableDataSet[section].lines.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: nodesTable.cellReuseId, for: indexPath) as! NodesNearTableCellBase
         
-        let model = presenter.model(at: indexPath)
+        let model = nodesTableDataSet[indexPath.section].lines[indexPath.row]
         
-        if presenter.shouldHighlightNodeCell(at: indexPath) {
-            cell.configure(using: model, on: presenter.node(at: indexPath.section), highlighted: true)
+        if shouldHighlightNodeCell(at: indexPath.section) {
+            cell.configure(using: model, on: nodesTableDataSet[indexPath.section], highlighted: true)
         } else {
-            cell.configure(using: model, on: presenter.node(at: indexPath.section), highlighted: false)
+            cell.configure(using: model, on: nodesTableDataSet[indexPath.section], highlighted: false)
         }
         
         return cell
+    }
+    
+    private func shouldHighlightNodeCell(at section: Int) -> Bool {
+        if let currentNodeId = (locationMap.selectedAnnotations.first as? NodeAnnotation)?.nodeId {
+            if nodesTableDataSet[section].id == currentNodeId {
+                return true
+            } else {
+                return false
+            }
+        } else {
+            return false
+        }
     }
 }
 

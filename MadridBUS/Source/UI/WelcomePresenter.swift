@@ -1,19 +1,11 @@
 import Foundation
 
-protocol WelcomePresenter: ListAdapter {
-    var activeAnnotationId: String? { get set }
-    
+protocol WelcomePresenter {
     func obtainLocation()
     func config(using view: View)
-    func shouldHighlightNodeCell(at index: IndexPath) -> Bool
-    
-    func node(at section: Int) -> BusGeoNode
-    func model(at index: IndexPath) -> BusGeoLine
 }
 
 class WelcomePresenterBase: Presenter, WelcomePresenter {
-    var activeAnnotationId: String?
-    
     private weak var view: WelcomeView!
 
     private var nodesAroundLocation: BusGeoNodesAroundLocationInteractor!
@@ -22,7 +14,6 @@ class WelcomePresenterBase: Presenter, WelcomePresenter {
     internal var nearBusGeoNodes: [BusGeoNode] = [] {
         didSet {
             view.updateMap(with: nearBusGeoNodes)
-            view.updateNodesTable()
         }
     }
 
@@ -46,25 +37,13 @@ class WelcomePresenterBase: Presenter, WelcomePresenter {
             view.enable(mode: .zeroNodesAround)
         }
     }
-    
-    func shouldHighlightNodeCell(at index: IndexPath) -> Bool {
-        if let currentNodeId = activeAnnotationId {
-            if node(at: index.section).id == currentNodeId {
-                return true
-            } else {
-                return false
-            }
-        } else {
-            return false
-        }
-    }
-    
+
     func obtainLocation() {
         if locationHelper.isLocationAvailable {
             locationHelper.acquireLocation { (acquiredLocation) in
                 self.view.updateMap(with: acquiredLocation)
                 //self.nodesAround(latitude: acquiredLocation.coordinate.latitude, longitude: acquiredLocation.coordinate.longitude, radius: 150)
-                self.nodesAround(latitude: 40.382797016999334, longitude: -3.7231069600644706, radius: 100)
+                self.nodesAround(latitude: 40.382797016999334, longitude: -3.7231069600644706, radius: 200)
             }
         }
     }
@@ -77,23 +56,5 @@ class WelcomePresenterBase: Presenter, WelcomePresenter {
         nodesAroundLocation.execute(dto) { (nodesList) in
             self.nearBusGeoNodes = nodesList
         }
-    }
-}
-
-extension WelcomePresenterBase {
-    internal func numberOfSections() -> Int {
-        return nearBusGeoNodes.count
-    }
-    
-    internal func node(at section: Int) -> BusGeoNode {
-        return nearBusGeoNodes[section]
-    }
-
-    internal func numberOfItems(in section: Int) -> Int {
-        return nearBusGeoNodes[section].lines.count
-    }
-    
-    internal func model(at index: IndexPath) -> BusGeoLine {
-        return nearBusGeoNodes[index.section].lines[index.row]
     }
 }
