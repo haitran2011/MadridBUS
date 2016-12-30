@@ -14,7 +14,8 @@ class LineNodeDetailViewBase: UIViewController, LineNodeDetailView {
     @IBOutlet weak var directionSegmentedControl: UISegmentedControl!
     @IBOutlet weak var schemeScroll: UIScrollView!
     @IBOutlet weak var frequencyTitleLabel: UILabel!
-    @IBOutlet weak var frequencyDataLabel: UILabel!
+    @IBOutlet weak var maxFreqLabel: UILabel!
+    @IBOutlet weak var minFreqLabel: UILabel!
     @IBOutlet weak var scheduleTitleLabel: UILabel!
     @IBOutlet weak var startTimeLabel: UILabel!
     @IBOutlet weak var endTimeLabel: UILabel!
@@ -48,33 +49,37 @@ class LineNodeDetailViewBase: UIViewController, LineNodeDetailView {
         frequencyTitleLabel.textColor = Colors.blue
         frequencyTitleLabel.textAlignment = .left
         frequencyTitleLabel.numberOfLines = 1
+        frequencyTitleLabel.text = LocalizedLiteral.localize(using: "LINENODESDETAIL_LB_GENERALFREQ")
         
-        frequencyDataLabel.font = Fonts.standardRegular
-        frequencyDataLabel.textColor = .black
-        frequencyDataLabel.textAlignment = .left
-        frequencyDataLabel.numberOfLines = 0
-        frequencyDataLabel.lineBreakMode = .byWordWrapping
+        maxFreqLabel.font = Fonts.standardRegular
+        maxFreqLabel.textColor = .black
+        maxFreqLabel.textAlignment = .left
+        maxFreqLabel.numberOfLines = 1
+        maxFreqLabel.text = LocalizedLiteral.localize(using: "LINENODESDETAIL_LB_MAX", with: "\(line.frequency.max) min.")
         
-        frequencyTitleLabel.text = "FRECUENCIA GENERAL"
-        frequencyDataLabel.text = "Máxima: \(line.frequency.max) min.\nMínima: \(line.frequency.min) min."
+        minFreqLabel.font = Fonts.standardRegular
+        minFreqLabel.textColor = .black
+        minFreqLabel.textAlignment = .left
+        minFreqLabel.numberOfLines = 1
+        minFreqLabel.text = LocalizedLiteral.localize(using: "LINENODESDETAIL_LB_MIN", with: "\(line.frequency.min) min.")
         
         scheduleTitleLabel.font = Fonts.standardBold
         scheduleTitleLabel.textColor = Colors.blue
         scheduleTitleLabel.textAlignment = .left
         scheduleTitleLabel.numberOfLines = 1
-        scheduleTitleLabel.text = "HORARIO GENERAL"
+        scheduleTitleLabel.text = LocalizedLiteral.localize(using: "LINENODESDETAIL_LB_GENERALSCHEDULE")
         
         startTimeLabel.font = Fonts.standardRegular
         startTimeLabel.textColor = .black
         startTimeLabel.textAlignment = .left
         startTimeLabel.numberOfLines = 1
-        startTimeLabel.text = "Inicio: \(Date.string(from: line.startTime, using: "hh:mm a"))"
+        startTimeLabel.text = LocalizedLiteral.localize(using: "LINENODESDETAIL_LB_STARTTIME", with: Date.timeString(from: line.startTime))
         
         endTimeLabel.font = Fonts.standardRegular
         endTimeLabel.textColor = .black
         endTimeLabel.textAlignment = .left
         endTimeLabel.numberOfLines = 1
-        endTimeLabel.text = "Final: \(Date.string(from: line.endTime, using: "hh:mm a"))"
+        endTimeLabel.text = LocalizedLiteral.localize(using: "LINENODESDETAIL_LB_ENDTIME", with: Date.timeString(from: line.endTime))
     }
     
     override func viewDidLoad() {
