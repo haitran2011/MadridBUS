@@ -31,19 +31,20 @@ class LineNodeDetailPresenterBase: Presenter, LineNodeDetailPresenter {
         
         busNodesForLine.execute(dto) { (busNodes) in
             var graphicNodes: [LineSchemeNodeModel] = []
+            var i = 0
             for aNode in busNodes {
-                let position = busNodes.index(of: aNode)!
                 var nodeModel: LineSchemeNodeModel
                 
                 if aNode.type == .nodeForward || aNode.type == .vertexForward {
-                    nodeModel = LineSchemeNodeModel(name: aNode.name.capitalized, position: position, direction: .forward)
+                    nodeModel = LineSchemeNodeModel(name: aNode.name.capitalized, position: i, direction: .forward)
                 } else if aNode.type == .nodeBackwards || aNode.type == .vertexBackwards {
-                    nodeModel = LineSchemeNodeModel(name: aNode.name.capitalized, position: position, direction: .backwards)
+                    nodeModel = LineSchemeNodeModel(name: aNode.name.capitalized, position: i, direction: .backwards)
                 } else {
-                    nodeModel = LineSchemeNodeModel(name: aNode.name.capitalized, position: position, direction: .undefined)
+                    nodeModel = LineSchemeNodeModel(name: aNode.name.capitalized, position: i, direction: .undefined)
                 }
 
                 graphicNodes.append(nodeModel)
+                i = i + 1
             }
             
             self.view.update(withNodes: graphicNodes)

@@ -19,6 +19,8 @@ class LineNodeDetailViewBase: UIViewController, LineNodeDetailView {
     @IBOutlet weak var startTimeLabel: UILabel!
     @IBOutlet weak var endTimeLabel: UILabel!
     
+    private var graphicLine: LineScheme?
+    
     init(with line: BusGeoLine, from node: BusGeoNode, with nodes: [BusNodeLocalized], injector: Injector = SwinjectInjectorProvider.injector, nibName: String? = "LineNodeDetailView") {
         self.presenter = injector.instanceOf(LineNodeDetailPresenter.self)
         self.line = line
@@ -34,12 +36,13 @@ class LineNodeDetailViewBase: UIViewController, LineNodeDetailView {
     
     override func loadView() {
         super.loadView()
-        
+    
         directionSegmentedControl.tintColor = Colors.blue
         directionSegmentedControl.removeAllSegments()
-        directionSegmentedControl.insertSegment(with: #imageLiteral(resourceName: "ChevronUp"), at: 0, animated: false)
-        directionSegmentedControl.insertSegment(with: #imageLiteral(resourceName: "ChevronDown"), at: 1, animated: false)
+        directionSegmentedControl.insertSegment(with: #imageLiteral(resourceName: "ChevronDown"), at: 0, animated: false)
+        directionSegmentedControl.insertSegment(with: #imageLiteral(resourceName: "ChevronUp"), at: 1, animated: false)
         directionSegmentedControl.selectedSegmentIndex = 0
+        directionSegmentedControl.addTarget(self, action: #selector(didChangeDirectionValue), for: .valueChanged)
         
         frequencyTitleLabel.font = Fonts.standardBold
         frequencyTitleLabel.textColor = Colors.blue
@@ -86,6 +89,20 @@ class LineNodeDetailViewBase: UIViewController, LineNodeDetailView {
         presenter.nodes(on: line.name)
     }
     
+    func didChangeDirectionValue() {
+        guard let currentGraphicLine = graphicLine else {
+            return
+        }
+        
+        switch directionSegmentedControl.selectedSegmentIndex {
+        case 0: currentGraphicLine.change(to: .forward)
+        case 1: currentGraphicLine.change(to: .backwards)
+        default: return
+        }
+        
+        schemeScroll.contentSize = CGSize(width: schemeScroll.bounds.width, height: currentGraphicLine.frame.height)
+    }
+    
     func update(withNodes nodes: [LineSchemeNodeModel]) {
         var schemeTheme = LineSchemeTheme()
         schemeTheme.titleFont = Fonts.standardRegular
@@ -93,14 +110,17 @@ class LineNodeDetailViewBase: UIViewController, LineNodeDetailView {
         schemeTheme.normalForegroundColor = Colors.blue
         schemeTheme.normalTitleColor = .black
         schemeTheme.highlightedBackgroundColor = Colors.blue
-        schemeTheme.highlightedForegroundColor = Colors.midnight
+        schemeTheme.highlightedForegroundColor = Colors.red
         schemeTheme.highlightedTitleColor = .white
         
-        let graphicLine = LineScheme(with: nodes, direction: .forward, theme: schemeTheme)
-        graphicLine.delegate = self
-        graphicLine.frame = CGRect(x: 0, y: 0, width: schemeScroll.bounds.width, height: graphicLine.frame.height)
-        schemeScroll.addSubview(graphicLine)
-        schemeScroll.contentSize = CGSize(width: schemeScroll.bounds.width, height: graphicLine.frame.height)
+        schemeScroll.subviews.forEach({ $0.removeFromSuperview() })
+        
+        graphicLine = LineScheme(with: nodes, direction: .forward, theme: schemeTheme)
+        graphicLine!.delegate = self
+        graphicLine!.frame = CGRect(x: 0, y: 0, width: schemeScroll.bounds.width, height: graphicLine!.frame.height)
+        schemeScroll.contentInset = .zero
+        schemeScroll.addSubview(graphicLine!)
+        schemeScroll.contentSize = CGSize(width: schemeScroll.bounds.width, height: graphicLine!.frame.height)
     }
 }
 

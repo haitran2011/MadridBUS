@@ -46,15 +46,15 @@ class LineScheme: UIControl {
     }
     
     private func commonInit() {
-        backgroundColor = theme.normalBackgroundColor
+        drawSchema()
+    }
+    
+    private func drawSchema() {
+        graphicNodes.forEach({ $0.removeFromSuperview() })
+        graphicNodes.removeAll()
         
-        switch direction {
-        case .forward:   nodes.sort { $0.position < $1.position }
-        case .backwards: nodes.sort { $0.position > $1.position }
-        case .undefined: break
-        }
-
-        let filteredNodes = nodes.filter { $0.direction == direction }
+        var filteredNodes = nodes.filter { $0.direction == direction }
+        filteredNodes = filteredNodes.sorted { $0.position < $1.position }
         
         for aNode in filteredNodes {
             var currentNode: LineSchemeGraphicNode
@@ -75,11 +75,22 @@ class LineScheme: UIControl {
             graphicNodes.append(currentNode)
         }
         
-        for aGraphicNode in graphicNodes {
-            addSubview(aGraphicNode)
-        }
-        
+        graphicNodes.forEach({ addSubview($0) })
+
         layoutIfNeeded()
+    }
+    
+    func change(to newDirection: LineSchemeDirection) {
+        guard direction != newDirection else {
+            return
+        }
+
+        switch newDirection {
+        case .forward, .backwards:
+            direction = newDirection
+            drawSchema()
+        case .undefined: break
+        }
     }
     
     override func layoutSubviews() {
