@@ -36,11 +36,11 @@ class LineNodeDetailPresenterBase: Presenter, LineNodeDetailPresenter {
                 var nodeModel: LineSchemeNodeModel
                 
                 if aNode.type == .nodeForward || aNode.type == .vertexForward {
-                    nodeModel = LineSchemeNodeModel(name: aNode.name.capitalized, position: i, direction: .forward)
+                    nodeModel = LineSchemeNodeModel(id: aNode.id, name: aNode.name.capitalized, position: i, direction: .forward, latitude: aNode.latitude, longitude: aNode.longitude)
                 } else if aNode.type == .nodeBackwards || aNode.type == .vertexBackwards {
-                    nodeModel = LineSchemeNodeModel(name: aNode.name.capitalized, position: i, direction: .backwards)
+                    nodeModel = LineSchemeNodeModel(id: aNode.id, name: aNode.name.capitalized, position: i, direction: .backwards, latitude: aNode.latitude, longitude: aNode.longitude)
                 } else {
-                    nodeModel = LineSchemeNodeModel(name: aNode.name.capitalized, position: i, direction: .undefined)
+                    nodeModel = LineSchemeNodeModel(id: aNode.id, name: aNode.name.capitalized, position: i, direction: .undefined, latitude: aNode.latitude, longitude: aNode.longitude)
                 }
 
                 graphicNodes.append(nodeModel)

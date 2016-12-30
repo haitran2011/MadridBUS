@@ -1,4 +1,5 @@
 import UIKit
+import MapKit
 
 protocol LineNodeDetailView: View {
     func update(withNodes nodes: [LineSchemeNodeModel])
@@ -19,6 +20,7 @@ class LineNodeDetailViewBase: UIViewController, LineNodeDetailView {
     @IBOutlet weak var scheduleTitleLabel: UILabel!
     @IBOutlet weak var startTimeLabel: UILabel!
     @IBOutlet weak var endTimeLabel: UILabel!
+    @IBOutlet weak var lineMap: MKMapView!
     
     private var graphicLine: LineScheme?
     
@@ -86,6 +88,7 @@ class LineNodeDetailViewBase: UIViewController, LineNodeDetailView {
         super.viewDidLoad()
         
         title = line.name
+        lineMap.delegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -131,6 +134,43 @@ class LineNodeDetailViewBase: UIViewController, LineNodeDetailView {
 
 extension LineNodeDetailViewBase: LineSchemeDelegate {
     func didTap(node: LineSchemeNodeModel) {
+        lineMap.removeAnnotations(lineMap.annotations)
         
+        guard let lat = node.latitude, let lon = node.longitude else {
+            return
+        }
+        
+        let annotation = NodeAnnotation()
+        annotation.coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+        annotation.nodeId = "\(node.id)"
+        lineMap.addAnnotation(annotation)
+        
+        let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: lat, longitude: lon),
+                                        span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        lineMap.setRegion(region, animated: true)
+        lineMap.showsUserLocation = false
+    }
+}
+
+extension LineNodeDetailViewBase: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if (annotation is MKUserLocation) {
+            return nil
+        }
+        
+        let nodeAnnotation = annotation as! NodeAnnotation
+        let annotationReuseId = "NodeAnnotation"
+        
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: annotationReuseId) as? MKPinAnnotationView
+        if annotationView == nil {
+            annotationView = MKPinAnnotationView(annotation: nodeAnnotation, reuseIdentifier: annotationReuseId)
+            annotationView?.canShowCallout = false
+            annotationView?.animatesDrop = true
+            annotationView?.pinTintColor = Colors.blue
+        } else {
+            annotationView?.annotation = nodeAnnotation
+        }
+        
+        return annotationView
     }
 }

@@ -102,7 +102,6 @@ class WelcomeViewBase: UIViewController, WelcomeView {
     }
     
     private func animateBottomWrapper(forShowing shouldShow: Bool, shouldReset: Bool = false, completionHandler: (() -> ())? = nil) {
-
         if shouldShow {
             locationMap_heightConstraint.constant = -view.bounds.size.height * 0.5
             UIView.animate(withDuration: 0.5, animations: {
