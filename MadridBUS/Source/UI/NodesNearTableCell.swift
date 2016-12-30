@@ -2,11 +2,16 @@ import UIKit
 
 protocol NodesNearTableCell: class {
     var nextArrival: BusGeoNodeArrival? { get set }
+    var line: BusGeoLine? { get }
+    var node: BusGeoNode? { get }
     
-    func update(using ETA: Int, heading: String)
+    func update(using ETA: Int?, heading: String)
 }
 
 class NodesNearTableCellBase: UITableViewCell, NodesNearTableCell {
+    internal var line: BusGeoLine?
+    internal var node: BusGeoNode?
+
     internal var presenter: NodesNearTableCellPresenter!
     
     var nextArrival: BusGeoNodeArrival?
@@ -54,6 +59,9 @@ class NodesNearTableCellBase: UITableViewCell, NodesNearTableCell {
     }
     
     func configure(using model: BusGeoLine, on node: BusGeoNode, highlighted: Bool) {
+        line = model
+        self.node = node
+        
         busLineLabel.text = model.name
         if highlighted {
             backgroundColor = Colors.green
@@ -72,18 +80,27 @@ class NodesNearTableCellBase: UITableViewCell, NodesNearTableCell {
         presenter.nextArrival(at: model.name, on: node.id)
     }
     
-    func update(using ETA: Int, heading: String) {
+    func update(using ETA: Int?, heading: String) {
         var stringETA = ""
-        if ETA < 60 {
-            stringETA = LocalizedLiteral.localize(using: "WELCOMENODECELL_LB_ETA")
-        } else if ETA >= 9999 {
-            stringETA = "+ 20 min."
+        
+        if let currentETA = ETA {
+            if currentETA < 60 && currentETA > 0{
+                stringETA = LocalizedLiteral.localize(using: "WELCOMENODECELL_LB_ARRIVING")
+            } else if currentETA == 999999 {
+                stringETA = "+ 20 min."
+            } else if currentETA == 0 {
+                stringETA = LocalizedLiteral.localize(using: "WELCOMENODECELL_LB_STOPPED")
+            } else {
+                stringETA = "\(currentETA / 60) min."
+            }
+            
+            directionLabel.text = LocalizedLiteral.localize(using: "WELCOMENODECELL_LB_DIRECTION", with: heading)
         } else {
-            stringETA = "\(ETA / 60) min."
+            directionLabel.text = heading
         }
         
         nextBusTimeLabel.text = stringETA
-        directionLabel.text = LocalizedLiteral.localize(using: "WELCOMENODECELL_LB_DIRECTION", with: heading)
+        
         
         spinnerETA.isHidden = true
         nextBusTimeLabel.isHidden = false

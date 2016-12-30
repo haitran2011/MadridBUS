@@ -10,11 +10,16 @@ extension Date {
         return formatter.date(from: string)
     }
     
-    static func string(from date: Date, style: DateFormatter.Style) -> String {
+    static func string(from date: Date, style: DateFormatter.Style, onlyTime: Bool = false) -> String {
         let formatter = DateFormatter()
         formatter.calendar = Calendar.current
         formatter.timeZone = TimeZone.current
-        formatter.dateStyle = style
+        
+        if onlyTime {
+            formatter.timeStyle = style
+        } else {
+            formatter.dateStyle = style
+        }
         
         return formatter.string(from: date)
     }

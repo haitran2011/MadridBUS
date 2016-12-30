@@ -18,7 +18,8 @@ class ManualSearchViewBase: UIView, ManualSearchView {
     var explanationLabel = UILabel()
     var radiusSegmentedControl = UISegmentedControl()
     var relatedActionLabel = UILabel()
-    var relatedActionButton = UIButton(type: .custom)
+    var scanButton = UIButton(type: .custom)
+    var typeButton = UIButton(type: .custom)
     var backgroundImage = UIImageView()
     
     fileprivate let backgroundRotation = CABasicAnimation(keyPath: "transform.rotation")
@@ -69,12 +70,17 @@ class ManualSearchViewBase: UIView, ManualSearchView {
         relatedActionLabel.adjustsFontSizeToFitWidth = true
         relatedActionLabel.text = LocalizedLiteral.localize(using: "MANUALSEARCHVIEW_LB_MANUALSEARCH")
         
-        relatedActionButton.backgroundColor = Colors.green
-        relatedActionButton.setTitle(LocalizedLiteral.localize(using: "MANUALSEARCHVIEW_BT_MANUALSEARCH"), for: .normal)
-        relatedActionButton.setTitleColor(.white, for: .normal)
-        relatedActionButton.titleLabel?.font = Fonts.button
+        scanButton.backgroundColor = Colors.midnight
+        scanButton.setTitle(LocalizedLiteral.localize(using: "MANUALSEARCHVIEW_BT_SCANCODE"), for: .normal)
+        scanButton.setTitleColor(.white, for: .normal)
+        scanButton.titleLabel?.font = Fonts.button
         
-        [backgroundImage, explanationLabel, radiusSegmentedControl, relatedActionLabel, relatedActionButton].forEach({ addSubview($0) })
+        typeButton.backgroundColor = Colors.green
+        typeButton.setTitle(LocalizedLiteral.localize(using: "MANUALSEARCHVIEW_BT_TYPECODE"), for: .normal)
+        typeButton.setTitleColor(.white, for: .normal)
+        typeButton.titleLabel?.font = Fonts.button
+        
+        [backgroundImage, explanationLabel, radiusSegmentedControl, relatedActionLabel, scanButton, typeButton].forEach({ addSubview($0) })
         
         backgroundImage.snp.makeConstraints { (make) in
             make.centerX.centerY.equalToSuperview()
@@ -94,14 +100,21 @@ class ManualSearchViewBase: UIView, ManualSearchView {
         }
 
         relatedActionLabel.snp.makeConstraints { (make) in
-            make.bottom.equalTo(relatedActionButton.snp.top).offset(-8)
+            make.bottom.equalTo(scanButton.snp.top).offset(-8)
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
         }
         
-        relatedActionButton.snp.makeConstraints { (make) in
+        scanButton.snp.makeConstraints { (make) in
             make.height.equalTo(50)
-            make.leading.trailing.bottom.equalToSuperview()
+            make.leading.bottom.equalToSuperview()
+        }
+        
+        typeButton.snp.makeConstraints { (make) in
+            make.height.equalTo(50)
+            make.width.equalToSuperview().dividedBy(2)
+            make.leading.equalTo(scanButton.snp.trailing)
+            make.trailing.bottom.equalToSuperview()
         }
     }
     

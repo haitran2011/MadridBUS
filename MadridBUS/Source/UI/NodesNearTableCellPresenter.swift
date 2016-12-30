@@ -18,7 +18,9 @@ class NodesNearTableCellPresenterBase: NodesNearTableCellPresenter, HandleErrorD
     }
     
     func handleErrors(error: Error) {
-        
+        if error._code == 1 {
+            self.cell.update(using: nil, heading: "Sin servicio hasta las \(Date.string(from: cell.line!.startTime, using: "hh:mm a"))")
+        }
     }
     
     internal func nextArrival(at line: String, on node: String) {
@@ -30,7 +32,7 @@ class NodesNearTableCellPresenterBase: NodesNearTableCellPresenter, HandleErrorD
             if let firstToArrive = arrivalsList.first {
                 self.cell.update(using: firstToArrive.ETA, heading: firstToArrive.destination)
             } else {
-                self.cell.update(using: 0, heading: "ERROR")
+                self.cell.update(using: nil, heading: "ERROR")
             }
         }
     }

@@ -23,6 +23,8 @@ class SwinjectInjectorProvider: InjectorProvider, Injector {
 
         container.register(WelcomePresenter.self) { _ in WelcomePresenterBase(injector: self) }
         container.register(NodesNearTableCellPresenter.self) { _ in NodesNearTableCellPresenterBase(injector: self) }
+        
+        container.register(LineNodeDetailPresenter.self) { _ in LineNodeDetailPresenterBase(injector: self) }
 
         //Business
         container.register(BusGroupsInteractor.self) { _ in BusGroupsAsyncInteractor(injector: self) }

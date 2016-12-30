@@ -38,6 +38,12 @@ class BusGeoRepositoryBase: Repository, BusGeoRepository {
         
         requestClient.execute(request)
         
-        return try processMultiResponse(response: request.response)
+        do {
+            let arrivals = try processMultiResponse(response: request.response)
+            return arrivals
+        } catch {
+            let arrival = try processSingleResponse(response: request.response)
+            return [arrival]
+        }
     }
 }

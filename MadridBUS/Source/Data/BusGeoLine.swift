@@ -8,17 +8,18 @@ enum BusGeoLineDirection: String {
 }
 
 struct BusGeoLineFrequency {
-    var min: Int
-    var max: Int
+    var min: String
+    var max: String
 }
 
 final class BusGeoLine: Mappable {
+    var id: String = ""
     var name: String = ""
     var dayType: BusDayType = .undetermined
     var header: String = ""
     var terminus: String = ""
     var direction: BusGeoLineDirection = .undetermined
-    var frequency: BusGeoLineFrequency = BusGeoLineFrequency(min: 0, max: 0)
+    var frequency: BusGeoLineFrequency = BusGeoLineFrequency(min: "0", max: "0")
     var startTime: Date = Date()
     var endTime: Date = Date()
     
@@ -29,13 +30,14 @@ final class BusGeoLine: Mappable {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "h:mm"
         
-        var maxFrequency = 0
+        var maxFrequency = "0"
         maxFrequency <- map["maximumFrequency"]
         
-        var minFrequency = 0
+        var minFrequency = "0"
         minFrequency <- map["minimumFrequency"]
         
-        name <- map["line"]
+        id <- map["line"]
+        name <- map["name"]
         dayType <- (map["TipoDia"], EnumTransform<BusDayType>())
         header <- map["headerA"]
         terminus <- map["headerB"]

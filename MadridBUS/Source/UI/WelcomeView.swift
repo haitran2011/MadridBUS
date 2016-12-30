@@ -19,9 +19,7 @@ class WelcomeViewBase: UIViewController, WelcomeView {
     internal var presenter: WelcomePresenter
     internal var manualSearch = ManualSearchViewBase()
     internal var nodesTable = NodesNearTable()
-    
-    fileprivate var currentMode: WelcomeViewMode?
-    
+
     internal var nodesTableDataSet: [BusGeoNode] = [] {
         didSet {
             if nodesTableDataSet.count > 0 {
@@ -53,7 +51,7 @@ class WelcomeViewBase: UIViewController, WelcomeView {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
-        presenter.obtainLocation(using: 50)
+        presenter.nodesAround(using: 50)
     }
     
     func updateMap(with location: CLLocation) {
@@ -179,6 +177,17 @@ extension WelcomeViewBase: UITableViewDelegate, UITableViewDataSource {
             return false
         }
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let cell = tableView.cellForRow(at: indexPath) as! NodesNearTableCell
+        
+        guard let line = cell.line, let node = cell.node else {
+            return
+        }
+        
+        presenter.nodes(on: line, from: node)
+    }
 }
 
 extension WelcomeViewBase: MKMapViewDelegate {
@@ -215,7 +224,7 @@ extension WelcomeViewBase: MKMapViewDelegate {
 extension WelcomeViewBase: ManualSearchViewDelegate {
     func didSelect(radius: Int) {
         enable(mode: .fullMap(shouldReset: true, completionHandler: { 
-            self.presenter.obtainLocation(using: radius)
+            self.presenter.nodesAround(using: radius)
         }))
     }
 }

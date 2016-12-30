@@ -1,6 +1,8 @@
 "MANUALSEARCHVIEW_LB_REDEFINERADIUS" = "No hemos encontrado paradas de EMT cerca de tí. Puedes volver a intentarlo, aumentando el radio de búsqueda, pulsando una de las opciones propuestas.";
 "MANUALSEARCHVIEW_LB_MANUALSEARCH" = "También puedes introducir manualmente el código de la parada en la que estás, o escanearlo.";
-"MANUALSEARCHVIEW_BT_MANUALSEARCH" = "BUSCAR MANUALMENTE";
+"MANUALSEARCHVIEW_BT_SCANCODE" = "ESCANEAR CÓDIGO";
+"MANUALSEARCHVIEW_BT_TYPECODE" = "ESCRIBIR CÓDIGO";
 
 "WELCOMENODECELL_LB_DIRECTION" = "Dirección: %@";
-"WELCOMENODECELL_LB_ETA" = "Llegando";
+"WELCOMENODECELL_LB_ARRIVING" = "Llegando";
+"WELCOMENODECELL_LB_STOPPED" = "En parada";

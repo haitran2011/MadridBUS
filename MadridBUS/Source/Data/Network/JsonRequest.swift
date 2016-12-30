@@ -29,7 +29,7 @@ class JsonRequest<ResponseType:Mappable>: Request {
         do {
             var json = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
             if let key = skippableKey {
-                if let jsonFromKey = (json as! NSDictionary)[key] {
+                if let jsonFromKey = (json as? NSDictionary)?[key] {
                     json = jsonFromKey
                 } else {
                     response.dataError = RepositoryError(message: "Empty data", code: 101)

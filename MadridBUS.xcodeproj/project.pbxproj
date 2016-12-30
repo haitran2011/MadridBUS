@@ -106,6 +106,10 @@
 		30D02E441E117B1200F51304 /* DTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D02E431E117B1200F51304 /* DTO.swift */; };
 		30D482491E150533007330D2 /* NodeAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D482481E150533007330D2 /* NodeAnnotation.swift */; };
 		30D4824B1E150AA3007330D2 /* NodesNearTableHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D4824A1E150AA3007330D2 /* NodesNearTableHeader.swift */; };
+		30D4824E1E1556ED007330D2 /* LineNodeDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D4824D1E1556ED007330D2 /* LineNodeDetailPresenter.swift */; };
+		30D482501E1556F7007330D2 /* LineNodeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D4824F1E1556F7007330D2 /* LineNodeDetailView.swift */; };
+		30D482521E155700007330D2 /* LineNodeDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30D482511E155700007330D2 /* LineNodeDetailView.xib */; };
+		30D482541E158646007330D2 /* LineScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D482531E158646007330D2 /* LineScheme.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -225,6 +229,10 @@
 		30D02E431E117B1200F51304 /* DTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTO.swift; sourceTree = "<group>"; };
 		30D482481E150533007330D2 /* NodeAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeAnnotation.swift; sourceTree = "<group>"; };
 		30D4824A1E150AA3007330D2 /* NodesNearTableHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodesNearTableHeader.swift; sourceTree = "<group>"; };
+		30D4824D1E1556ED007330D2 /* LineNodeDetailPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineNodeDetailPresenter.swift; sourceTree = "<group>"; };
+		30D4824F1E1556F7007330D2 /* LineNodeDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineNodeDetailView.swift; sourceTree = "<group>"; };
+		30D482511E155700007330D2 /* LineNodeDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LineNodeDetailView.xib; sourceTree = "<group>"; };
+		30D482531E158646007330D2 /* LineScheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineScheme.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -528,6 +536,7 @@
 				30D02DBE1E11210300F51304 /* Commons */,
 				30D02DF11E11246F00F51304 /* ErrorView */,
 				30D02DB01E11204B00F51304 /* WelcomeView */,
+				30D4824C1E1556BD007330D2 /* LineNodeDetailView */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -624,6 +633,7 @@
 			isa = PBXGroup;
 			children = (
 				30D02E1D1E1125A100F51304 /* LocalizedLiteral.swift */,
+				30D482531E158646007330D2 /* LineScheme.swift */,
 				30D02DFF1E1124C300F51304 /* Button.swift */,
 				30D02DD71E11231C00F51304 /* Spinner */,
 			);
@@ -665,6 +675,16 @@
 				30D482481E150533007330D2 /* NodeAnnotation.swift */,
 			);
 			name = NodeAnnotation;
+			sourceTree = "<group>";
+		};
+		30D4824C1E1556BD007330D2 /* LineNodeDetailView */ = {
+			isa = PBXGroup;
+			children = (
+				30D4824D1E1556ED007330D2 /* LineNodeDetailPresenter.swift */,
+				30D4824F1E1556F7007330D2 /* LineNodeDetailView.swift */,
+				30D482511E155700007330D2 /* LineNodeDetailView.xib */,
+			);
+			name = LineNodeDetailView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -732,6 +752,7 @@
 				303725B71E13C82800FABC93 /* NodesNearTableCell.xib in Resources */,
 				30D02DFB1E11247D00F51304 /* ErrorView.xib in Resources */,
 				30BF1F7E1E13E5DF006DED45 /* Anton.ttf in Resources */,
+				30D482521E155700007330D2 /* LineNodeDetailView.xib in Resources */,
 				303725A01E13A83B00FABC93 /* InfoPlist.strings in Resources */,
 				30D02D9A1E111C8F00F51304 /* Assets.xcassets in Resources */,
 				30D02DBB1E11207D00F51304 /* WelcomeView.xib in Resources */,
@@ -775,6 +796,7 @@
 				303725431E12683200FABC93 /* BusLineSchedule.swift in Sources */,
 				303725B31E13C81C00FABC93 /* NodesNearTableCell.swift in Sources */,
 				30D02DDA1E11232600F51304 /* Spinner.swift in Sources */,
+				30D4824E1E1556ED007330D2 /* LineNodeDetailPresenter.swift in Sources */,
 				303725621E12A87400FABC93 /* BusGeoRepository.swift in Sources */,
 				30D02DE81E1123F300F51304 /* Presenter.swift in Sources */,
 				303725311E12566C00FABC93 /* BusNodesBasicInfoInteractor.swift in Sources */,
@@ -789,6 +811,7 @@
 				30D02DF51E11247D00F51304 /* ErrorPresenter.swift in Sources */,
 				3037253A1E125AA500FABC93 /* BusNodesForBusLinesInteractor.swift in Sources */,
 				30D4824B1E150AA3007330D2 /* NodesNearTableHeader.swift in Sources */,
+				30D482541E158646007330D2 /* LineScheme.swift in Sources */,
 				30D02C041E111C3700F51304 /* RepositoryError.swift in Sources */,
 				30D02C4C1E111C3700F51304 /* Injector.swift in Sources */,
 				30D02E441E117B1200F51304 /* DTO.swift in Sources */,
@@ -808,6 +831,7 @@
 				30D02E261E1127DD00F51304 /* BusRepository.swift in Sources */,
 				30D02E3C1E1174A600F51304 /* BusCalendarItem.swift in Sources */,
 				30BF1F821E1422B7006DED45 /* NodesNearTableCellPresenter.swift in Sources */,
+				30D482501E1556F7007330D2 /* LineNodeDetailView.swift in Sources */,
 				30D482491E150533007330D2 /* NodeAnnotation.swift in Sources */,
 				303725521E129AA300FABC93 /* BusLineTimeTableInteractor.swift in Sources */,
 				3037256C1E12AAA700FABC93 /* BusGeoPOIInteractor.swift in Sources */,
