@@ -45,6 +45,12 @@
 		303725AA1E13A8BF00FABC93 /* Languages.strings in Resources */ = {isa = PBXBuildFile; fileRef = 303725AE1E13A8BF00FABC93 /* Languages.strings */; };
 		303725B31E13C81C00FABC93 /* NodesNearTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303725B21E13C81C00FABC93 /* NodesNearTableCell.swift */; };
 		303725B71E13C82800FABC93 /* NodesNearTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 303725B61E13C82800FABC93 /* NodesNearTableCell.xib */; };
+		307D33B41E1633BF005E7D4E /* LineScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307D33B31E1633BF005E7D4E /* LineScheme.swift */; };
+		307D33B71E163440005E7D4E /* LineSchemeNodeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307D33B61E163440005E7D4E /* LineSchemeNodeModel.swift */; };
+		307D33BA1E1634C4005E7D4E /* LineSchemeNodeTop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307D33B91E1634C4005E7D4E /* LineSchemeNodeTop.swift */; };
+		307D33BC1E1634DE005E7D4E /* LineSchemeNodeMiddle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307D33BB1E1634DE005E7D4E /* LineSchemeNodeMiddle.swift */; };
+		307D33BE1E1634EF005E7D4E /* LineSchemeNodeBottom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307D33BD1E1634EF005E7D4E /* LineSchemeNodeBottom.swift */; };
+		307D33C11E163627005E7D4E /* LineSchemeGraphicNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307D33C01E163627005E7D4E /* LineSchemeGraphicNode.swift */; };
 		30BF1F7B1E13D33A006DED45 /* ListAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BF1F7A1E13D33A006DED45 /* ListAdapter.swift */; };
 		30BF1F7E1E13E5DF006DED45 /* Anton.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 30BF1F7D1E13E5DF006DED45 /* Anton.ttf */; };
 		30BF1F821E1422B7006DED45 /* NodesNearTableCellPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BF1F811E1422B7006DED45 /* NodesNearTableCellPresenter.swift */; };
@@ -109,7 +115,6 @@
 		30D4824E1E1556ED007330D2 /* LineNodeDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D4824D1E1556ED007330D2 /* LineNodeDetailPresenter.swift */; };
 		30D482501E1556F7007330D2 /* LineNodeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D4824F1E1556F7007330D2 /* LineNodeDetailView.swift */; };
 		30D482521E155700007330D2 /* LineNodeDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30D482511E155700007330D2 /* LineNodeDetailView.xib */; };
-		30D482541E158646007330D2 /* LineScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D482531E158646007330D2 /* LineScheme.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -172,6 +177,12 @@
 		303725AF1E13A8C000FABC93 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Languages.strings; sourceTree = "<group>"; };
 		303725B21E13C81C00FABC93 /* NodesNearTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodesNearTableCell.swift; sourceTree = "<group>"; };
 		303725B61E13C82800FABC93 /* NodesNearTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NodesNearTableCell.xib; sourceTree = "<group>"; };
+		307D33B31E1633BF005E7D4E /* LineScheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineScheme.swift; sourceTree = "<group>"; };
+		307D33B61E163440005E7D4E /* LineSchemeNodeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSchemeNodeModel.swift; sourceTree = "<group>"; };
+		307D33B91E1634C4005E7D4E /* LineSchemeNodeTop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSchemeNodeTop.swift; sourceTree = "<group>"; };
+		307D33BB1E1634DE005E7D4E /* LineSchemeNodeMiddle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSchemeNodeMiddle.swift; sourceTree = "<group>"; };
+		307D33BD1E1634EF005E7D4E /* LineSchemeNodeBottom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSchemeNodeBottom.swift; sourceTree = "<group>"; };
+		307D33C01E163627005E7D4E /* LineSchemeGraphicNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSchemeGraphicNode.swift; sourceTree = "<group>"; };
 		30A540011E1116A500362E8B /* MadridBUS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MadridBUS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30A540101E1116A500362E8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		30BF1F7A1E13D33A006DED45 /* ListAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListAdapter.swift; sourceTree = "<group>"; };
@@ -232,7 +243,6 @@
 		30D4824D1E1556ED007330D2 /* LineNodeDetailPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineNodeDetailPresenter.swift; sourceTree = "<group>"; };
 		30D4824F1E1556F7007330D2 /* LineNodeDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineNodeDetailView.swift; sourceTree = "<group>"; };
 		30D482511E155700007330D2 /* LineNodeDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LineNodeDetailView.xib; sourceTree = "<group>"; };
-		30D482531E158646007330D2 /* LineScheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineScheme.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -391,6 +401,43 @@
 				303725B61E13C82800FABC93 /* NodesNearTableCell.xib */,
 			);
 			name = NodesNearTableCell;
+			sourceTree = "<group>";
+		};
+		307D33B21E1633AA005E7D4E /* LineScheme */ = {
+			isa = PBXGroup;
+			children = (
+				307D33B51E163425005E7D4E /* Models */,
+				307D33B81E1634AD005E7D4E /* Components */,
+				307D33B31E1633BF005E7D4E /* LineScheme.swift */,
+			);
+			name = LineScheme;
+			sourceTree = "<group>";
+		};
+		307D33B51E163425005E7D4E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				307D33B61E163440005E7D4E /* LineSchemeNodeModel.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		307D33B81E1634AD005E7D4E /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				307D33BF1E163618005E7D4E /* LineSchemeGraphicNode */,
+			);
+			name = Components;
+			sourceTree = "<group>";
+		};
+		307D33BF1E163618005E7D4E /* LineSchemeGraphicNode */ = {
+			isa = PBXGroup;
+			children = (
+				307D33C01E163627005E7D4E /* LineSchemeGraphicNode.swift */,
+				307D33B91E1634C4005E7D4E /* LineSchemeNodeTop.swift */,
+				307D33BB1E1634DE005E7D4E /* LineSchemeNodeMiddle.swift */,
+				307D33BD1E1634EF005E7D4E /* LineSchemeNodeBottom.swift */,
+			);
+			name = LineSchemeGraphicNode;
 			sourceTree = "<group>";
 		};
 		30A53FF81E1116A500362E8B = {
@@ -633,9 +680,9 @@
 			isa = PBXGroup;
 			children = (
 				30D02E1D1E1125A100F51304 /* LocalizedLiteral.swift */,
-				30D482531E158646007330D2 /* LineScheme.swift */,
 				30D02DFF1E1124C300F51304 /* Button.swift */,
 				30D02DD71E11231C00F51304 /* Spinner */,
+				307D33B21E1633AA005E7D4E /* LineScheme */,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -786,6 +833,7 @@
 				30D02E301E1128FE00F51304 /* BusRepositoryBase.swift in Sources */,
 				30D02C2B1E111C3700F51304 /* RequestBuilder.swift in Sources */,
 				30D02E1E1E1125A100F51304 /* LocalizedLiteral.swift in Sources */,
+				307D33BE1E1634EF005E7D4E /* LineSchemeNodeBottom.swift in Sources */,
 				30D02DD41E11231500F51304 /* Fonts.swift in Sources */,
 				3037255F1E12A84300FABC93 /* BusGeoRepositoryBase.swift in Sources */,
 				30D02DB71E11206E00F51304 /* WelcomePresenter.swift in Sources */,
@@ -804,6 +852,7 @@
 				303725991E139EE600FABC93 /* LocationHelper.swift in Sources */,
 				303725651E12A8B400FABC93 /* BusGeoPOIDTO.swift in Sources */,
 				30D02E221E11278D00F51304 /* BusGroupsInteractor.swift in Sources */,
+				307D33C11E163627005E7D4E /* LineSchemeGraphicNode.swift in Sources */,
 				30D02C461E111C3700F51304 /* AppDelegate.swift in Sources */,
 				30D02E0E1E11254A00F51304 /* Date+Components.swift in Sources */,
 				303725371E12575C00FABC93 /* BusNodesBasicInfoDTO.swift in Sources */,
@@ -811,12 +860,14 @@
 				30D02DF51E11247D00F51304 /* ErrorPresenter.swift in Sources */,
 				3037253A1E125AA500FABC93 /* BusNodesForBusLinesInteractor.swift in Sources */,
 				30D4824B1E150AA3007330D2 /* NodesNearTableHeader.swift in Sources */,
-				30D482541E158646007330D2 /* LineScheme.swift in Sources */,
+				307D33BA1E1634C4005E7D4E /* LineSchemeNodeTop.swift in Sources */,
 				30D02C041E111C3700F51304 /* RepositoryError.swift in Sources */,
 				30D02C4C1E111C3700F51304 /* Injector.swift in Sources */,
 				30D02E441E117B1200F51304 /* DTO.swift in Sources */,
 				30BF1F7B1E13D33A006DED45 /* ListAdapter.swift in Sources */,
+				307D33B41E1633BF005E7D4E /* LineScheme.swift in Sources */,
 				30D02E041E1124E500F51304 /* ErrorViewController.swift in Sources */,
+				307D33BC1E1634DE005E7D4E /* LineSchemeNodeMiddle.swift in Sources */,
 				303725341E12568700FABC93 /* BusNodeBasicInfo.swift in Sources */,
 				30D02DB21E11205F00F51304 /* WelcomeView.swift in Sources */,
 				3037258A1E1399FD00FABC93 /* BusGeoNodeArrival.swift in Sources */,
@@ -837,6 +888,7 @@
 				3037256C1E12AAA700FABC93 /* BusGeoPOIInteractor.swift in Sources */,
 				303725251E124BA000FABC93 /* BusLinesBasicInfoInteractor.swift in Sources */,
 				3037257E1E13933600FABC93 /* BusGeoLine.swift in Sources */,
+				307D33B71E163440005E7D4E /* LineSchemeNodeModel.swift in Sources */,
 				303725811E13937E00FABC93 /* BusGeoNode.swift in Sources */,
 				30D02BA41E111C3700F51304 /* BusinessError.swift in Sources */,
 				303725871E1398AF00FABC93 /* BusGeoNodesAroundLocationInteractor.swift in Sources */,

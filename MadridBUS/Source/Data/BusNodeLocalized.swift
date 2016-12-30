@@ -2,14 +2,14 @@ import Foundation
 import ObjectMapper
 
 enum BusNodeType: Int {
-    case stopForward = 10
-    case stopBackwards = 20
+    case nodeForward = 10
+    case nodeBackwards = 20
     case vertexForward = 19
     case vertexBackwards = 29
     case undefined = 0
 }
 
-final class BusNodeLocalized: Mappable {
+final class BusNodeLocalized: Mappable, Equatable {
     var id: Int = 0
     var line: Int = 0
     var type: BusNodeType = .undefined
@@ -31,4 +31,8 @@ final class BusNodeLocalized: Mappable {
         latitude <- map["latitude"]
         longitude <- map["longitude"]
     }
+}
+
+func ==<T: BusNodeLocalized>(left: T, right: T) -> Bool {
+    return left.id == right.id
 }

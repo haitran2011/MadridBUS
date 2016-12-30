@@ -30,7 +30,23 @@ class LineNodeDetailPresenterBase: Presenter, LineNodeDetailPresenter {
         let dto = BusNodesForBusLinesDTO(using: [line])
         
         busNodesForLine.execute(dto) { (busNodes) in
+            var graphicNodes: [LineSchemeNodeModel] = []
+            for aNode in busNodes {
+                let position = busNodes.index(of: aNode)!
+                var nodeModel: LineSchemeNodeModel
+                
+                if aNode.type == .nodeForward || aNode.type == .vertexForward {
+                    nodeModel = LineSchemeNodeModel(name: aNode.name.capitalized, position: position, direction: .forward)
+                } else if aNode.type == .nodeBackwards || aNode.type == .vertexBackwards {
+                    nodeModel = LineSchemeNodeModel(name: aNode.name.capitalized, position: position, direction: .backwards)
+                } else {
+                    nodeModel = LineSchemeNodeModel(name: aNode.name.capitalized, position: position, direction: .undefined)
+                }
+
+                graphicNodes.append(nodeModel)
+            }
             
+            self.view.update(withNodes: graphicNodes)
         }
     }
 }

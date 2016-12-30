@@ -4,7 +4,7 @@ import ObjectMapper
 enum Language: String {
     case spanish = "ES"
     case english = "EN"
-    case undetermined = ""
+    case undefined = ""
 }
 
 class DTO: Mappable {

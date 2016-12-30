@@ -1,15 +1,15 @@
 import UIKit
 
 protocol LineNodeDetailView: View {
-    func update(withNodes nodes: [BusNodeLocalized])
+    func update(withNodes nodes: [LineSchemeNodeModel])
 }
 
 class LineNodeDetailViewBase: UIViewController, LineNodeDetailView {
     internal var presenter: LineNodeDetailPresenter
-
-    private var line: BusGeoLine?
-    private var nodeFrom: BusGeoNode?
-    private var nodes: [BusNodeLocalized]?
+    
+    private var line: BusGeoLine
+    private var nodeFrom: BusGeoNode
+    private var nodes: [BusNodeLocalized]
     
     @IBOutlet weak var directionSegmentedControl: UISegmentedControl!
     @IBOutlet weak var schemeScroll: UIScrollView!
@@ -21,12 +21,11 @@ class LineNodeDetailViewBase: UIViewController, LineNodeDetailView {
     
     init(with line: BusGeoLine, from node: BusGeoNode, with nodes: [BusNodeLocalized], injector: Injector = SwinjectInjectorProvider.injector, nibName: String? = "LineNodeDetailView") {
         self.presenter = injector.instanceOf(LineNodeDetailPresenter.self)
-        super.init(nibName: nibName, bundle: nil)
-        presenter.config(using: self)
-        
         self.line = line
         self.nodeFrom = node
         self.nodes = nodes
+        super.init(nibName: nibName, bundle: nil)
+        presenter.config(using: self)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -54,7 +53,7 @@ class LineNodeDetailViewBase: UIViewController, LineNodeDetailView {
         frequencyDataLabel.lineBreakMode = .byWordWrapping
         
         frequencyTitleLabel.text = "FRECUENCIA GENERAL"
-        frequencyDataLabel.text = "Máxima: \(line!.frequency.max) min.\nMínima: \(line!.frequency.min) min."
+        frequencyDataLabel.text = "Máxima: \(line.frequency.max) min.\nMínima: \(line.frequency.min) min."
         
         scheduleTitleLabel.font = Fonts.standardBold
         scheduleTitleLabel.textColor = Colors.blue
@@ -66,23 +65,47 @@ class LineNodeDetailViewBase: UIViewController, LineNodeDetailView {
         startTimeLabel.textColor = .black
         startTimeLabel.textAlignment = .left
         startTimeLabel.numberOfLines = 1
-        startTimeLabel.text = "Inicio: \(Date.string(from: line!.startTime, using: "hh:mm a"))"
+        startTimeLabel.text = "Inicio: \(Date.string(from: line.startTime, using: "hh:mm a"))"
         
         endTimeLabel.font = Fonts.standardRegular
         endTimeLabel.textColor = .black
         endTimeLabel.textAlignment = .left
         endTimeLabel.numberOfLines = 1
-        endTimeLabel.text = "Final: \(Date.string(from: line!.endTime, using: "hh:mm a"))"
+        endTimeLabel.text = "Final: \(Date.string(from: line.endTime, using: "hh:mm a"))"
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = line?.name
+        title = line.name
     }
     
-    func update(withNodes nodes: [BusNodeLocalized]) {
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
+        presenter.nodes(on: line.name)
+    }
+    
+    func update(withNodes nodes: [LineSchemeNodeModel]) {
+        var schemeTheme = LineSchemeTheme()
+        schemeTheme.titleFont = Fonts.standardRegular
+        schemeTheme.normalBackgroundColor = .white
+        schemeTheme.normalForegroundColor = Colors.blue
+        schemeTheme.normalTitleColor = .black
+        schemeTheme.highlightedBackgroundColor = Colors.blue
+        schemeTheme.highlightedForegroundColor = Colors.midnight
+        schemeTheme.highlightedTitleColor = .white
+        
+        let graphicLine = LineScheme(with: nodes, direction: .forward, theme: schemeTheme)
+        graphicLine.delegate = self
+        graphicLine.frame = CGRect(x: 0, y: 0, width: schemeScroll.bounds.width, height: graphicLine.frame.height)
+        schemeScroll.addSubview(graphicLine)
+        schemeScroll.contentSize = CGSize(width: schemeScroll.bounds.width, height: graphicLine.frame.height)
     }
 }
 
+extension LineNodeDetailViewBase: LineSchemeDelegate {
+    func didTap(node: LineSchemeNodeModel) {
+        
+    }
+}

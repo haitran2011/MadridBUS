@@ -4,7 +4,7 @@ import ObjectMapper
 enum BusGeoLineDirection: String {
     case forward = "A"
     case backward = "B"
-    case undetermined = "Z"
+    case undefined = "Z"
 }
 
 struct BusGeoLineFrequency {
@@ -15,10 +15,10 @@ struct BusGeoLineFrequency {
 final class BusGeoLine: Mappable {
     var id: String = ""
     var name: String = ""
-    var dayType: BusDayType = .undetermined
+    var dayType: BusDayType = .undefined
     var header: String = ""
     var terminus: String = ""
-    var direction: BusGeoLineDirection = .undetermined
+    var direction: BusGeoLineDirection = .undefined
     var frequency: BusGeoLineFrequency = BusGeoLineFrequency(min: "0", max: "0")
     var startTime: Date = Date()
     var endTime: Date = Date()

@@ -4,15 +4,15 @@ import ObjectMapper
 enum BusLineTimeTableDirection: String {
     case forward = "2"
     case backward = "1"
-    case undetermined = "0"
+    case undefined = "0"
 }
 
 final class BusLineTimeTableItem: Mappable {
     var date: Date = Date()
-    var dayType: BusDayType = .undetermined
+    var dayType: BusDayType = .undefined
     var line: String = ""
     var trip: String = ""
-    var direction: BusLineTimeTableDirection = .undetermined
+    var direction: BusLineTimeTableDirection = .undefined
     var startTime: Date = Date()
     var endTime: Date = Date()
     

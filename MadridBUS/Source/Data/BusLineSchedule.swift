@@ -7,7 +7,7 @@ class BusLineBasicSchedule: Mappable {
     var headerEndTime: Date = Date()
     var terminusStartTime: Date = Date()
     var terminusEndTime: Date = Date()
-    var dayType: BusDayType = .undetermined
+    var dayType: BusDayType = .undefined
     
     init() {}
     required init?(map: Map) {}
@@ -40,7 +40,7 @@ final class BusLineSchedule: Mappable {
             case .labour: labourSchedule = aSchedule
             case .saturday: saturdaySchedule = aSchedule
             case .friday: fridaySchedule = aSchedule
-            case .undetermined: break
+            case .undefined: break
             }
         }
     }
@@ -57,7 +57,7 @@ final class BusLineSchedule: Mappable {
             case .labour: labourSchedule = aSchedule
             case .saturday: saturdaySchedule = aSchedule
             case .friday: fridaySchedule = aSchedule
-            case .undetermined: break
+            case .undefined: break
             }
         }
     }

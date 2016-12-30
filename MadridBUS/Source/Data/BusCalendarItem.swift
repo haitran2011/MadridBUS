@@ -6,7 +6,7 @@ enum BusDayType: String {
     case saturday = "SA"
     case friday = "V"
     case holiday = "FE"
-    case undetermined = ""
+    case undefined = ""
 }
 
 enum BusSeason: String {
@@ -15,13 +15,13 @@ enum BusSeason: String {
     case christmas = "NV"
     case lowSeason = "BJ"
     case summer = "VN"
-    case undetermined = ""
+    case undefined = ""
 }
 
 final class BusCalendarItem: Mappable {
     var date: Date = Date()
-    var dayType: BusDayType = .undetermined
-    var season: BusSeason = .undetermined
+    var dayType: BusDayType = .undefined
+    var season: BusSeason = .undefined
     var onStrike: Bool = false
     
     required init?(map: Map) {}

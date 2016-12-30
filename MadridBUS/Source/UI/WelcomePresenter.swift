@@ -39,8 +39,8 @@ class WelcomePresenterBase: Presenter, WelcomePresenter {
         if locationHelper.isLocationAvailable {
             locationHelper.acquireLocation { (acquiredLocation) in
                 self.view.updateMap(with: acquiredLocation)
-                self.nodesAround(latitude: acquiredLocation.coordinate.latitude, longitude: acquiredLocation.coordinate.longitude, radius: radius)
-                //self.nodesAround(latitude: 40.4668966, longitude: -3.6891933, radius: radius)
+                //self.nodesAround(latitude: acquiredLocation.coordinate.latitude, longitude: acquiredLocation.coordinate.longitude, radius: radius)
+                self.nodesAround(latitude: 40.4668966, longitude: -3.6891933, radius: radius)
             }
         }
     }
