@@ -8,8 +8,13 @@ protocol ManualSearchViewDelegate: class {
 protocol ManualSearchView {
     var delegate: ManualSearchViewDelegate? { get set }
     
-    func show(over view: UIView, delegating delegate: ManualSearchViewDelegate)
+    func show(over view: UIView, mode: ManualSearchViewMode, delegating delegate: ManualSearchViewDelegate)
     func hide()
+}
+
+enum ManualSearchViewMode {
+    case unableToLocate
+    case noLocationPermission
 }
 
 class ManualSearchViewBase: UIView, ManualSearchView {
@@ -44,17 +49,10 @@ class ManualSearchViewBase: UIView, ManualSearchView {
         backgroundRotation.duration = 2.0
         backgroundRotation.repeatCount = HUGE
         
-        backgroundImage.image = #imageLiteral(resourceName: "Radar")
-        backgroundImage.tintColor = .white
-        backgroundImage.contentMode = .scaleAspectFit
-        backgroundImage.alpha = 0.1
-        
-        explanationLabel.font = Fonts.standardRegular
         explanationLabel.textAlignment = .left
         explanationLabel.textColor = .white
         explanationLabel.numberOfLines = 0
         explanationLabel.adjustsFontSizeToFitWidth = true
-        explanationLabel.text = LocalizedLiteral.localize(using: "MANUALSEARCHVIEW_LB_REDEFINERADIUS")
 
         radiusSegmentedControl.insertSegment(withTitle: "50 m.", at: 0, animated: false)
         radiusSegmentedControl.insertSegment(withTitle: "100 m.", at: 1, animated: false)
@@ -91,6 +89,7 @@ class ManualSearchViewBase: UIView, ManualSearchView {
             make.top.equalToSuperview().offset(16)
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
+            make.height.equalTo(29)
         }
         
         explanationLabel.snp.makeConstraints { (make) in
@@ -118,7 +117,57 @@ class ManualSearchViewBase: UIView, ManualSearchView {
         }
     }
     
-    func show(over view: UIView, delegating delegate: ManualSearchViewDelegate) {
+    func show(over view: UIView, mode: ManualSearchViewMode, delegating delegate: ManualSearchViewDelegate) {
+        switch mode {
+        case .unableToLocate:
+            explanationLabel.font = Fonts.standardRegular
+            explanationLabel.text = LocalizedLiteral.localize(using: "MANUALSEARCHVIEW_LB_REDEFINERADIUS")
+            
+            backgroundImage.image = #imageLiteral(resourceName: "Radar")
+            backgroundImage.tintColor = .white
+            backgroundImage.contentMode = .scaleAspectFit
+            backgroundImage.alpha = 0.1
+            backgroundImage.layer.add(backgroundRotation, forKey: "BackgroundRotation")
+            
+            backgroundImage.snp.remakeConstraints { (make) in
+                make.centerX.centerY.equalToSuperview()
+                make.width.height.equalToSuperview().dividedBy(4)
+            }
+            
+            radiusSegmentedControl.isHidden = false
+            radiusSegmentedControl.snp.updateConstraints({ (make) in
+                make.height.equalTo(29)
+            })
+            
+            explanationLabel.snp.updateConstraints({ (make) in
+                make.top.equalTo(radiusSegmentedControl.snp.bottom).offset(8)
+            })
+        
+        case .noLocationPermission:
+            explanationLabel.font = Fonts.standardBold
+            explanationLabel.text = LocalizedLiteral.localize(using: "MANUALSEARCHVIEW_LB_LOCATIONPERMISSION")
+            
+            backgroundImage.image = #imageLiteral(resourceName: "NoLocation")
+            backgroundImage.contentMode = .scaleAspectFit
+            backgroundImage.alpha = 1
+            backgroundImage.layer.removeAllAnimations()
+            
+            backgroundImage.snp.remakeConstraints { (make) in
+                make.centerY.equalToSuperview()
+                make.height.equalToSuperview().dividedBy(4)
+                make.leading.trailing.equalToSuperview()
+            }
+            
+            radiusSegmentedControl.isHidden = true
+            radiusSegmentedControl.snp.updateConstraints({ (make) in
+                make.height.equalTo(0)
+            })
+            
+            explanationLabel.snp.updateConstraints({ (make) in
+                make.top.equalTo(radiusSegmentedControl.snp.bottom)
+            })
+        }
+        
         view.addSubview(self)
         frame = view.frame
         bounds = view.bounds
@@ -128,8 +177,6 @@ class ManualSearchViewBase: UIView, ManualSearchView {
         }
         
         layoutIfNeeded()
-
-        backgroundImage.layer.add(backgroundRotation, forKey: nil)
     }
     
     func hide() {

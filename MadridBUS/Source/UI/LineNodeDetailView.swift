@@ -13,7 +13,8 @@ class LineNodeDetailViewBase: UIViewController, LineNodeDetailView {
     private var nodes: [BusNodeLocalized]
     
     @IBOutlet weak var directionSegmentedControl: UISegmentedControl!
-    @IBOutlet weak var schemeScroll: UIScrollView!
+    @IBOutlet weak var lineScheme: LineScheme!
+    @IBOutlet weak var dataWrapper: UIView!
     @IBOutlet weak var frequencyTitleLabel: UILabel!
     @IBOutlet weak var maxFreqLabel: UILabel!
     @IBOutlet weak var minFreqLabel: UILabel!
@@ -39,7 +40,7 @@ class LineNodeDetailViewBase: UIViewController, LineNodeDetailView {
     
     override func loadView() {
         super.loadView()
-    
+
         directionSegmentedControl.tintColor = Colors.blue
         directionSegmentedControl.removeAllSegments()
         directionSegmentedControl.insertSegment(with: #imageLiteral(resourceName: "ChevronDown"), at: 0, animated: false)
@@ -47,11 +48,13 @@ class LineNodeDetailViewBase: UIViewController, LineNodeDetailView {
         directionSegmentedControl.selectedSegmentIndex = 0
         directionSegmentedControl.addTarget(self, action: #selector(didChangeDirectionValue), for: .valueChanged)
         
+        dataWrapper.backgroundColor = UIColor.white.withAlphaComponent(0.7)
+        
         frequencyTitleLabel.font = Fonts.standardBold
         frequencyTitleLabel.textColor = Colors.blue
         frequencyTitleLabel.textAlignment = .left
         frequencyTitleLabel.numberOfLines = 1
-        frequencyTitleLabel.text = LocalizedLiteral.localize(using: "LINENODESDETAIL_LB_GENERALFREQ")
+        frequencyTitleLabel.text = LocalizedLiteral.localize(using: "LINENODESDETAIL_LB_GENERALFREQ")        
         
         maxFreqLabel.font = Fonts.standardRegular
         maxFreqLabel.textColor = .black
@@ -107,33 +110,86 @@ class LineNodeDetailViewBase: UIViewController, LineNodeDetailView {
         case 1: currentGraphicLine.change(to: .backwards)
         default: return
         }
-        
-        schemeScroll.contentSize = CGSize(width: schemeScroll.bounds.width, height: currentGraphicLine.frame.height)
     }
     
     func update(withNodes nodes: [LineSchemeNodeModel]) {
         var schemeTheme = LineSchemeTheme()
-        schemeTheme.titleFont = Fonts.standardRegular
-        schemeTheme.normalBackgroundColor = .white
+        schemeTheme.normalTitleFont = Fonts.standardRegular
         schemeTheme.normalForegroundColor = Colors.blue
-        schemeTheme.normalTitleColor = .black
+        schemeTheme.normalTitleColor = Colors.blue
+        schemeTheme.highlightedForegroundColor = Colors.midnight
         schemeTheme.highlightedBackgroundColor = Colors.blue
-        schemeTheme.highlightedForegroundColor = Colors.red
         schemeTheme.highlightedTitleColor = .white
+        schemeTheme.highlightedTitleFont = Fonts.standardRegular
+        schemeTheme.orientation = .horizontal
         
-        schemeScroll.subviews.forEach({ $0.removeFromSuperview() })
-        
-        graphicLine = LineScheme(with: nodes, direction: .forward, theme: schemeTheme)
-        graphicLine!.delegate = self
-        graphicLine!.frame = CGRect(x: 0, y: 0, width: schemeScroll.bounds.width, height: graphicLine!.frame.height)
-        schemeScroll.contentInset = .zero
-        schemeScroll.addSubview(graphicLine!)
-        schemeScroll.contentSize = CGSize(width: schemeScroll.bounds.width, height: graphicLine!.frame.height)
+        lineScheme.update(with: nodes, direction: .forward, theme: schemeTheme, delegate: self)
     }
 }
 
 extension LineNodeDetailViewBase: LineSchemeDelegate {
-    func didTap(node: LineSchemeNodeModel) {
+    internal func lineScheme(lineScheme: LineScheme, didFinishLoadingWith nodes: [LineSchemeNodeModel]) {
+        lineMap.removeAnnotations(lineMap.annotations)
+        
+        var annotations: [NodeAnnotation] = []
+        for aNode in nodes {
+            guard let lat = aNode.latitude, let lon = aNode.longitude else {
+                return
+            }
+            
+            let annotation = NodeAnnotation()
+            annotation.coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+            annotation.nodeId = "\(aNode.id)"
+            annotations.append(annotation)
+        }
+
+        lineMap.showAnnotations(annotations, animated: true)
+        
+//        for i in 0..<nodes.count {
+//            guard nodes.indices.contains(i), nodes.indices.contains(i + 1) else {
+//                continue
+//            }
+//            
+//            let originNode = nodes[i]
+//            let destinationNode = nodes[i + 1]
+//            
+//            let source = CLLocationCoordinate2D(latitude: originNode.latitude!, longitude: originNode.longitude!)
+//            let destination = CLLocationCoordinate2D(latitude: destinationNode.latitude!, longitude: destinationNode.longitude!)
+//            
+//            let geodesicPolyline = MKGeodesicPolyline(coordinates: [source, destination], count: 2)
+//            
+//            lineMap.add(geodesicPolyline)
+//            
+//            drawRoute(from: source, to: destination)
+//        }
+    }
+
+    private func drawRoute(from: CLLocationCoordinate2D, to: CLLocationCoordinate2D) {
+        let directionsRequest = MKDirectionsRequest()
+        let source = MKPlacemark(coordinate: from, addressDictionary: nil)
+        let destination = MKPlacemark(coordinate: to, addressDictionary: nil)
+        
+        directionsRequest.source = MKMapItem(placemark: source)
+        directionsRequest.destination = MKMapItem(placemark: destination)
+        directionsRequest.requestsAlternateRoutes = false
+        directionsRequest.transportType = .automobile
+        
+        let directions = MKDirections(request: directionsRequest)
+        directions.calculate(completionHandler: { response, error in
+            
+            if error == nil {
+                if response!.routes.count > 1 {
+                    
+                }
+                
+                let route = response!.routes[0] as MKRoute
+                self.lineMap.add(route.polyline)
+            }
+            
+        })
+    }
+    
+    internal func didTap(node: LineSchemeNodeModel) {
         lineMap.removeAnnotations(lineMap.annotations)
         
         guard let lat = node.latitude, let lon = node.longitude else {
@@ -145,8 +201,7 @@ extension LineNodeDetailViewBase: LineSchemeDelegate {
         annotation.nodeId = "\(node.id)"
         lineMap.addAnnotation(annotation)
         
-        let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: lat, longitude: lon),
-                                        span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        let region = MKCoordinateRegionMakeWithDistance(CLLocationCoordinate2D(latitude: lat, longitude: lon), 100, 100)
         lineMap.setRegion(region, animated: true)
         lineMap.showsUserLocation = false
     }
@@ -172,5 +227,13 @@ extension LineNodeDetailViewBase: MKMapViewDelegate {
         }
         
         return annotationView
+    }
+
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        let lineView = MKPolylineRenderer(overlay: overlay)
+        lineView.strokeColor = .red
+        lineView.lineWidth = 3
+        
+        return lineView
     }
 }

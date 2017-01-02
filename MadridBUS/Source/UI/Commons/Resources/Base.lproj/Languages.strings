@@ -1,4 +1,5 @@
 "MANUALSEARCHVIEW_LB_REDEFINERADIUS" = "We couldn't find EMT stops near you. You can try again, increasing the search radius, by pressing an option proposed above.";
+"MANUALSEARCHVIEW_LB_LOCATIONPERMISSION" = "Has solicitado activamente que la aplicación no pueda utilizar tu ubicación. Mientras no la autorices no podrás utilizar la búsqueda automática de paradas, ni otras opciones importantes.\n\nPara volver a habilitarla, ve a:\nAjustes > Privacidad > Localización.";
 "MANUALSEARCHVIEW_LB_MANUALSEARCH" = "You can also manually enter the stop code you are in, or scan it.";
 "MANUALSEARCHVIEW_BT_SCANCODE" = "SCAN CODE";
 "MANUALSEARCHVIEW_BT_TYPECODE" = "TYPE CODE";

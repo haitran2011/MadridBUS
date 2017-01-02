@@ -1,12 +1,12 @@
 import UIKit
 
-protocol LineSchemeGraphicNodeDelegate {
+protocol LineSchemeGraphicNodeDelegate: class {
     func didTap(node: LineSchemeGraphicNode)
 }
 
 class LineSchemeGraphicNode: UIView {
     var node: LineSchemeNodeModel
-    var delegate: LineSchemeGraphicNodeDelegate?
+    weak var delegate: LineSchemeGraphicNodeDelegate?
     
     var isSelected: Bool = false
     
@@ -30,14 +30,37 @@ class LineSchemeGraphicNode: UIView {
         clipsToBounds = true
         layer.masksToBounds = true
         
-        nameLabel.numberOfLines = 2
+        nameLabel.translatesAutoresizingMaskIntoConstraints = false
+        nameLabel.numberOfLines = 0
         nameLabel.lineBreakMode = .byWordWrapping
         nameLabel.backgroundColor = .clear
         labelWrapper.addSubview(nameLabel)
         
+        NSLayoutConstraint(item: nameLabel, attribute: .leading, relatedBy: .equal, toItem: labelWrapper, attribute: .leading, multiplier: 1.0, constant: 4.0).isActive = true
+        NSLayoutConstraint(item: nameLabel, attribute: .trailing, relatedBy: .equal, toItem: labelWrapper, attribute: .trailing, multiplier: 1.0, constant: -4.0).isActive = true
+        NSLayoutConstraint(item: nameLabel, attribute: .top, relatedBy: .equal, toItem: labelWrapper, attribute: .top, multiplier: 1.0, constant: 4.0).isActive = true
+        NSLayoutConstraint(item: nameLabel, attribute: .bottom, relatedBy: .equal, toItem: labelWrapper, attribute: .bottom, multiplier: 1.0, constant: -4.0).isActive = true
+        
+        labelWrapper.translatesAutoresizingMaskIntoConstraints = false
         labelWrapper.clipsToBounds = true
         labelWrapper.layer.masksToBounds = true
         addSubview(labelWrapper)
+        
+        switch theme.orientation {
+        case .vertical:
+            nameLabel.textAlignment = .left
+            NSLayoutConstraint(item: labelWrapper, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1.0, constant: dotRadius * 3).isActive = true
+            NSLayoutConstraint(item: labelWrapper, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 1.0, constant: 0).isActive = true
+            NSLayoutConstraint(item: labelWrapper, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: 0).isActive = true
+            NSLayoutConstraint(item: labelWrapper, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1.0, constant: 0).isActive = true
+            
+        case .horizontal:
+            nameLabel.textAlignment = .center
+            NSLayoutConstraint(item: labelWrapper, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1.0, constant: 0).isActive = true
+            NSLayoutConstraint(item: labelWrapper, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 1.0, constant: 0).isActive = true
+            NSLayoutConstraint(item: labelWrapper, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: dotRadius * 2).isActive = true
+            NSLayoutConstraint(item: labelWrapper, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1.0, constant: 0).isActive = true
+        }
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapSelf))
         tapGesture.numberOfTapsRequired = 1
@@ -52,6 +75,7 @@ class LineSchemeGraphicNode: UIView {
         if !isSelected {
             labelWrapper.backgroundColor = theme.highlightedBackgroundColor
             nameLabel.textColor = theme.highlightedTitleColor
+            nameLabel.font = theme.highlightedTitleFont
             lineShape.fillColor = theme.highlightedForegroundColor.cgColor
             dotShape.strokeColor = theme.highlightedForegroundColor.cgColor
             
@@ -72,10 +96,7 @@ class LineSchemeGraphicNode: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
-        labelWrapper.frame = CGRect(x: (dotRadius * 3), y: 0, width: (bounds.width - (dotRadius * 4)) - dotRadius, height: bounds.height)
-        nameLabel.frame = CGRect(x: 4.0, y: 0, width: labelWrapper.frame.size.width - 8, height: labelWrapper.frame.size.height)
-        
+
         labelWrapper.layer.cornerRadius = 4.0
     }
     
@@ -84,7 +105,13 @@ class LineSchemeGraphicNode: UIView {
         
         thickness = dotRadius * 0.6
         
-        let dotCenter = CGPoint(x: dotRadius * 2, y: rect.midY)
+        var dotCenter = CGPoint()
+        switch theme.orientation {
+        case .vertical:     dotCenter = CGPoint(x: dotRadius * 2, y: rect.midY)
+        case .horizontal:   dotCenter = CGPoint(x: rect.midX, y: dotRadius + thickness)
+
+        }
+
         let circlePath = UIBezierPath(arcCenter: dotCenter, radius: dotRadius, startAngle: 0, endAngle: CGFloat(2.0) * CGFloat(M_PI), clockwise: true)
         dotShape =  CAShapeLayer()
         dotShape.path = circlePath.cgPath

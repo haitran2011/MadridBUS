@@ -5,6 +5,7 @@ enum WelcomeViewMode {
     case fullMap(shouldReset: Bool, completionHandler: (()->())?)
     case foundNodesAround
     case zeroNodesAround
+    case noLocationPermission
 }
 
 protocol WelcomeView: View {
@@ -95,15 +96,24 @@ class WelcomeViewBase: UIViewController, WelcomeView {
             animateBottomWrapper(forShowing: true)
             
         case .zeroNodesAround:
-            manualSearch.show(over: contentWrapper, delegating: self)
+            manualSearch.show(over: contentWrapper, mode: .unableToLocate ,delegating: self)
             view.layoutIfNeeded()
             animateBottomWrapper(forShowing: true)
+            
+        case .noLocationPermission:
+            manualSearch.show(over: contentWrapper, mode: .noLocationPermission ,delegating: self)
+            view.layoutIfNeeded()
+            animateBottomWrapper(forShowing: true, fullscreen: true)
         }
     }
     
-    private func animateBottomWrapper(forShowing shouldShow: Bool, shouldReset: Bool = false, completionHandler: (() -> ())? = nil) {
+    private func animateBottomWrapper(forShowing shouldShow: Bool, fullscreen: Bool = false, shouldReset: Bool = false, completionHandler: (() -> ())? = nil) {
         if shouldShow {
-            locationMap_heightConstraint.constant = -view.bounds.size.height * 0.5
+            if fullscreen {
+                locationMap_heightConstraint.constant = -view.bounds.size.height + 64
+            } else {
+                locationMap_heightConstraint.constant = -view.bounds.size.height * 0.5
+            }
             UIView.animate(withDuration: 0.5, animations: {
                 self.view.layoutIfNeeded()
             }) { (completed) in
