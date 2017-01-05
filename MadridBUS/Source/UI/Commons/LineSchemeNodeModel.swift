@@ -7,14 +7,16 @@ class LineSchemeNodeModel: Equatable {
     var direction: LineSchemeDirection
     var latitude: Double?
     var longitude: Double?
+    var selected: Bool
 
-    init(id: Int, name: String, position: Int, direction: LineSchemeDirection, latitude: Double?, longitude: Double?) {
+    init(id: Int, name: String, position: Int, direction: LineSchemeDirection, latitude: Double?, longitude: Double?, selected: Bool = false) {
         self.id = id
         self.name = name
         self.position = position
         self.direction = direction
         self.latitude = latitude
         self.longitude = longitude
+        self.selected = selected
     }
 }
 

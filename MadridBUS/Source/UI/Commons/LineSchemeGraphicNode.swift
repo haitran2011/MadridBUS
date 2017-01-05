@@ -72,11 +72,19 @@ class LineSchemeGraphicNode: UIView {
     }
     
     func didTapSelf() {
-        if !isSelected {
+        if isSelected {
+            labelWrapper.backgroundColor = theme.normalBackgroundColor
+            nameLabel.textColor = theme.normalTitleColor
+            nameLabel.font = theme.normalTitleFont
+            dotShape.strokeColor = theme.normalForegroundColor.cgColor
+            
+            isSelected = false
+            
+            delegate?.didTap(node: self)
+        } else {
             labelWrapper.backgroundColor = theme.highlightedBackgroundColor
             nameLabel.textColor = theme.highlightedTitleColor
             nameLabel.font = theme.highlightedTitleFont
-            lineShape.fillColor = theme.highlightedForegroundColor.cgColor
             dotShape.strokeColor = theme.highlightedForegroundColor.cgColor
             
             isSelected = true
@@ -88,7 +96,7 @@ class LineSchemeGraphicNode: UIView {
     func reset() {
         labelWrapper.backgroundColor = theme.normalBackgroundColor
         nameLabel.textColor = theme.normalTitleColor
-        lineShape.fillColor = theme.normalForegroundColor.cgColor
+        nameLabel.font = theme.normalTitleFont
         dotShape.strokeColor = theme.normalForegroundColor.cgColor
         
         isSelected = false

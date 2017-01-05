@@ -129,21 +129,7 @@ class LineNodeDetailViewBase: UIViewController, LineNodeDetailView {
 
 extension LineNodeDetailViewBase: LineSchemeDelegate {
     internal func lineScheme(lineScheme: LineScheme, didFinishLoadingWith nodes: [LineSchemeNodeModel]) {
-        lineMap.removeAnnotations(lineMap.annotations)
-        
-        var annotations: [NodeAnnotation] = []
-        for aNode in nodes {
-            guard let lat = aNode.latitude, let lon = aNode.longitude else {
-                return
-            }
-            
-            let annotation = NodeAnnotation()
-            annotation.coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lon)
-            annotation.nodeId = "\(aNode.id)"
-            annotations.append(annotation)
-        }
-
-        lineMap.showAnnotations(annotations, animated: true)
+        draw(nodes: nodes)
         
 //        for i in 0..<nodes.count {
 //            guard nodes.indices.contains(i), nodes.indices.contains(i + 1) else {
@@ -164,6 +150,24 @@ extension LineNodeDetailViewBase: LineSchemeDelegate {
 //        }
     }
 
+    private func draw(nodes: [LineSchemeNodeModel]) {
+        lineMap.removeAnnotations(lineMap.annotations)
+        
+        var annotations: [NodeAnnotation] = []
+        for aNode in nodes {
+            guard let lat = aNode.latitude, let lon = aNode.longitude else {
+                return
+            }
+            
+            let annotation = NodeAnnotation()
+            annotation.coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+            annotation.nodeId = "\(aNode.id)"
+            annotations.append(annotation)
+        }
+        
+        lineMap.showAnnotations(annotations, animated: true)
+    }
+    
     private func drawRoute(from: CLLocationCoordinate2D, to: CLLocationCoordinate2D) {
         let directionsRequest = MKDirectionsRequest()
         let source = MKPlacemark(coordinate: from, addressDictionary: nil)
@@ -190,20 +194,24 @@ extension LineNodeDetailViewBase: LineSchemeDelegate {
     }
     
     internal func didTap(node: LineSchemeNodeModel) {
-        lineMap.removeAnnotations(lineMap.annotations)
-        
-        guard let lat = node.latitude, let lon = node.longitude else {
-            return
+        if node.selected {
+            lineMap.removeAnnotations(lineMap.annotations)
+            
+            guard let lat = node.latitude, let lon = node.longitude else {
+                return
+            }
+            
+            let annotation = NodeAnnotation()
+            annotation.coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+            annotation.nodeId = "\(node.id)"
+            lineMap.addAnnotation(annotation)
+            
+            let region = MKCoordinateRegionMakeWithDistance(CLLocationCoordinate2D(latitude: lat, longitude: lon), 100, 100)
+            lineMap.setRegion(region, animated: true)
+            lineMap.showsUserLocation = false
+        } else {
+            draw(nodes: lineScheme.nodes)
         }
-        
-        let annotation = NodeAnnotation()
-        annotation.coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lon)
-        annotation.nodeId = "\(node.id)"
-        lineMap.addAnnotation(annotation)
-        
-        let region = MKCoordinateRegionMakeWithDistance(CLLocationCoordinate2D(latitude: lat, longitude: lon), 100, 100)
-        lineMap.setRegion(region, animated: true)
-        lineMap.showsUserLocation = false
     }
 }
 

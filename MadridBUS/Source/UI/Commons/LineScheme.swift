@@ -34,7 +34,7 @@ protocol LineSchemeDelegate: class {
 class LineScheme: UIControl {
     weak var delegate: LineSchemeDelegate?
     
-    private var nodes: [LineSchemeNodeModel]
+    var nodes: [LineSchemeNodeModel]
     private var direction: LineSchemeDirection
     private var graphicNodes: [LineSchemeGraphicNode] = []
     private var scrollView = UIScrollView()
@@ -171,6 +171,7 @@ extension LineScheme: LineSchemeGraphicNodeDelegate {
             }
         }
         
+        node.node.selected = node.isSelected
         delegate?.didTap(node: node.node)
     }
 }

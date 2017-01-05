@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jfg-Pp-X1p" id="NJM-e7-aRU">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="59"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XDl-is-vw5">
@@ -67,7 +67,7 @@
                 <outlet property="nextBusTimeLabel" destination="hBB-kN-IkO" id="QdR-kq-B1m"/>
                 <outlet property="spinnerETA" destination="e6c-7v-NVi" id="ZBv-q8-Si1"/>
             </connections>
-            <point key="canvasLocation" x="-877.5" y="-620"/>
+            <point key="canvasLocation" x="-1131.5" y="-641"/>
         </tableViewCell>
     </objects>
 </document>
