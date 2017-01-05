@@ -47,6 +47,12 @@ class WelcomeViewBase: UIViewController, WelcomeView {
         super.viewDidLoad()
         contentWrapper.backgroundColor = Colors.blue
         locationMap.delegate = self
+    
+        let favsButton = UIBarButtonItem(image: #imageLiteral(resourceName: "Fav").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(didTapFavButton))
+        let codeButton = UIBarButtonItem(image: #imageLiteral(resourceName: "QRCode").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(didTapScanCodeButton))
+        
+        navigationItem.leftBarButtonItem = favsButton
+        navigationItem.rightBarButtonItem = codeButton
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -59,6 +65,14 @@ class WelcomeViewBase: UIViewController, WelcomeView {
         super.viewDidDisappear(animated)
         
         presenter.nodesAround(using: 50)
+    }
+    
+    func didTapFavButton() {
+        
+    }
+
+    func didTapScanCodeButton() {
+        
     }
     
     func updateMap(with location: CLLocation) {
