@@ -48,6 +48,12 @@ class WelcomeViewBase: UIViewController, WelcomeView {
         contentWrapper.backgroundColor = Colors.blue
         locationMap.delegate = self
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        title = LocalizedLiteral.localize(using: "WELCOMETITLE")
+    }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidDisappear(animated)
