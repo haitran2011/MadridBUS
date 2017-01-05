@@ -19,7 +19,7 @@ class NodesNearTableCellPresenterBase: NodesNearTableCellPresenter, HandleErrorD
     
     func handleErrors(error: Error) {
         if error._code == 1 {
-            self.cell.update(using: nil, heading: "Sin servicio hasta las \(Date.string(from: cell.line!.startTime, using: "hh:mm a"))")
+            self.cell.update(using: nil, heading: LocalizedLiteral.localize(using: "WELCOMENODECELL_LB_NOSERVICE", with: Date.string(from: cell.line!.startTime, using: "hh:mm a")))
         }
     }
     

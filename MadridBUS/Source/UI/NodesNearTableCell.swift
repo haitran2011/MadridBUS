@@ -63,6 +63,14 @@ class NodesNearTableCellBase: UITableViewCell, NodesNearTableCell {
         self.node = node
         
         busLineLabel.text = model.id
+        if model.id.characters.first == "N" {
+            busLineLabel.backgroundColor = .black
+            busLineLabel.textColor = Colors.yellow
+        } else {
+            busLineLabel.backgroundColor = Colors.blue
+            busLineLabel.textColor = .white
+        }
+        
         if highlighted {
             backgroundColor = Colors.green
             tintColor = .white

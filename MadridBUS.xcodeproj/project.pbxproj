@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		3017F4051E14E4060087BABA /* NodesNearTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3017F4041E14E4060087BABA /* NodesNearTable.swift */; };
-		301B7B081E1A318C00904F78 /* Aluche.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 301B7B071E1A318C00904F78 /* Aluche.gpx */; };
 		303725251E124BA000FABC93 /* BusLinesBasicInfoInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303725241E124BA000FABC93 /* BusLinesBasicInfoInteractor.swift */; };
 		303725281E124C7400FABC93 /* BusLineBasicInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303725271E124C7400FABC93 /* BusLineBasicInfo.swift */; };
 		3037252B1E124E2B00FABC93 /* BusSubgroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3037252A1E124E2B00FABC93 /* BusSubgroup.swift */; };
@@ -139,7 +138,6 @@
 
 /* Begin PBXFileReference section */
 		3017F4041E14E4060087BABA /* NodesNearTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodesNearTable.swift; sourceTree = "<group>"; };
-		301B7B071E1A318C00904F78 /* Aluche.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Aluche.gpx; sourceTree = "<group>"; };
 		303725241E124BA000FABC93 /* BusLinesBasicInfoInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusLinesBasicInfoInteractor.swift; sourceTree = "<group>"; };
 		303725271E124C7400FABC93 /* BusLineBasicInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusLineBasicInfo.swift; sourceTree = "<group>"; };
 		3037252A1E124E2B00FABC93 /* BusSubgroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusSubgroup.swift; sourceTree = "<group>"; };
@@ -462,7 +460,6 @@
 		30A540031E1116A500362E8B /* MadridBUS */ = {
 			isa = PBXGroup;
 			children = (
-				301B7B071E1A318C00904F78 /* Aluche.gpx */,
 				30D02AE91E111C3700F51304 /* Resources */,
 				30D02AEA1E111C3700F51304 /* Source */,
 				30A540101E1116A500362E8B /* Info.plist */,
@@ -799,7 +796,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				301B7B081E1A318C00904F78 /* Aluche.gpx in Resources */,
 				303725B71E13C82800FABC93 /* NodesNearTableCell.xib in Resources */,
 				30D02DFB1E11247D00F51304 /* ErrorView.xib in Resources */,
 				30BF1F7E1E13E5DF006DED45 /* Anton.ttf in Resources */,
